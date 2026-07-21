@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.msNavigation = new System.Windows.Forms.MenuStrip();
+            this.pbMainImage = new System.Windows.Forms.PictureBox();
             this.opApplications = new System.Windows.Forms.ToolStripMenuItem();
             this.opDrivingLicensesApps = new System.Windows.Forms.ToolStripMenuItem();
             this.opNewDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +55,6 @@
             this.opCurrentUserInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.opChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.opSignOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbMainImage = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.msNavigation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMainImage)).BeginInit();
@@ -75,6 +75,18 @@
             this.msNavigation.Size = new System.Drawing.Size(1546, 72);
             this.msNavigation.TabIndex = 0;
             this.msNavigation.Text = "menuStrip1";
+            // 
+            // pbMainImage
+            // 
+            this.pbMainImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
+            this.pbMainImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbMainImage.Image = global::DVLD.Properties.Resources.Wheel;
+            this.pbMainImage.Location = new System.Drawing.Point(0, 72);
+            this.pbMainImage.Name = "pbMainImage";
+            this.pbMainImage.Size = new System.Drawing.Size(1546, 581);
+            this.pbMainImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbMainImage.TabIndex = 1;
+            this.pbMainImage.TabStop = false;
             // 
             // opApplications
             // 
@@ -251,7 +263,6 @@
             this.opPeople.Name = "opPeople";
             this.opPeople.Size = new System.Drawing.Size(145, 68);
             this.opPeople.Text = "People";
-            this.opPeople.Click += new System.EventHandler(this.opPeople_Click);
             // 
             // opDrivers
             // 
@@ -307,18 +318,6 @@
             this.opSignOut.Name = "opSignOut";
             this.opSignOut.Size = new System.Drawing.Size(255, 38);
             this.opSignOut.Text = "Sign Out";
-            // 
-            // pbMainImage
-            // 
-            this.pbMainImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.pbMainImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbMainImage.Image = global::DVLD.Properties.Resources.Wheel;
-            this.pbMainImage.Location = new System.Drawing.Point(0, 72);
-            this.pbMainImage.Name = "pbMainImage";
-            this.pbMainImage.Size = new System.Drawing.Size(1546, 581);
-            this.pbMainImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbMainImage.TabIndex = 1;
-            this.pbMainImage.TabStop = false;
             // 
             // pictureBox1
             // 

@@ -8,14 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DVLD
+namespace DVLD.People
 {
-    public partial class frmMain : Form
+    public partial class frmPeopleManagement : Form
     {
-        public frmMain()
+        public frmPeopleManagement()
         {
             InitializeComponent();
         }
-        
     }
 }
