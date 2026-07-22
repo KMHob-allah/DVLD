@@ -52,12 +52,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\Controls\ctrlAddUpdatePerson.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="People\Controls\ctrlAddUpdatePerson.Designer.cs">
-      <DependentUpon>ctrlAddUpdatePerson.cs</DependentUpon>
-    </Compile>
     <Compile Include="People\frmAddUpdatePerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,9 +68,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="People\Controls\ctrlAddUpdatePerson.resx">
-      <DependentUpon>ctrlAddUpdatePerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\frmAddUpdatePerson.resx">
       <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
@@ -201,13 +192,16 @@
     <None Include="Resources\Save 32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\user3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\woman.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\DVLD Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="People\Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultMale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultWoman.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

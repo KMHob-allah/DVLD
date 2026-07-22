@@ -216,11 +216,11 @@ namespace DVLD_Business
 
         }
 
-        static public bool Exist(int PersonID)
+        static public bool IsExist(int PersonID)
         {
             return clPersonData.IsExist(PersonID);
         }
-        static public bool Exist(string NationalNumber)
+        static public bool IsExist(string NationalNumber)
         {
             return clPersonData.IsExist(NationalNumber);
         }        

@@ -16,7 +16,7 @@ namespace DVLD_DataAccess
 
             using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
             {
-                using (SqlCommand Command = new SqlCommand("SELECT CountryName FROM Countries", Connection))
+                using (SqlCommand Command = new SqlCommand("SELECT * FROM Countries", Connection))
                 {
                     Connection.Open();
 

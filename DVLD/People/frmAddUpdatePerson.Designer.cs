@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblAddEditPerson = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlUserInfo = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.tbThirdNameValue = new System.Windows.Forms.TextBox();
             this.lblPersonID = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
@@ -59,10 +62,11 @@
             this.tbAddressValue = new System.Windows.Forms.TextBox();
             this.tbNationalNumberValue = new System.Windows.Forms.TextBox();
             this.tbEmailValue = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.errpAddEditHandler = new System.Windows.Forms.ErrorProvider(this.components);
+            this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.pnlUserInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errpAddEditHandler)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAddEditPerson
@@ -76,43 +80,72 @@
             this.lblAddEditPerson.TabIndex = 2;
             this.lblAddEditPerson.Text = "Add New Person";
             // 
-            // panel1
+            // pnlUserInfo
             // 
-            this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.tbThirdNameValue);
-            this.panel1.Controls.Add(this.lblPersonID);
-            this.panel1.Controls.Add(this.lblPhone);
-            this.panel1.Controls.Add(this.lblLast);
-            this.panel1.Controls.Add(this.lblBirthDate);
-            this.panel1.Controls.Add(this.lblThird);
-            this.panel1.Controls.Add(this.lblAddress);
-            this.panel1.Controls.Add(this.lblSecond);
-            this.panel1.Controls.Add(this.lblGender);
-            this.panel1.Controls.Add(this.lblFirst);
-            this.panel1.Controls.Add(this.lblCountry);
-            this.panel1.Controls.Add(this.rdbtnMale);
-            this.panel1.Controls.Add(this.lblEmail);
-            this.panel1.Controls.Add(this.rdbtnFemale);
-            this.panel1.Controls.Add(this.lblNationalNumber);
-            this.panel1.Controls.Add(this.lblPersonIDValue);
-            this.panel1.Controls.Add(this.lblName);
-            this.panel1.Controls.Add(this.lnklblRemoveImage);
-            this.panel1.Controls.Add(this.tbFirstNameValue);
-            this.panel1.Controls.Add(this.lnklblSetImage);
-            this.panel1.Controls.Add(this.tbLastNameValue);
-            this.panel1.Controls.Add(this.pbPersonImage);
-            this.panel1.Controls.Add(this.tbSecondNameValue);
-            this.panel1.Controls.Add(this.dtpBirthDateValue);
-            this.panel1.Controls.Add(this.tbPhoneValue);
-            this.panel1.Controls.Add(this.cbCountries);
-            this.panel1.Controls.Add(this.tbAddressValue);
-            this.panel1.Controls.Add(this.tbNationalNumberValue);
-            this.panel1.Controls.Add(this.tbEmailValue);
-            this.panel1.Location = new System.Drawing.Point(11, 88);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1238, 524);
-            this.panel1.TabIndex = 67;
+            this.pnlUserInfo.BackColor = System.Drawing.Color.White;
+            this.pnlUserInfo.Controls.Add(this.btnSave);
+            this.pnlUserInfo.Controls.Add(this.btnClose);
+            this.pnlUserInfo.Controls.Add(this.tbThirdNameValue);
+            this.pnlUserInfo.Controls.Add(this.lblPersonID);
+            this.pnlUserInfo.Controls.Add(this.lblPhone);
+            this.pnlUserInfo.Controls.Add(this.lblLast);
+            this.pnlUserInfo.Controls.Add(this.lblBirthDate);
+            this.pnlUserInfo.Controls.Add(this.lblThird);
+            this.pnlUserInfo.Controls.Add(this.lblAddress);
+            this.pnlUserInfo.Controls.Add(this.lblSecond);
+            this.pnlUserInfo.Controls.Add(this.lblGender);
+            this.pnlUserInfo.Controls.Add(this.lblFirst);
+            this.pnlUserInfo.Controls.Add(this.lblCountry);
+            this.pnlUserInfo.Controls.Add(this.rdbtnMale);
+            this.pnlUserInfo.Controls.Add(this.lblEmail);
+            this.pnlUserInfo.Controls.Add(this.rdbtnFemale);
+            this.pnlUserInfo.Controls.Add(this.lblNationalNumber);
+            this.pnlUserInfo.Controls.Add(this.lblPersonIDValue);
+            this.pnlUserInfo.Controls.Add(this.lblName);
+            this.pnlUserInfo.Controls.Add(this.lnklblRemoveImage);
+            this.pnlUserInfo.Controls.Add(this.tbFirstNameValue);
+            this.pnlUserInfo.Controls.Add(this.lnklblSetImage);
+            this.pnlUserInfo.Controls.Add(this.tbLastNameValue);
+            this.pnlUserInfo.Controls.Add(this.pbPersonImage);
+            this.pnlUserInfo.Controls.Add(this.tbSecondNameValue);
+            this.pnlUserInfo.Controls.Add(this.dtpBirthDateValue);
+            this.pnlUserInfo.Controls.Add(this.tbPhoneValue);
+            this.pnlUserInfo.Controls.Add(this.cbCountries);
+            this.pnlUserInfo.Controls.Add(this.tbAddressValue);
+            this.pnlUserInfo.Controls.Add(this.tbNationalNumberValue);
+            this.pnlUserInfo.Controls.Add(this.tbEmailValue);
+            this.pnlUserInfo.Location = new System.Drawing.Point(11, 88);
+            this.pnlUserInfo.Name = "pnlUserInfo";
+            this.pnlUserInfo.Size = new System.Drawing.Size(1238, 524);
+            this.pnlUserInfo.TabIndex = 67;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Cooper Black", 10F);
+            this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(1081, 453);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(133, 46);
+            this.btnSave.TabIndex = 64;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Cooper Black", 10F);
+            this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(943, 453);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(133, 46);
+            this.btnClose.TabIndex = 63;
+            this.btnClose.Text = "Close";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // tbThirdNameValue
             // 
@@ -233,6 +266,7 @@
             this.rdbtnMale.TabStop = true;
             this.rdbtnMale.Text = "Male";
             this.rdbtnMale.UseVisualStyleBackColor = true;
+            this.rdbtnMale.CheckedChanged += new System.EventHandler(this.rdbtnMale_CheckedChanged);
             // 
             // lblEmail
             // 
@@ -253,6 +287,7 @@
             this.rdbtnFemale.TabIndex = 48;
             this.rdbtnFemale.Text = "Female";
             this.rdbtnFemale.UseVisualStyleBackColor = true;
+            this.rdbtnFemale.CheckedChanged += new System.EventHandler(this.rdbtnFemale_CheckedChanged);
             // 
             // lblNationalNumber
             // 
@@ -295,6 +330,7 @@
             this.lnklblRemoveImage.TabStop = true;
             this.lnklblRemoveImage.Text = "Remove Image";
             this.lnklblRemoveImage.Visible = false;
+            this.lnklblRemoveImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblRemoveImage_LinkClicked);
             // 
             // tbFirstNameValue
             // 
@@ -314,6 +350,7 @@
             this.lnklblSetImage.TabIndex = 55;
             this.lnklblSetImage.TabStop = true;
             this.lnklblSetImage.Text = "Set Image";
+            this.lnklblSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblSetImage_LinkClicked);
             // 
             // tbLastNameValue
             // 
@@ -381,6 +418,7 @@
             this.tbNationalNumberValue.Name = "tbNationalNumberValue";
             this.tbNationalNumberValue.Size = new System.Drawing.Size(225, 22);
             this.tbNationalNumberValue.TabIndex = 43;
+            this.tbNationalNumberValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbNationalNumberValue_Validating);
             // 
             // tbEmailValue
             // 
@@ -389,47 +427,33 @@
             this.tbEmailValue.Name = "tbEmailValue";
             this.tbEmailValue.Size = new System.Drawing.Size(225, 22);
             this.tbEmailValue.TabIndex = 50;
+            this.tbEmailValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbEmailValue_Validating);
             // 
-            // btnSave
+            // errpAddEditHandler
             // 
-            this.btnSave.Font = new System.Drawing.Font("Cooper Black", 10F);
-            this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(1081, 453);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(133, 46);
-            this.btnSave.TabIndex = 64;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.errpAddEditHandler.ContainerControl = this;
             // 
-            // btnClose
+            // OpenFileDialog
             // 
-            this.btnClose.Font = new System.Drawing.Font("Cooper Black", 10F);
-            this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(943, 453);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(133, 46);
-            this.btnClose.TabIndex = 63;
-            this.btnClose.Text = "Close";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.OpenFileDialog.FileName = "OpenFileDialog";
             // 
             // frmAddUpdatePerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1261, 624);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlUserInfo);
             this.Controls.Add(this.lblAddEditPerson);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddUpdatePerson";
             this.Text = "Add / Update Person";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Load += new System.EventHandler(this.frmAddUpdatePerson_Load);
+            this.pnlUserInfo.ResumeLayout(false);
+            this.pnlUserInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errpAddEditHandler)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,7 +462,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblAddEditPerson;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlUserInfo;
         private System.Windows.Forms.TextBox tbThirdNameValue;
         private System.Windows.Forms.Label lblPersonID;
         private System.Windows.Forms.Label lblPhone;
@@ -470,5 +494,7 @@
         private System.Windows.Forms.TextBox tbEmailValue;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ErrorProvider errpAddEditHandler;
+        private System.Windows.Forms.OpenFileDialog OpenFileDialog;
     }
 }
