@@ -56,6 +56,7 @@
             // lnklblEditPersonInfo
             // 
             this.lnklblEditPersonInfo.AutoSize = true;
+            this.lnklblEditPersonInfo.Enabled = false;
             this.lnklblEditPersonInfo.Font = new System.Drawing.Font("Bookman Old Style", 10F);
             this.lnklblEditPersonInfo.Location = new System.Drawing.Point(824, 67);
             this.lnklblEditPersonInfo.Name = "lnklblEditPersonInfo";

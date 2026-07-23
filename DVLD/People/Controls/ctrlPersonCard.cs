@@ -67,7 +67,7 @@ namespace DVLD.People.Controls
             lblNationalNumberValue.Text = _Person.NationalNumber;
             lblFullNameValue.Text = _Person.FullName();
             lblGenderValue.Text = _Person.stGender();
-            lblEmailValue.Text = _Person.Email;
+            lblEmailValue.Text = (string.IsNullOrEmpty(_Person.Email) ? "Doesn't Have" : _Person.Email);
             lblPhoneValue.Text = _Person.Phone;
             lblBirthDateValue.Text = _Person.BirthDate.ToShortDateString();
             lblCountryValue.Text = _Person.CountryInfo.CountryName;
@@ -102,7 +102,7 @@ namespace DVLD.People.Controls
             if (_Person == null)
             {
                 ResetPersonInfo();
-                MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Person with PersonID : " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -114,7 +114,7 @@ namespace DVLD.People.Controls
             if (_Person == null)
             {
                 ResetPersonInfo();
-                MessageBox.Show("No Person with National No. = " + NationalNumber.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Person with National Number : " + NationalNumber.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

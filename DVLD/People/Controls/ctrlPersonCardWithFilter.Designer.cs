@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbFilter = new System.Windows.Forms.GroupBox();
-            this.btnAddNewPerson = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.cbFilters = new System.Windows.Forms.ComboBox();
             this.tbUserFilterValue = new System.Windows.Forms.TextBox();
             this.lblFindBy = new System.Windows.Forms.Label();
-            this.ctrlPersonCard1 = new DVLD.People.Controls.ctrlPersonCard();
             this.errpSearchHandler = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctrlPersonCard1 = new DVLD.People.Controls.ctrlPersonCard();
+            this.btnAddNewPerson = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errpSearchHandler)).BeginInit();
             this.SuspendLayout();
@@ -53,30 +53,10 @@
             this.gbFilter.Font = new System.Drawing.Font("Bookman Old Style", 10F);
             this.gbFilter.Location = new System.Drawing.Point(3, 3);
             this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(1010, 87);
+            this.gbFilter.Size = new System.Drawing.Size(1039, 87);
             this.gbFilter.TabIndex = 3;
             this.gbFilter.TabStop = false;
-            this.gbFilter.Text = "s";
-            // 
-            // btnAddNewPerson
-            // 
-            this.btnAddNewPerson.Image = global::DVLD.Properties.Resources.Add_Person_40;
-            this.btnAddNewPerson.Location = new System.Drawing.Point(796, 21);
-            this.btnAddNewPerson.Name = "btnAddNewPerson";
-            this.btnAddNewPerson.Size = new System.Drawing.Size(55, 58);
-            this.btnAddNewPerson.TabIndex = 4;
-            this.btnAddNewPerson.UseVisualStyleBackColor = true;
-            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click_1);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Image = global::DVLD.Properties.Resources.search__1_;
-            this.btnSearch.Location = new System.Drawing.Point(735, 21);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(55, 58);
-            this.btnSearch.TabIndex = 3;
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.gbFilter.Text = "Filter";
             // 
             // cbFilters
             // 
@@ -100,7 +80,6 @@
             this.tbUserFilterValue.Size = new System.Drawing.Size(239, 27);
             this.tbUserFilterValue.TabIndex = 2;
             this.tbUserFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbUserFilterValue_KeyPress);
-            this.tbUserFilterValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbUserFilterValue_Validating);
             // 
             // lblFindBy
             // 
@@ -112,6 +91,10 @@
             this.lblFindBy.TabIndex = 2;
             this.lblFindBy.Text = "Find By";
             // 
+            // errpSearchHandler
+            // 
+            this.errpSearchHandler.ContainerControl = this;
+            // 
             // ctrlPersonCard1
             // 
             this.ctrlPersonCard1.Location = new System.Drawing.Point(0, 96);
@@ -119,9 +102,25 @@
             this.ctrlPersonCard1.Size = new System.Drawing.Size(1042, 366);
             this.ctrlPersonCard1.TabIndex = 4;
             // 
-            // errpSearchHandler
+            // btnAddNewPerson
             // 
-            this.errpSearchHandler.ContainerControl = this;
+            this.btnAddNewPerson.Image = global::DVLD.Properties.Resources.AddPerson_32;
+            this.btnAddNewPerson.Location = new System.Drawing.Point(796, 21);
+            this.btnAddNewPerson.Name = "btnAddNewPerson";
+            this.btnAddNewPerson.Size = new System.Drawing.Size(65, 58);
+            this.btnAddNewPerson.TabIndex = 4;
+            this.btnAddNewPerson.UseVisualStyleBackColor = true;
+            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click_1);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Image = global::DVLD.Properties.Resources.search__1_;
+            this.btnSearch.Location = new System.Drawing.Point(735, 21);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(55, 58);
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // ctrlPersonCardWithFilter
             // 

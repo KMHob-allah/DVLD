@@ -134,19 +134,7 @@ namespace DVLD.People.Controls
             tbUserFilterValue.Text = string.Empty;
             tbUserFilterValue.Focus();
 
-        }
-        private void tbUserFilterValue_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(tbUserFilterValue.Text.Trim()))
-            {
-                e.Cancel = true;
-                errpSearchHandler.SetError(tbUserFilterValue, "This field is required!");
-            }
-
-            else errpSearchHandler.SetError(tbUserFilterValue, null);
-
-
-        }
+        }       
         private void tbUserFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13) btnSearch.PerformClick(); // When Enter Pressed          
@@ -158,9 +146,23 @@ namespace DVLD.People.Controls
         private void ctrlPersonCardWithFilter_Load_1(object sender, EventArgs e)
         {
             _FillcbFilters();
-
             cbFilters.SelectedIndex = 1;
             tbUserFilterValue.Focus();
-        }
+        }  
+        
+        // This Funtion Makes Problems When I Try To Change Filter But I am Standing on tbUserFilterValue
+
+        //private void tbUserFilterValue_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (string.IsNullOrEmpty(tbUserFilterValue.Text.Trim()))
+        //    {
+        //        e.Cancel = true;
+        //        errpSearchHandler.SetError(tbUserFilterValue, "This field is required!");
+        //    }
+
+        //    else errpSearchHandler.SetError(tbUserFilterValue, null);
+
+
+        //} 
     }
 }

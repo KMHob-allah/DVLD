@@ -43,7 +43,7 @@ namespace DVLD_DataAccess
                             Email = (Reader["Email"] != DBNull.Value ? Reader["Email"].ToString() : string.Empty);
 
                             Phone = Reader["Phone"].ToString();
-                            BirthDate = (DateTime)Reader["DateOfBirth"];
+                            BirthDate = (DateTime)Reader["BirthDate"];
                             Address = Reader["Address"].ToString();
 
                             ImagePath = (Reader["ImagePath"] != DBNull.Value ? Reader["ImagePath"].ToString() : string.Empty);
@@ -91,12 +91,12 @@ namespace DVLD_DataAccess
                             Email = (Reader["Email"] != DBNull.Value ? Reader["Email"].ToString() : string.Empty);
                             Phone = Reader["Phone"].ToString();
 
-                            BirthDate = (DateTime)Reader["DateOfBirth"];
+                            BirthDate = (DateTime)Reader["BirthDate"];
                             Address = Reader["Address"].ToString();
 
                             ImagePath = (Reader["ImagePath"] != DBNull.Value ? Reader["ImagePath"].ToString() : string.Empty);
 
-                            CountryID = Convert.ToInt32(Reader["CountryID"]);
+                            CountryID = Convert.ToInt32(Reader["NationalityCountryID"]);
                             Gender = Convert.ToByte(Reader["Gender"]);
 
                             IsFound = true;
@@ -291,27 +291,6 @@ namespace DVLD_DataAccess
             }
 
             return Result != null;
-        }
-
-        //static public bool DeleteImagePath(int PersonID)
-        //{
-        //    int RowsAffected = 0;
-        //    string Query = @"Update People 
-        //                     Set ImagePath = Null 
-        //                     Where PersonID = @PersonID";
-
-
-        //    using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
-        //    using (SqlCommand Command = new SqlCommand(Query, Connection))
-        //    {
-        //        Command.Parameters.AddWithValue("@PersonID", PersonID);
-        //        Connection.Open();
-        //        RowsAffected = Command.ExecuteNonQuery();
-
-
-        //    }
-
-        //    return RowsAffected > 0;
-        //}
+        }      
     }
 }
