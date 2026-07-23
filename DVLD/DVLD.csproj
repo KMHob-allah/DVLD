@@ -260,5 +260,23 @@
   <ItemGroup>
     <None Include="Resources\Add Person 401.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add Person 402.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recycle-bin.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send-mail.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\call 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Details.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

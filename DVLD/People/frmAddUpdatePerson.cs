@@ -135,7 +135,9 @@ namespace DVLD.People
             _ResetTextBoxes();
 
             lnklblRemoveImage.Visible = (pbPersonImage.ImageLocation != null);
-            
+
+            btnSave.Enabled = false;
+
         }
         private void _LoadPersonDetails()
         {
@@ -148,7 +150,7 @@ namespace DVLD.People
                 return;
             }
 
-            lblPersonID.Text = _PersonID.ToString();
+            lblPersonIDValue.Text = _PersonID.ToString();
             tbFirstNameValue.Text = _Person.FirstName;
             tbSecondNameValue.Text = _Person.SecondName;
             tbThirdNameValue.Text = _Person.ThirdName;
