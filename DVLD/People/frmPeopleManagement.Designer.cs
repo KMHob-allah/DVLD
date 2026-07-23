@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dvgPeopleList = new System.Windows.Forms.DataGridView();
+            this.dgvPeopleList = new System.Windows.Forms.DataGridView();
             this.cmsPersonOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.opShowDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.opAddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,27 +45,27 @@
             this.pbPeople = new System.Windows.Forms.PictureBox();
             this.btnAddNewPerson = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgPeopleList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPeopleList)).BeginInit();
             this.cmsPersonOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPeople)).BeginInit();
             this.SuspendLayout();
             // 
-            // dvgPeopleList
+            // dgvPeopleList
             // 
-            this.dvgPeopleList.AllowUserToAddRows = false;
-            this.dvgPeopleList.AllowUserToDeleteRows = false;
-            this.dvgPeopleList.AllowUserToOrderColumns = true;
-            this.dvgPeopleList.BackgroundColor = System.Drawing.Color.White;
-            this.dvgPeopleList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dvgPeopleList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgPeopleList.ContextMenuStrip = this.cmsPersonOptions;
-            this.dvgPeopleList.Location = new System.Drawing.Point(27, 275);
-            this.dvgPeopleList.Name = "dvgPeopleList";
-            this.dvgPeopleList.ReadOnly = true;
-            this.dvgPeopleList.RowHeadersWidth = 51;
-            this.dvgPeopleList.RowTemplate.Height = 24;
-            this.dvgPeopleList.Size = new System.Drawing.Size(1411, 387);
-            this.dvgPeopleList.TabIndex = 9;
+            this.dgvPeopleList.AllowUserToAddRows = false;
+            this.dgvPeopleList.AllowUserToDeleteRows = false;
+            this.dgvPeopleList.AllowUserToOrderColumns = true;
+            this.dgvPeopleList.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPeopleList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvPeopleList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPeopleList.ContextMenuStrip = this.cmsPersonOptions;
+            this.dgvPeopleList.Location = new System.Drawing.Point(27, 275);
+            this.dgvPeopleList.Name = "dgvPeopleList";
+            this.dgvPeopleList.ReadOnly = true;
+            this.dgvPeopleList.RowHeadersWidth = 51;
+            this.dgvPeopleList.RowTemplate.Height = 24;
+            this.dgvPeopleList.Size = new System.Drawing.Size(1411, 387);
+            this.dgvPeopleList.TabIndex = 9;
             // 
             // cmsPersonOptions
             // 
@@ -86,6 +86,7 @@
             this.opShowDetails.Name = "opShowDetails";
             this.opShowDetails.Size = new System.Drawing.Size(191, 24);
             this.opShowDetails.Text = "Show Details";
+            this.opShowDetails.Click += new System.EventHandler(this.opShowDetails_Click);
             // 
             // opAddNewPerson
             // 
@@ -213,7 +214,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1465, 734);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dvgPeopleList);
+            this.Controls.Add(this.dgvPeopleList);
             this.Controls.Add(this.pbPeople);
             this.Controls.Add(this.btnAddNewPerson);
             this.Controls.Add(this.lblPeopleList);
@@ -225,7 +226,7 @@
             this.MinimizeBox = false;
             this.Name = "frmPeopleManagement";
             this.Text = "frmPeopleManagement";
-            ((System.ComponentModel.ISupportInitialize)(this.dvgPeopleList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPeopleList)).EndInit();
             this.cmsPersonOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbPeople)).EndInit();
             this.ResumeLayout(false);
@@ -235,7 +236,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dvgPeopleList;
+        private System.Windows.Forms.DataGridView dgvPeopleList;
         private System.Windows.Forms.ContextMenuStrip cmsPersonOptions;
         private System.Windows.Forms.ToolStripMenuItem opShowDetails;
         private System.Windows.Forms.ToolStripMenuItem opAddNewPerson;
