@@ -60,7 +60,7 @@ namespace DVLD.Global
                 return false;
             }
 
-            SourceFile= DestinationFile;
+            SourceFile = DestinationFile;
 
             return true;
         }

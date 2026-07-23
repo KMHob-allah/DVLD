@@ -52,6 +52,9 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global\clFormat.cs" />
+    <Compile Include="Global\clUtil.cs" />
+    <Compile Include="Global\clValidation.cs" />
     <Compile Include="People\frmAddUpdatePerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +205,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DefaultWoman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add Person 40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\People 400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_person.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_person.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

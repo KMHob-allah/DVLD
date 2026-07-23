@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.lblAddEditPerson = new System.Windows.Forms.Label();
             this.pnlUserInfo = new System.Windows.Forms.Panel();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.tbThirdNameValue = new System.Windows.Forms.TextBox();
             this.lblPersonID = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
@@ -54,7 +52,6 @@
             this.tbFirstNameValue = new System.Windows.Forms.TextBox();
             this.lnklblSetImage = new System.Windows.Forms.LinkLabel();
             this.tbLastNameValue = new System.Windows.Forms.TextBox();
-            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.tbSecondNameValue = new System.Windows.Forms.TextBox();
             this.dtpBirthDateValue = new System.Windows.Forms.DateTimePicker();
             this.tbPhoneValue = new System.Windows.Forms.TextBox();
@@ -64,9 +61,12 @@
             this.tbEmailValue = new System.Windows.Forms.TextBox();
             this.errpAddEditHandler = new System.Windows.Forms.ErrorProvider(this.components);
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.pnlUserInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errpAddEditHandler)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAddEditPerson
@@ -119,34 +119,6 @@
             this.pnlUserInfo.Size = new System.Drawing.Size(1238, 524);
             this.pnlUserInfo.TabIndex = 67;
             // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Cooper Black", 10F);
-            this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(1081, 453);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(133, 46);
-            this.btnSave.TabIndex = 64;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Font = new System.Drawing.Font("Cooper Black", 10F);
-            this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(943, 453);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(133, 46);
-            this.btnClose.TabIndex = 63;
-            this.btnClose.Text = "Close";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // tbThirdNameValue
             // 
             this.tbThirdNameValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -154,6 +126,8 @@
             this.tbThirdNameValue.Name = "tbThirdNameValue";
             this.tbThirdNameValue.Size = new System.Drawing.Size(176, 22);
             this.tbThirdNameValue.TabIndex = 39;
+            this.tbThirdNameValue.TextChanged += new System.EventHandler(this.PersonData_Changed);
+            this.tbThirdNameValue.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // lblPersonID
             // 
@@ -272,7 +246,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblEmail.Location = new System.Drawing.Point(20, 358);
+            this.lblEmail.Location = new System.Drawing.Point(15, 331);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(57, 21);
             this.lblEmail.TabIndex = 46;
@@ -339,6 +313,8 @@
             this.tbFirstNameValue.Name = "tbFirstNameValue";
             this.tbFirstNameValue.Size = new System.Drawing.Size(176, 22);
             this.tbFirstNameValue.TabIndex = 36;
+            this.tbFirstNameValue.TextChanged += new System.EventHandler(this.PersonData_Changed);
+            this.tbFirstNameValue.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
             // lnklblSetImage
             // 
@@ -359,6 +335,117 @@
             this.tbLastNameValue.Name = "tbLastNameValue";
             this.tbLastNameValue.Size = new System.Drawing.Size(176, 22);
             this.tbLastNameValue.TabIndex = 41;
+            this.tbLastNameValue.TextChanged += new System.EventHandler(this.PersonData_Changed);
+            this.tbLastNameValue.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
+            // 
+            // tbSecondNameValue
+            // 
+            this.tbSecondNameValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbSecondNameValue.Location = new System.Drawing.Point(373, 103);
+            this.tbSecondNameValue.Name = "tbSecondNameValue";
+            this.tbSecondNameValue.Size = new System.Drawing.Size(176, 22);
+            this.tbSecondNameValue.TabIndex = 37;
+            this.tbSecondNameValue.TextChanged += new System.EventHandler(this.PersonData_Changed);
+            this.tbSecondNameValue.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
+            // 
+            // dtpBirthDateValue
+            // 
+            this.dtpBirthDateValue.Location = new System.Drawing.Point(570, 180);
+            this.dtpBirthDateValue.Name = "dtpBirthDateValue";
+            this.dtpBirthDateValue.Size = new System.Drawing.Size(259, 22);
+            this.dtpBirthDateValue.TabIndex = 51;
+            this.dtpBirthDateValue.ValueChanged += new System.EventHandler(this.PersonData_Changed);
+            // 
+            // tbPhoneValue
+            // 
+            this.tbPhoneValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPhoneValue.Location = new System.Drawing.Point(570, 256);
+            this.tbPhoneValue.Name = "tbPhoneValue";
+            this.tbPhoneValue.Size = new System.Drawing.Size(259, 22);
+            this.tbPhoneValue.TabIndex = 52;
+            this.tbPhoneValue.TextChanged += new System.EventHandler(this.PersonData_Changed);
+            this.tbPhoneValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPhoneValue_KeyPress);
+            this.tbPhoneValue.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
+            // 
+            // cbCountries
+            // 
+            this.cbCountries.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cbCountries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCountries.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbCountries.Font = new System.Drawing.Font("Bookman Old Style", 9F);
+            this.cbCountries.FormattingEnabled = true;
+            this.cbCountries.Location = new System.Drawing.Point(570, 328);
+            this.cbCountries.Name = "cbCountries";
+            this.cbCountries.Size = new System.Drawing.Size(259, 27);
+            this.cbCountries.TabIndex = 53;
+            this.cbCountries.SelectedIndexChanged += new System.EventHandler(this.PersonData_Changed);
+            // 
+            // tbAddressValue
+            // 
+            this.tbAddressValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbAddressValue.Location = new System.Drawing.Point(185, 407);
+            this.tbAddressValue.Multiline = true;
+            this.tbAddressValue.Name = "tbAddressValue";
+            this.tbAddressValue.Size = new System.Drawing.Size(740, 92);
+            this.tbAddressValue.TabIndex = 54;
+            this.tbAddressValue.TextChanged += new System.EventHandler(this.PersonData_Changed);
+            this.tbAddressValue.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
+            // 
+            // tbNationalNumberValue
+            // 
+            this.tbNationalNumberValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbNationalNumberValue.Location = new System.Drawing.Point(185, 179);
+            this.tbNationalNumberValue.Name = "tbNationalNumberValue";
+            this.tbNationalNumberValue.Size = new System.Drawing.Size(225, 22);
+            this.tbNationalNumberValue.TabIndex = 43;
+            this.tbNationalNumberValue.TextChanged += new System.EventHandler(this.PersonData_Changed);
+            this.tbNationalNumberValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbNationalNumberValue_Validating);
+            // 
+            // tbEmailValue
+            // 
+            this.tbEmailValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbEmailValue.Location = new System.Drawing.Point(185, 329);
+            this.tbEmailValue.Name = "tbEmailValue";
+            this.tbEmailValue.Size = new System.Drawing.Size(225, 22);
+            this.tbEmailValue.TabIndex = 50;
+            this.tbEmailValue.TextChanged += new System.EventHandler(this.PersonData_Changed);
+            this.tbEmailValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbEmailValue_Validating);
+            // 
+            // errpAddEditHandler
+            // 
+            this.errpAddEditHandler.ContainerControl = this;
+            // 
+            // OpenFileDialog
+            // 
+            this.OpenFileDialog.FileName = "OpenFileDialog";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Cooper Black", 10F);
+            this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(1081, 453);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(133, 46);
+            this.btnSave.TabIndex = 64;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Cooper Black", 10F);
+            this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(943, 453);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(133, 46);
+            this.btnClose.TabIndex = 63;
+            this.btnClose.Text = "Close";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // pbPersonImage
             // 
@@ -369,73 +456,6 @@
             this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPersonImage.TabIndex = 57;
             this.pbPersonImage.TabStop = false;
-            // 
-            // tbSecondNameValue
-            // 
-            this.tbSecondNameValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbSecondNameValue.Location = new System.Drawing.Point(373, 103);
-            this.tbSecondNameValue.Name = "tbSecondNameValue";
-            this.tbSecondNameValue.Size = new System.Drawing.Size(176, 22);
-            this.tbSecondNameValue.TabIndex = 37;
-            // 
-            // dtpBirthDateValue
-            // 
-            this.dtpBirthDateValue.Location = new System.Drawing.Point(570, 180);
-            this.dtpBirthDateValue.Name = "dtpBirthDateValue";
-            this.dtpBirthDateValue.Size = new System.Drawing.Size(259, 22);
-            this.dtpBirthDateValue.TabIndex = 51;
-            // 
-            // tbPhoneValue
-            // 
-            this.tbPhoneValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbPhoneValue.Location = new System.Drawing.Point(570, 256);
-            this.tbPhoneValue.Name = "tbPhoneValue";
-            this.tbPhoneValue.Size = new System.Drawing.Size(259, 22);
-            this.tbPhoneValue.TabIndex = 52;
-            // 
-            // cbCountries
-            // 
-            this.cbCountries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCountries.FormattingEnabled = true;
-            this.cbCountries.Location = new System.Drawing.Point(570, 328);
-            this.cbCountries.Name = "cbCountries";
-            this.cbCountries.Size = new System.Drawing.Size(259, 24);
-            this.cbCountries.TabIndex = 53;
-            // 
-            // tbAddressValue
-            // 
-            this.tbAddressValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbAddressValue.Location = new System.Drawing.Point(185, 407);
-            this.tbAddressValue.Multiline = true;
-            this.tbAddressValue.Name = "tbAddressValue";
-            this.tbAddressValue.Size = new System.Drawing.Size(740, 92);
-            this.tbAddressValue.TabIndex = 54;
-            // 
-            // tbNationalNumberValue
-            // 
-            this.tbNationalNumberValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbNationalNumberValue.Location = new System.Drawing.Point(185, 179);
-            this.tbNationalNumberValue.Name = "tbNationalNumberValue";
-            this.tbNationalNumberValue.Size = new System.Drawing.Size(225, 22);
-            this.tbNationalNumberValue.TabIndex = 43;
-            this.tbNationalNumberValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbNationalNumberValue_Validating);
-            // 
-            // tbEmailValue
-            // 
-            this.tbEmailValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbEmailValue.Location = new System.Drawing.Point(185, 329);
-            this.tbEmailValue.Name = "tbEmailValue";
-            this.tbEmailValue.Size = new System.Drawing.Size(225, 22);
-            this.tbEmailValue.TabIndex = 50;
-            this.tbEmailValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbEmailValue_Validating);
-            // 
-            // errpAddEditHandler
-            // 
-            this.errpAddEditHandler.ContainerControl = this;
-            // 
-            // OpenFileDialog
-            // 
-            this.OpenFileDialog.FileName = "OpenFileDialog";
             // 
             // frmAddUpdatePerson
             // 
@@ -450,10 +470,12 @@
             this.Name = "frmAddUpdatePerson";
             this.Text = "Add / Update Person";
             this.Load += new System.EventHandler(this.frmAddUpdatePerson_Load);
+            this.TextChanged += new System.EventHandler(this.PersonData_Changed);
+            this.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             this.pnlUserInfo.ResumeLayout(false);
             this.pnlUserInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errpAddEditHandler)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -67,6 +67,7 @@ namespace DVLD.People
             _Person.NationalityCountryID = Convert.ToInt32(cbCountries.SelectedValue);
 
             if (pbPersonImage.ImageLocation != null) _Person.ImagePath = pbPersonImage.ImageLocation;
+            
             else _Person.ImagePath = string.Empty;
         }
         private void _SetTitle(string Title)
@@ -97,6 +98,10 @@ namespace DVLD.People
             else cbCountries.SelectedValue = 51; // Egypt ID
 
 
+        }
+        private void _EnableSaveButton(bool EnableStatus)
+        {
+            btnSave.Enabled = EnableStatus;           
         }
 
         private void _ApplyBirthDateRules()
@@ -167,7 +172,7 @@ namespace DVLD.People
         
         private bool _HandlePersonImage()
         {            
-            if (_Person.ImagePath != pbPersonImage.ImageLocation) // True When Image Is Changed
+            if (_Person.ImagePath != pbPersonImage.ImageLocation) // True When Image Path Is Changed
             {
                 if (!string.IsNullOrEmpty(_Person.ImagePath))
                 {                   
@@ -240,16 +245,20 @@ namespace DVLD.People
             }
 
             if (!_HandlePersonImage()) return;
-                     
+
+            _FillPersonInfo();
+
             if (_Person.Save())
             {
-                lblPersonID.Text = _Person.PersonID.ToString();
+                lblPersonIDValue.Text = _Person.PersonID.ToString();
 
                 _Mode = eMode.Update;
 
                 _SetTitle("Update Person");
 
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                _EnableSaveButton(false); 
 
                 PersonDataSaved?.Invoke(this, _Person.PersonID);
             }
@@ -260,12 +269,16 @@ namespace DVLD.People
         private void rdbtnMale_CheckedChanged(object sender, EventArgs e)
         {
             if (pbPersonImage.ImageLocation == null)  pbPersonImage.Image = Resources.DefaultMale;
+
+            _EnableSaveButton(true);
         }
         private void rdbtnFemale_CheckedChanged(object sender, EventArgs e)
         {
             if (pbPersonImage.ImageLocation == null) pbPersonImage.Image = Resources.DefaultFemale;
-        }
 
+            _EnableSaveButton(true);
+
+        }
         private void lnklblRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             pbPersonImage.ImageLocation = null;
@@ -273,6 +286,10 @@ namespace DVLD.People
             _ResetDefaultImage();
 
             lnklblRemoveImage.Visible = false;
+
+            _EnableSaveButton(true);
+
+
         }
         private void lnklblSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -322,6 +339,16 @@ namespace DVLD.People
             }
 
             else errpAddEditHandler.SetError(tbEmailValue, null);
+        }
+
+        private void tbPhoneValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar)) e.Handled = true;
+        }
+
+        private void PersonData_Changed(object sender, EventArgs e)
+        {
+            if(!btnSave.Enabled) _EnableSaveButton(true);
         }
     }
 }

@@ -72,7 +72,7 @@ namespace DVLD_DataAccess
 
                     SqlDataReader Reader = Command.ExecuteReader();
 
-                    if (Reader.HasRows)
+                    if (Reader.Read())
                     {
                         CountryID = Convert.ToInt32(Reader["CountryID"]);
                         IsFound = true;

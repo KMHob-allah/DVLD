@@ -16,5 +16,17 @@ namespace DVLD.People
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddNewPerson_Click(object sender, EventArgs e)
+        {
+            frmAddUpdatePerson frm = new frmAddUpdatePerson();
+
+            frm.ShowDialog();
+        }
     }
 }
