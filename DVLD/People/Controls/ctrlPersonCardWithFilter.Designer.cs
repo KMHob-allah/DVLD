@@ -89,7 +89,7 @@
             this.lblFindBy.Name = "lblFindBy";
             this.lblFindBy.Size = new System.Drawing.Size(90, 24);
             this.lblFindBy.TabIndex = 2;
-            this.lblFindBy.Text = "Find By";
+            this.lblFindBy.Text = "FindByUserName By";
             // 
             // errpSearchHandler
             // 

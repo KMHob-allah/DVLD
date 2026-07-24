@@ -10,14 +10,9 @@ namespace DVLD_Business
 {
     public class clPerson
     {
-       // Why He Made _ImagePath Private ??
-       // We Added CountryInfo As A Composition Method 
-
-
         public enum eGender { Male, Female, Unknown }
         public enum eMode { Add, Update};
 
-        private string _ImagePath;
 
 
         public clCountry CountryInfo;
@@ -36,11 +31,8 @@ namespace DVLD_Business
         public string Address { get; set; }
         public int NationalityCountryID { get; set; }
         public eGender Gender { get; set; }
-        public string ImagePath
-        {
-            set { _ImagePath = value; }
-            get { return _ImagePath; }
-        }
+        public string ImagePath { get; set; }
+
 
         public clPerson()
         {
@@ -59,7 +51,6 @@ namespace DVLD_Business
             this.ImagePath = string.Empty;
             this.NationalityCountryID = -1;
             this.Gender = eGender.Unknown;
-            //this.CountryInfo = new clCountry();
 
             Mode = eMode.Add;
         }
@@ -81,6 +72,8 @@ namespace DVLD_Business
             this.NationalityCountryID = NationalityCountryID;
             this.Gender = Gender;
             this.CountryInfo = clCountry.Find(NationalityCountryID);
+
+            Mode = eMode.Update;
         }
 
         public string stGender()
@@ -147,6 +140,9 @@ namespace DVLD_Business
                 {
                     
                     IsSaved = _AddNewPerson();
+
+                    if (IsSaved) Mode = eMode.Update;
+
                     break;
                 }
 

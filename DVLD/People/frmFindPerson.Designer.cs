@@ -42,7 +42,7 @@
             this.lblFindPerson.Name = "lblFindPerson";
             this.lblFindPerson.Size = new System.Drawing.Size(223, 39);
             this.lblFindPerson.TabIndex = 3;
-            this.lblFindPerson.Text = "Find Person";
+            this.lblFindPerson.Text = "FindByUserName Person";
             // 
             // ctrlPersonCardWithFilter1
             // 
@@ -80,7 +80,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmFindPerson";
-            this.Text = "Find Person";
+            this.Text = "FindByUserName Person";
             this.ResumeLayout(false);
             this.PerformLayout();
 
