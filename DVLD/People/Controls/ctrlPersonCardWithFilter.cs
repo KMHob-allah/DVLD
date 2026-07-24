@@ -97,8 +97,8 @@ namespace DVLD.People.Controls
 
                     break;
             }
-
-            if (WhenPersonSelected != null && FilterEnabled) PersonSelected(ctrlPersonCard1.PersonID);
+            // Fired Only When Person Selected 
+            if (WhenPersonSelected != null && FilterEnabled && ctrlPersonCard1.PersonID != -1) PersonSelected(ctrlPersonCard1.PersonID);
         }        
         
         private void PersonDataSaved(object sender, int PersonID)
@@ -137,7 +137,8 @@ namespace DVLD.People.Controls
         }       
         private void tbUserFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)13) btnSearch.PerformClick(); // When Enter Pressed          
+            if (e.KeyChar == (char)13) 
+                btnSearch.PerformClick(); // When Enter Pressed          
 
             if (cbFilters.Text == "Person ID") e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
 

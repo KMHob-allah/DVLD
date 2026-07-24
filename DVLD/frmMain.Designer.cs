@@ -290,7 +290,7 @@
             this.opCurrentUserInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.opCurrentUserInfo.Name = "opCurrentUserInfo";
             this.opCurrentUserInfo.Size = new System.Drawing.Size(255, 38);
-            this.opCurrentUserInfo.Text = "Current User Info";
+            this.opCurrentUserInfo.Text = "Current _User Info";
             // 
             // opChangePassword
             // 

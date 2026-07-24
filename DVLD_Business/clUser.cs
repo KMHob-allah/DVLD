@@ -123,17 +123,17 @@ namespace DVLD_Business
 
         static public bool IsExistByUserName(string UserName)
         {
-            return clUser.IsExistByUserName(UserName);
+            return clUserData.IsExistByUserName(UserName);
         }
-
         static public bool IsExistByUserID(int UserID)
         {
-            return clUser.IsExistByUserID(UserID);
+            return clUserData.IsExistByUserID(UserID);
         }
         static public bool IsExistByPersonID(int PersonID)
         {
-            return clUser.IsExistByPersonID(PersonID);
+            return clUserData.IsExistByPersonID(PersonID);
         }
+
         private bool _AddNewUser()
         {
             this.UserID = clUserData.AddNewUser(this.PersonID, this.UserName, this.Password, IsActive);

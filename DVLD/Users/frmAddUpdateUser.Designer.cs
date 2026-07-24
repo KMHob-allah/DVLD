@@ -31,7 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.errpLoginInfoHandler = new System.Windows.Forms.ErrorProvider(this.components);
             this.tpPersonInfo = new System.Windows.Forms.TabPage();
+            this.ctrlPersonCardWithFilter1 = new DVLD.People.Controls.ctrlPersonCardWithFilter();
+            this.btnNext = new System.Windows.Forms.Button();
             this.tpLoginInfo = new System.Windows.Forms.TabPage();
+            this.pnlLoginInfoImage = new System.Windows.Forms.Panel();
             this.pnlLoginInfo = new System.Windows.Forms.Panel();
             this.lblUserID = new System.Windows.Forms.Label();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
@@ -44,11 +47,8 @@
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.lblAddUpdateUser = new System.Windows.Forms.Label();
             this.tcPersonInfoLoginInfo = new System.Windows.Forms.TabControl();
-            this.ctrlPersonCardWithFilter1 = new DVLD.People.Controls.ctrlPersonCardWithFilter();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.pnlLoginInfoImage = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.errpLoginInfoHandler)).BeginInit();
             this.tpPersonInfo.SuspendLayout();
             this.tpLoginInfo.SuspendLayout();
@@ -73,6 +73,32 @@
             this.tpPersonInfo.Text = "Person Info";
             this.tpPersonInfo.UseVisualStyleBackColor = true;
             // 
+            // ctrlPersonCardWithFilter1
+            // 
+            this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(35, 13);
+            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
+            this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(1045, 467);
+            this.ctrlPersonCardWithFilter1.TabIndex = 6;
+            this.ctrlPersonCardWithFilter1.WhenPersonSelected += new System.Action<int>(this.ctrlPersonCardWithFilter1_WhenPersonSelected);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Enabled = false;
+            this.btnNext.Font = new System.Drawing.Font("Bookman Old Style", 12F);
+            this.btnNext.Image = global::DVLD.Properties.Resources.Next_32;
+            this.btnNext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNext.Location = new System.Drawing.Point(942, 499);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(134, 45);
+            this.btnNext.TabIndex = 5;
+            this.btnNext.Text = "Next";
+            this.btnNext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
             // tpLoginInfo
             // 
             this.tpLoginInfo.Controls.Add(this.pnlLoginInfoImage);
@@ -84,6 +110,15 @@
             this.tpLoginInfo.TabIndex = 1;
             this.tpLoginInfo.Text = "Login Info";
             this.tpLoginInfo.UseVisualStyleBackColor = true;
+            // 
+            // pnlLoginInfoImage
+            // 
+            this.pnlLoginInfoImage.BackgroundImage = global::DVLD.Properties.Resources.LoginInfo;
+            this.pnlLoginInfoImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pnlLoginInfoImage.Location = new System.Drawing.Point(584, 6);
+            this.pnlLoginInfoImage.Name = "pnlLoginInfoImage";
+            this.pnlLoginInfoImage.Size = new System.Drawing.Size(532, 553);
+            this.pnlLoginInfoImage.TabIndex = 15;
             // 
             // pnlLoginInfo
             // 
@@ -114,6 +149,7 @@
             // chkIsActive
             // 
             this.chkIsActive.AutoSize = true;
+            this.chkIsActive.Enabled = false;
             this.chkIsActive.Location = new System.Drawing.Point(197, 302);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(103, 25);
@@ -124,12 +160,14 @@
             // tbPasswordValue
             // 
             this.tbPasswordValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPasswordValue.Enabled = false;
             this.tbPasswordValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
             this.tbPasswordValue.Location = new System.Drawing.Point(197, 185);
             this.tbPasswordValue.Name = "tbPasswordValue";
             this.tbPasswordValue.PasswordChar = '*';
             this.tbPasswordValue.Size = new System.Drawing.Size(239, 27);
             this.tbPasswordValue.TabIndex = 2;
+            this.tbPasswordValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbPasswordValue_Validating_1);
             // 
             // lblUserIDValue
             // 
@@ -164,21 +202,25 @@
             // tbConfirmPasswordValue
             // 
             this.tbConfirmPasswordValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbConfirmPasswordValue.Enabled = false;
             this.tbConfirmPasswordValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
             this.tbConfirmPasswordValue.Location = new System.Drawing.Point(197, 248);
             this.tbConfirmPasswordValue.Name = "tbConfirmPasswordValue";
             this.tbConfirmPasswordValue.PasswordChar = '*';
             this.tbConfirmPasswordValue.Size = new System.Drawing.Size(239, 27);
             this.tbConfirmPasswordValue.TabIndex = 4;
+            this.tbConfirmPasswordValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbConfirmPasswordValue_Validating_1);
             // 
             // tbUserNameValue
             // 
             this.tbUserNameValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbUserNameValue.Enabled = false;
             this.tbUserNameValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
             this.tbUserNameValue.Location = new System.Drawing.Point(197, 122);
             this.tbUserNameValue.Name = "tbUserNameValue";
             this.tbUserNameValue.Size = new System.Drawing.Size(239, 27);
             this.tbUserNameValue.TabIndex = 1;
+            this.tbUserNameValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbUserNameValue_Validating_1);
             // 
             // lblConfirmPassword
             // 
@@ -211,16 +253,7 @@
             this.tcPersonInfoLoginInfo.SelectedIndex = 0;
             this.tcPersonInfoLoginInfo.Size = new System.Drawing.Size(1130, 599);
             this.tcPersonInfoLoginInfo.TabIndex = 20;
-            // 
-            // ctrlPersonCardWithFilter1
-            // 
-            this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
-            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(35, 13);
-            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
-            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(1045, 467);
-            this.ctrlPersonCardWithFilter1.TabIndex = 6;
+            this.tcPersonInfoLoginInfo.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tcPersonInfoLoginInfo_Selecting_1);
             // 
             // btnClose
             // 
@@ -234,9 +267,11 @@
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
+            this.btnSave.Enabled = false;
             this.btnSave.Font = new System.Drawing.Font("Bookman Old Style", 12F);
             this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -247,28 +282,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Font = new System.Drawing.Font("Bookman Old Style", 12F);
-            this.btnNext.Image = global::DVLD.Properties.Resources.Next_32;
-            this.btnNext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNext.Location = new System.Drawing.Point(942, 499);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(134, 45);
-            this.btnNext.TabIndex = 5;
-            this.btnNext.Text = "Next";
-            this.btnNext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // pnlLoginInfoImage
-            // 
-            this.pnlLoginInfoImage.BackgroundImage = global::DVLD.Properties.Resources.LoginInfo;
-            this.pnlLoginInfoImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pnlLoginInfoImage.Location = new System.Drawing.Point(584, 6);
-            this.pnlLoginInfoImage.Name = "pnlLoginInfoImage";
-            this.pnlLoginInfoImage.Size = new System.Drawing.Size(532, 553);
-            this.pnlLoginInfoImage.TabIndex = 15;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmAddUpdateUser
             // 
@@ -283,7 +297,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddUpdateUser";
-            this.Text = "Add / Update User";
+            this.Text = "Add / Update _User";
+            this.Load += new System.EventHandler(this.frmAddUpdateUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errpLoginInfoHandler)).EndInit();
             this.tpPersonInfo.ResumeLayout(false);
             this.tpLoginInfo.ResumeLayout(false);

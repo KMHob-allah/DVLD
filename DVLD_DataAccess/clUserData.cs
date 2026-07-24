@@ -188,7 +188,7 @@ namespace DVLD_DataAccess
 
             return Result != null;
         }
-        static public bool IsExist(string UserName)
+        static public bool IsExistByUserName(string UserName)
         {
             object Result = null;
             string Query = "SELECT 1 FROM Users WHERE UserName = @UserName";
