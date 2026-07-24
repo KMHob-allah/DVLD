@@ -75,7 +75,7 @@ namespace DVLD.People.Controls
 
             _LoadPersonImage();
         }
-        public void ResetPersonInfo()
+        private void ResetPersonInfo()
         {
             _PersonID = -1;
 
