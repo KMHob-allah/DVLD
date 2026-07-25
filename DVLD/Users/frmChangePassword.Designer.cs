@@ -66,6 +66,7 @@
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
@@ -79,6 +80,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // tbNewPasswordValue
             // 
@@ -89,6 +91,8 @@
             this.tbNewPasswordValue.PasswordChar = '*';
             this.tbNewPasswordValue.Size = new System.Drawing.Size(239, 27);
             this.tbNewPasswordValue.TabIndex = 26;
+            this.tbNewPasswordValue.TextChanged += new System.EventHandler(this.PasswordFields_textChanged);
+            this.tbNewPasswordValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbNewPasswordValue_Validating);
             // 
             // lblNewPassword
             // 
@@ -119,6 +123,8 @@
             this.tbConfirmPasswordValue.PasswordChar = '*';
             this.tbConfirmPasswordValue.Size = new System.Drawing.Size(239, 27);
             this.tbConfirmPasswordValue.TabIndex = 27;
+            this.tbConfirmPasswordValue.TextChanged += new System.EventHandler(this.PasswordFields_textChanged);
+            this.tbConfirmPasswordValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbConfirmPasswordValue_Validating);
             // 
             // tbCurrentPassword
             // 
@@ -129,6 +135,8 @@
             this.tbCurrentPassword.PasswordChar = '*';
             this.tbCurrentPassword.Size = new System.Drawing.Size(239, 27);
             this.tbCurrentPassword.TabIndex = 25;
+            this.tbCurrentPassword.TextChanged += new System.EventHandler(this.PasswordFields_textChanged);
+            this.tbCurrentPassword.Validating += new System.ComponentModel.CancelEventHandler(this.tbCurrentPassword_Validating);
             // 
             // lblConfirmPassword
             // 
@@ -155,6 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1124, 785);
             this.Controls.Add(this.ctrlUserCard1);

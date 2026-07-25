@@ -57,7 +57,7 @@ namespace DVLD.Users.Controls
             if(_User == null)
             {
                 ResetUserInfo();
-                MessageBox.Show("No User with PersonID : " + UserID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No User with ID : " + UserID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

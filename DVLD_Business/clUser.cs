@@ -175,5 +175,10 @@ namespace DVLD_Business
         {
             return clUserData.DeleteUser(UserID);
         }
+
+        public bool ChangePassword(string NewPassword)
+        {
+            return clUserData.ChangePassword(this.UserID, NewPassword);
+        }
     }
 }
