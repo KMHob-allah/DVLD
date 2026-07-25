@@ -42,26 +42,27 @@ namespace DVLD.Users.Controls
         }
         private void _FillUserInfo()
         {
+            ctrlPersonCard1.LoadPersonInfo(_User.PersonID);
+            
             _UserID = _User.UserID;
             lblUserIDVal.Text = _User.UserID.ToString();
             lblUserNameVal.Text = _User.Person.FullName();
-            lblIsActiveVal.Text =( _User.IsActive ? "Yes":"No");                       
+            lblIsActiveVal.Text =( _User.IsActive ? "Yes":"No");             
         }
 
         public void LoadUserInfo(int UserID)
         {
             _User = clUser.FindByUserID(UserID);
 
-            if(_User != null)
+            if(_User == null)
             {
                 ResetUserInfo();
                 MessageBox.Show("No User with PersonID : " + UserID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            ctrlPersonCard1.LoadPersonInfo(_User.PersonID);
-           
             _FillUserInfo();
+            _UserID = UserID;
         }
     }
 }

@@ -283,6 +283,8 @@
             this.Controls.Add(this.cbFilters);
             this.Controls.Add(this.lblRecords);
             this.Controls.Add(this.dgvUsersList);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmUsersList";
             this.Text = "frmUsersList";
             this.Load += new System.EventHandler(this.frmUsersList_Load);

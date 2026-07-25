@@ -65,7 +65,7 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // frmUserCard
+            // frmUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -74,7 +74,9 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblUserInfo);
             this.Controls.Add(this.ctrlUserCard1);
-            this.Name = "frmUserCard";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmUserInfo";
             this.Text = "User Details";
             this.ResumeLayout(false);
             this.PerformLayout();
