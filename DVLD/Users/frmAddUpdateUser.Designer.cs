@@ -149,24 +149,24 @@
             // chkIsActive
             // 
             this.chkIsActive.AutoSize = true;
-            this.chkIsActive.Enabled = false;
             this.chkIsActive.Location = new System.Drawing.Point(197, 302);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(103, 25);
             this.chkIsActive.TabIndex = 6;
             this.chkIsActive.Text = "Is Active";
             this.chkIsActive.UseVisualStyleBackColor = true;
+            this.chkIsActive.CheckedChanged += new System.EventHandler(this.UserLoginInfo_Changed);
             // 
             // tbPasswordValue
             // 
             this.tbPasswordValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbPasswordValue.Enabled = false;
             this.tbPasswordValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
             this.tbPasswordValue.Location = new System.Drawing.Point(197, 185);
             this.tbPasswordValue.Name = "tbPasswordValue";
             this.tbPasswordValue.PasswordChar = '*';
             this.tbPasswordValue.Size = new System.Drawing.Size(239, 27);
             this.tbPasswordValue.TabIndex = 2;
+            this.tbPasswordValue.TextChanged += new System.EventHandler(this.UserLoginInfo_Changed);
             this.tbPasswordValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbPasswordValue_Validating_1);
             // 
             // lblUserIDValue
@@ -202,24 +202,24 @@
             // tbConfirmPasswordValue
             // 
             this.tbConfirmPasswordValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbConfirmPasswordValue.Enabled = false;
             this.tbConfirmPasswordValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
             this.tbConfirmPasswordValue.Location = new System.Drawing.Point(197, 248);
             this.tbConfirmPasswordValue.Name = "tbConfirmPasswordValue";
             this.tbConfirmPasswordValue.PasswordChar = '*';
             this.tbConfirmPasswordValue.Size = new System.Drawing.Size(239, 27);
             this.tbConfirmPasswordValue.TabIndex = 4;
+            this.tbConfirmPasswordValue.TextChanged += new System.EventHandler(this.UserLoginInfo_Changed);
             this.tbConfirmPasswordValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbConfirmPasswordValue_Validating_1);
             // 
             // tbUserNameValue
             // 
             this.tbUserNameValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbUserNameValue.Enabled = false;
             this.tbUserNameValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
             this.tbUserNameValue.Location = new System.Drawing.Point(197, 122);
             this.tbUserNameValue.Name = "tbUserNameValue";
             this.tbUserNameValue.Size = new System.Drawing.Size(239, 27);
             this.tbUserNameValue.TabIndex = 1;
+            this.tbUserNameValue.TextChanged += new System.EventHandler(this.UserLoginInfo_Changed);
             this.tbUserNameValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbUserNameValue_Validating_1);
             // 
             // lblConfirmPassword
@@ -253,7 +253,7 @@
             this.tcPersonInfoLoginInfo.SelectedIndex = 0;
             this.tcPersonInfoLoginInfo.Size = new System.Drawing.Size(1130, 599);
             this.tcPersonInfoLoginInfo.TabIndex = 20;
-            this.tcPersonInfoLoginInfo.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tcPersonInfoLoginInfo_Selecting_1);
+            this.tcPersonInfoLoginInfo.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tcPersonInfoLoginInfo_Selecting);
             // 
             // btnClose
             // 
@@ -288,6 +288,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1189, 751);
             this.Controls.Add(this.btnClose);

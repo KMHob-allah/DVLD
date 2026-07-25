@@ -37,18 +37,11 @@ namespace DVLD.Users
             InitializeComponent();
         }
 
-        private void _EnableLoginInfo(bool Enable)
-        {
-            tbUserNameValue.Enabled = Enable;
-            tbPasswordValue.Enabled = Enable;
-            tbConfirmPasswordValue.Enabled = Enable;
-            chkIsActive.Enabled = Enable;
-        }      
         private void _FillUserInfo()
         {
             _User.PersonID = ctrlPersonCardWithFilter1.PersonID;          
-            _User.UserName = tbUserNameValue.Text;
-            _User.Password = tbPasswordValue.Text;
+            _User.UserName = tbUserNameValue.Text.Trim();
+            _User.Password = tbPasswordValue.Text.Trim();
             _User.IsActive = chkIsActive.Checked;
         }
         private void _LoadUserDetails()
@@ -58,40 +51,104 @@ namespace DVLD.Users
             tbPasswordValue.Text = _User.Password;
             tbConfirmPasswordValue.Text = _User.Password;
             chkIsActive.Checked = _User.IsActive;
-            
+            ctrlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
+
+        }
+        private void _ResetDefaultValues()
+        {
+            btnSave.Enabled = false;
+            btnNext.Enabled = false;
+
+            switch (_Mode)
+            {
+                case eMode.Add:
+                    {
+                        lblAddUpdateUser.Text = "Add New User";
+
+                        _User = new clUser();
+
+                        tpLoginInfo.Enabled = false;                       
+
+                        ctrlPersonCardWithFilter1.FilterFocus();
+
+                        break;
+                    }
+
+                case eMode.Update:
+                    {
+                        lblAddUpdateUser.Text = "Update User";
+
+                        _User = clUser.FindByUserID(_UserID);
+
+                        if (_User == null)
+                        {
+                            MessageBox.Show("No User with ID = " + _User, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.Close();
+
+                            return;
+                        }
+
+                        tpLoginInfo.Enabled = true;
+                       
+                        ctrlPersonCardWithFilter1.FilterEnabled = false;
+
+                        break;
+                    }
+            }
+        }
+
+
+        private void UserLoginInfo_Changed(object sender, EventArgs e)
+        {   
+            if(!btnSave.Enabled) btnSave.Enabled = true;
         }
 
         private void ctrlPersonCardWithFilter1_WhenPersonSelected(int PersonID)
-        {
-            _EnableLoginInfo(true);
-
-            btnNext.Enabled = true;
-            btnSave.Enabled = true;
+        {     
+            if(!btnNext.Enabled) btnNext.Enabled = true;
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (_Mode == eMode.Add)
             {
-                if (!clUser.IsExistByPersonID(ctrlPersonCardWithFilter1.PersonID))
-                {
-                    _EnableLoginInfo(true);
-                    tcPersonInfoLoginInfo.SelectedIndex = 1; // Go to Login Info
+                if(ctrlPersonCardWithFilter1.PersonID != -1)
+                { 
+                    if (!clUser.IsExistByPersonID(ctrlPersonCardWithFilter1.PersonID))
+                    {
+                        tpLoginInfo.Enabled = true;
+                        btnSave.Enabled = true;
+                        tcPersonInfoLoginInfo.SelectedIndex = 1; // Go to Login Info
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("This person is already a user, Please choose another one", "Selection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        tpLoginInfo.Enabled = false;
+                        ctrlPersonCardWithFilter1.FilterFocus();
+                    }
                 }
 
                 else
                 {
-                    MessageBox.Show("This person is already a user, Please choose another one", "Selection", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    _EnableLoginInfo(false);
+                    MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ctrlPersonCardWithFilter1.FilterFocus();
                 }
             }
-            else tcPersonInfoLoginInfo.SelectedIndex = 1;            
+
+            else 
+            { 
+                tpLoginInfo.Enabled = true;
+                btnSave.Enabled = true;
+                tcPersonInfoLoginInfo.SelectedIndex = 1;
+            }        
         }               
         private void btnSave_Click(object sender, EventArgs e)
         {
             if(!this.ValidateChildren())
             {                
-                MessageBox.Show("Please fix the errors first", "Errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Login Information are not completed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -108,7 +165,7 @@ namespace DVLD.Users
                 }
 
                 MessageBox.Show("User saved successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               
+                ctrlPersonCardWithFilter1.FilterEnabled = false;
                 UserDataSaved?.Invoke(this, EventArgs.Empty);
 
             }
@@ -122,47 +179,48 @@ namespace DVLD.Users
             this.Close();
         }
 
-        private void tcPersonInfoLoginInfo_Selecting_1(object sender, TabControlCancelEventArgs e)
+        private void tbUserNameValue_Validating_1(object sender, CancelEventArgs e)
         {
-            if (e.TabPage == tpLoginInfo
-                && 
-                ctrlPersonCardWithFilter1.PersonID != -1 
-                && 
-                clUser.IsExistByPersonID(ctrlPersonCardWithFilter1.PersonID)) _EnableLoginInfo(false);                              
+            string _UserName = tbUserNameValue.Text.Trim();
+
+            if (string.IsNullOrEmpty(_UserName))
+            {
+                errpLoginInfoHandler.SetError(tbUserNameValue, "This field cannot be blanck");
+                e.Cancel = true;
+                return;
+            }
+
+            bool IsDuplicateInAddMode = (_Mode == eMode.Add && clUser.IsExistByUserName(_UserName));
+            bool IsDuplicateInUpdateMode = (_Mode != eMode.Add && _UserName != _User.UserName && clUser.IsExistByUserName(_UserName));
+
+            if (IsDuplicateInAddMode || IsDuplicateInUpdateMode)
+            {
+                errpLoginInfoHandler.SetError(tbUserNameValue, "User name is used by another person, Please choose another one");
+                e.Cancel = true;            
+            }
+
+            else
+            {
+                errpLoginInfoHandler.SetError(tbUserNameValue, "");
+            }                
         }
         private void tbPasswordValue_Validating_1(object sender, CancelEventArgs e)
         {
-            if (tbPasswordValue.Enabled && string.IsNullOrEmpty(tbPasswordValue.Text.Trim()))
+            if (string.IsNullOrEmpty(tbPasswordValue.Text.Trim()))
             {
                 errpLoginInfoHandler.SetError(tbPasswordValue, "Password connot be blanck");
-                //e.Cancel = true;
+                e.Cancel = true;
             }
 
             else errpLoginInfoHandler.SetError(tbPasswordValue, "");            
 
         }
-        private void tbUserNameValue_Validating_1(object sender, CancelEventArgs e)
-        {
-            if(tbUserNameValue.Enabled && !string.IsNullOrEmpty(tbUserNameValue.Text.Trim()))
-            {
-                if (clUser.IsExistByUserName(tbUserNameValue.Text.Trim()))
-                {
-                    errpLoginInfoHandler.SetError(tbUserNameValue, "User name is used by another person, Please choose another one");
-                    //e.Cancel = true;
-                }
-
-                else errpLoginInfoHandler.SetError(tbUserNameValue, "");
-            }
-            else errpLoginInfoHandler.SetError(tbUserNameValue, "This field cannot be blanck");
-
-
-        }
         private void tbConfirmPasswordValue_Validating_1(object sender, CancelEventArgs e)
         {
-            if (tbConfirmPasswordValue.Enabled && tbConfirmPasswordValue.Text.Trim() != tbPasswordValue.Text.Trim())
+            if (tbConfirmPasswordValue.Text.Trim() != tbPasswordValue.Text.Trim())
             {
                 errpLoginInfoHandler.SetError(tbConfirmPasswordValue, "Confirm password must match password");
-                //e.Cancel = true;               
+                e.Cancel = true;               
             }
             else errpLoginInfoHandler.SetError(tbConfirmPasswordValue, "");
 
@@ -170,30 +228,23 @@ namespace DVLD.Users
 
         private void frmAddUpdateUser_Load(object sender, EventArgs e)
         {
-            switch(_Mode)
+            _ResetDefaultValues();
+
+            if (_Mode == eMode.Update) _LoadUserDetails();                               
+        }
+
+        private void tcPersonInfoLoginInfo_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPage == tpLoginInfo
+                &&
+                ctrlPersonCardWithFilter1.PersonID != -1
+                &&
+                !clUser.IsExistByPersonID(ctrlPersonCardWithFilter1.PersonID))
             {
-                case eMode.Add:
-                {
-                    _User = new clUser();
-                    lblAddUpdateUser.Text = "Add New User";
-                    break;
-                }
+                btnSave.Enabled = true;
+                tpLoginInfo.Enabled = true;
+            }
 
-                case eMode.Update:
-                {
-                    _User = clUser.FindByUserID(_UserID);
-
-                    lblAddUpdateUser.Text = "Update User";
-                    ctrlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
-
-                    ctrlPersonCardWithFilter1.ShowAddPerson = false;
-                    ctrlPersonCardWithFilter1.FilterEnabled = false;
-
-                    _LoadUserDetails();
-                    break;
-                }
-
-            }           
-        }               
+        }
     }
 }

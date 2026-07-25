@@ -41,7 +41,7 @@ namespace DVLD.People
 
             dgvPeopleList.Columns[1].HeaderText = "National Number";
 
-            dgvPeopleList.Columns[2].HeaderText = "First Name";
+            dgvPeopleList.Columns[2].HeaderText = "Full Name";
 
             dgvPeopleList.Columns[3].HeaderText = "Second Name";
 
