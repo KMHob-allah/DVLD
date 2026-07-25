@@ -292,6 +292,7 @@
             this.opCurrentUserInfo.Name = "opCurrentUserInfo";
             this.opCurrentUserInfo.Size = new System.Drawing.Size(262, 38);
             this.opCurrentUserInfo.Text = "Current _User Info";
+            this.opCurrentUserInfo.Click += new System.EventHandler(this.opCurrentUserInfo_Click);
             // 
             // opChangePassword
             // 
@@ -300,6 +301,7 @@
             this.opChangePassword.Name = "opChangePassword";
             this.opChangePassword.Size = new System.Drawing.Size(262, 38);
             this.opChangePassword.Text = "Change Password";
+            this.opChangePassword.Click += new System.EventHandler(this.opChangePassword_Click);
             // 
             // opSignOut
             // 
@@ -308,6 +310,7 @@
             this.opSignOut.Name = "opSignOut";
             this.opSignOut.Size = new System.Drawing.Size(262, 38);
             this.opSignOut.Text = "Sign Out";
+            this.opSignOut.Click += new System.EventHandler(this.opSignOut_Click);
             // 
             // pbMainImage
             // 

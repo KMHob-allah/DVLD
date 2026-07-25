@@ -1,4 +1,5 @@
-﻿using DVLD.People;
+﻿using DVLD.GlobalSettings;
+using DVLD.People;
 using DVLD.Users;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,12 @@ namespace DVLD
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        private frmLoginScreen _LoginScreen;
+
+        public frmMain(frmLoginScreen LoginScreen)
         {
             InitializeComponent();
+            _LoginScreen = LoginScreen;
         }
 
         private void opPeople_Click(object sender, EventArgs e)
@@ -29,6 +33,26 @@ namespace DVLD
         {
             frmUsersList frm = new frmUsersList();
             frm.ShowDialog();
+        }
+
+        private void opCurrentUserInfo_Click(object sender, EventArgs e)
+        {
+            frmUserInfo frm = new frmUserInfo(clGlobalSettings.CurrentUser.UserID);
+            frm.ShowDialog();
+        }
+
+        private void opChangePassword_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword(clGlobalSettings.CurrentUser.UserID);
+            frm.ShowDialog();
+        }
+
+        private void opSignOut_Click(object sender, EventArgs e)
+        {
+            clGlobalSettings.CurrentUser = null;
+            _LoginScreen.Show();
+            this.Close();
+
         }
     }
 }
