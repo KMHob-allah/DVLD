@@ -35,7 +35,7 @@
             // 
             // ctrlUserCard1
             // 
-            this.ctrlUserCard1.Location = new System.Drawing.Point(36, 75);
+            this.ctrlUserCard1.Location = new System.Drawing.Point(33, 93);
             this.ctrlUserCard1.Name = "ctrlUserCard1";
             this.ctrlUserCard1.Size = new System.Drawing.Size(1051, 492);
             this.ctrlUserCard1.TabIndex = 0;
@@ -56,7 +56,7 @@
             this.btnClose.Font = new System.Drawing.Font("Bookman Old Style", 12F);
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(950, 591);
+            this.btnClose.Location = new System.Drawing.Point(950, 601);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 45);
             this.btnClose.TabIndex = 19;

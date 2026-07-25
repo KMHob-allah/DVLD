@@ -270,6 +270,7 @@
             this.opUsers.Name = "opUsers";
             this.opUsers.Size = new System.Drawing.Size(136, 68);
             this.opUsers.Text = "Users";
+            this.opUsers.Click += new System.EventHandler(this.opUsers_Click);
             // 
             // opAccountSettings
             // 
@@ -289,7 +290,7 @@
             this.opCurrentUserInfo.Image = global::DVLD.Properties.Resources.PersonDetails_32;
             this.opCurrentUserInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.opCurrentUserInfo.Name = "opCurrentUserInfo";
-            this.opCurrentUserInfo.Size = new System.Drawing.Size(255, 38);
+            this.opCurrentUserInfo.Size = new System.Drawing.Size(262, 38);
             this.opCurrentUserInfo.Text = "Current _User Info";
             // 
             // opChangePassword
@@ -297,7 +298,7 @@
             this.opChangePassword.Image = global::DVLD.Properties.Resources.Password_32;
             this.opChangePassword.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.opChangePassword.Name = "opChangePassword";
-            this.opChangePassword.Size = new System.Drawing.Size(255, 38);
+            this.opChangePassword.Size = new System.Drawing.Size(262, 38);
             this.opChangePassword.Text = "Change Password";
             // 
             // opSignOut
@@ -305,7 +306,7 @@
             this.opSignOut.Image = global::DVLD.Properties.Resources.sign_out_32__2;
             this.opSignOut.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.opSignOut.Name = "opSignOut";
-            this.opSignOut.Size = new System.Drawing.Size(255, 38);
+            this.opSignOut.Size = new System.Drawing.Size(262, 38);
             this.opSignOut.Text = "Sign Out";
             // 
             // pbMainImage

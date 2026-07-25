@@ -62,7 +62,7 @@
             this.cbActivationStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbActivationStatus.Font = new System.Drawing.Font("Bookman Old Style", 8.25F);
             this.cbActivationStatus.FormattingEnabled = true;
-            this.cbActivationStatus.Location = new System.Drawing.Point(406, 237);
+            this.cbActivationStatus.Location = new System.Drawing.Point(406, 234);
             this.cbActivationStatus.Name = "cbActivationStatus";
             this.cbActivationStatus.Size = new System.Drawing.Size(224, 27);
             this.cbActivationStatus.TabIndex = 28;
@@ -93,6 +93,7 @@
             this.opChangePassword.Name = "opChangePassword";
             this.opChangePassword.Size = new System.Drawing.Size(200, 24);
             this.opChangePassword.Text = "Change Password";
+            this.opChangePassword.Click += new System.EventHandler(this.opChangePassword_Click);
             // 
             // opDelete
             // 
@@ -149,7 +150,7 @@
             this.lblManageUsers.AutoSize = true;
             this.lblManageUsers.Font = new System.Drawing.Font("Bookman Old Style", 20F, System.Drawing.FontStyle.Bold);
             this.lblManageUsers.ForeColor = System.Drawing.Color.Navy;
-            this.lblManageUsers.Location = new System.Drawing.Point(481, 146);
+            this.lblManageUsers.Location = new System.Drawing.Point(556, 146);
             this.lblManageUsers.Name = "lblManageUsers";
             this.lblManageUsers.Size = new System.Drawing.Size(259, 40);
             this.lblManageUsers.TabIndex = 25;
@@ -215,13 +216,13 @@
             this.dgvUsersList.ReadOnly = true;
             this.dgvUsersList.RowHeadersWidth = 51;
             this.dgvUsersList.RowTemplate.Height = 24;
-            this.dgvUsersList.Size = new System.Drawing.Size(1124, 387);
+            this.dgvUsersList.Size = new System.Drawing.Size(1257, 387);
             this.dgvUsersList.TabIndex = 19;
             // 
             // pbPeople
             // 
             this.pbPeople.Image = global::DVLD.Properties.Resources.Users_2_400;
-            this.pbPeople.Location = new System.Drawing.Point(504, 12);
+            this.pbPeople.Location = new System.Drawing.Point(579, 12);
             this.pbPeople.Name = "pbPeople";
             this.pbPeople.Size = new System.Drawing.Size(214, 131);
             this.pbPeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -233,7 +234,7 @@
             this.btnClose.Font = new System.Drawing.Font("Bookman Old Style", 12F);
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1025, 676);
+            this.btnClose.Location = new System.Drawing.Point(1158, 676);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 45);
             this.btnClose.TabIndex = 21;
@@ -246,7 +247,7 @@
             // 
             this.btnAddNewUser.Font = new System.Drawing.Font("Bookman Old Style", 12F);
             this.btnAddNewUser.Image = global::DVLD.Properties.Resources.Add_New_User_72;
-            this.btnAddNewUser.Location = new System.Drawing.Point(1077, 167);
+            this.btnAddNewUser.Location = new System.Drawing.Point(1210, 167);
             this.btnAddNewUser.Name = "btnAddNewUser";
             this.btnAddNewUser.Size = new System.Drawing.Size(82, 97);
             this.btnAddNewUser.TabIndex = 26;
@@ -259,7 +260,7 @@
             this.lblNoData.AutoSize = true;
             this.lblNoData.Font = new System.Drawing.Font("Cooper Black", 20F);
             this.lblNoData.ForeColor = System.Drawing.Color.Silver;
-            this.lblNoData.Location = new System.Drawing.Point(351, 422);
+            this.lblNoData.Location = new System.Drawing.Point(432, 434);
             this.lblNoData.Name = "lblNoData";
             this.lblNoData.Size = new System.Drawing.Size(527, 39);
             this.lblNoData.TabIndex = 29;
@@ -271,7 +272,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1193, 742);
+            this.ClientSize = new System.Drawing.Size(1330, 742);
             this.Controls.Add(this.lblNoData);
             this.Controls.Add(this.cbActivationStatus);
             this.Controls.Add(this.pbPeople);

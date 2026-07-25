@@ -68,7 +68,7 @@
             // 
             this.lblIsActiveVal.AutoSize = true;
             this.lblIsActiveVal.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblIsActiveVal.Location = new System.Drawing.Point(823, 54);
+            this.lblIsActiveVal.Location = new System.Drawing.Point(958, 54);
             this.lblIsActiveVal.Name = "lblIsActiveVal";
             this.lblIsActiveVal.Size = new System.Drawing.Size(37, 21);
             this.lblIsActiveVal.TabIndex = 7;
@@ -77,10 +77,10 @@
             // lblIsActive
             // 
             this.lblIsActive.AutoSize = true;
-            this.lblIsActive.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblIsActive.Location = new System.Drawing.Point(701, 54);
+            this.lblIsActive.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
+            this.lblIsActive.Location = new System.Drawing.Point(849, 54);
             this.lblIsActive.Name = "lblIsActive";
-            this.lblIsActive.Size = new System.Drawing.Size(81, 21);
+            this.lblIsActive.Size = new System.Drawing.Size(87, 20);
             this.lblIsActive.TabIndex = 6;
             this.lblIsActive.Text = "Is Active";
             // 
@@ -88,7 +88,7 @@
             // 
             this.lblUserNameVal.AutoSize = true;
             this.lblUserNameVal.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblUserNameVal.Location = new System.Drawing.Point(564, 54);
+            this.lblUserNameVal.Location = new System.Drawing.Point(411, 54);
             this.lblUserNameVal.Name = "lblUserNameVal";
             this.lblUserNameVal.Size = new System.Drawing.Size(37, 21);
             this.lblUserNameVal.TabIndex = 5;
@@ -97,10 +97,10 @@
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblUserName.Location = new System.Drawing.Point(419, 54);
+            this.lblUserName.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
+            this.lblUserName.Location = new System.Drawing.Point(290, 54);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(103, 21);
+            this.lblUserName.Size = new System.Drawing.Size(105, 20);
             this.lblUserName.TabIndex = 4;
             this.lblUserName.Text = "User Name";
             // 
@@ -108,7 +108,7 @@
             // 
             this.lblUserIDVal.AutoSize = true;
             this.lblUserIDVal.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblUserIDVal.Location = new System.Drawing.Point(301, 54);
+            this.lblUserIDVal.Location = new System.Drawing.Point(191, 54);
             this.lblUserIDVal.Name = "lblUserIDVal";
             this.lblUserIDVal.Size = new System.Drawing.Size(37, 21);
             this.lblUserIDVal.TabIndex = 3;
@@ -117,10 +117,10 @@
             // lblUserID
             // 
             this.lblUserID.AutoSize = true;
-            this.lblUserID.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblUserID.Location = new System.Drawing.Point(186, 54);
+            this.lblUserID.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
+            this.lblUserID.Location = new System.Drawing.Point(98, 54);
             this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(74, 21);
+            this.lblUserID.Size = new System.Drawing.Size(75, 20);
             this.lblUserID.TabIndex = 0;
             this.lblUserID.Text = "User ID";
             // 

@@ -1,4 +1,5 @@
 ﻿using DVLD.People;
+using DVLD.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,12 @@ namespace DVLD
         private void opPeople_Click(object sender, EventArgs e)
         {
             frmPeopleManagement frm = new frmPeopleManagement();
+            frm.ShowDialog();
+        }
+
+        private void opUsers_Click(object sender, EventArgs e)
+        {
+            frmUsersList frm = new frmUsersList();
             frm.ShowDialog();
         }
     }
