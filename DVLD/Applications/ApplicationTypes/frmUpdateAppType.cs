@@ -36,10 +36,12 @@ namespace DVLD.Applications
 
             if (_ApplicationType.UpdateTypeInfo())
             {
-                MessageBox.Show("Application Type Info Updated Successfully", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Application Type Info Updated Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnSave.Enabled = false;
                 ApplicationType_DataChanged?.Invoke(this, EventArgs.Empty);
             }
+
+            else MessageBox.Show("Application Type Info was not Updated", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

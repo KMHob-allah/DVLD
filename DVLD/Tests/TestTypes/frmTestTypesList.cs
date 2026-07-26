@@ -48,9 +48,9 @@ namespace DVLD.Tests.TestTypes
 
         private void opEditType_Click(object sender, EventArgs e)
         {
-            //frmEditTestType frm = new frmEditTestType(Convert.ToInt32(dgvTestTypesList.CurrentRow.Cells["TestTypeID"].Value));
-            //frm.TestType_DataChanged += _LoadTestTypesList;
-            //frm.ShowDialog();
+            frmUpdateTestType frm = new frmUpdateTestType((clTestType.eTestType)dgvTestTypesList.CurrentRow.Cells["TestTypeID"].Value);
+            frm.TestType_DataChanged += _LoadTestTypesList;
+            frm.ShowDialog();
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

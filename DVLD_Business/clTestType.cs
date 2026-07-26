@@ -35,15 +35,15 @@ namespace DVLD_Business
         {
             return clTestTypeData.LoadAllTestTypes();
         }
-        static public clTestType Find(byte ID)
+        static public clTestType Find(eTestType ID)
         {
             string Title = string.Empty;
             string Description = string.Empty;
             float  Fees = 0f;
 
-            if (clTestTypeData.LoadTestType(ID, ref Title, ref Description, ref Fees))
+            if (clTestTypeData.LoadTestType((int)ID, ref Title, ref Description, ref Fees))
             {
-                return new clTestType((eTestType)ID, Title, Description, Fees);
+                return new clTestType(ID, Title, Description, Fees);
             }
 
             else return null;
@@ -51,7 +51,7 @@ namespace DVLD_Business
 
         public bool UpdateTestInfo()
         {
-            return clTestTypeData.UpdateTestType((byte)this.ID, this.Title, this.Description, this.Fees);
+            return clTestTypeData.UpdateTestType((int)this.ID, this.Title, this.Description, this.Fees);
         }
     }
 }

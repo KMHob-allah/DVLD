@@ -30,7 +30,7 @@ namespace DVLD_DataAccess
 
             return dtUsersList;
         }
-        static public bool LoadTestType(byte TestTypeID, ref string TestTypeTitle, ref string TestTypeDescription, ref float TestFees)
+        static public bool LoadTestType(int TestTypeID, ref string TestTypeTitle, ref string TestTypeDescription, ref float TestFees)
         {
             bool IsFound = false;
 
@@ -60,7 +60,7 @@ namespace DVLD_DataAccess
 
             return IsFound;
         }
-        static public bool UpdateTestType(byte TestTypeID, string TestTypeTitle, string TestTypeDescription, float TestFees)
+        static public bool UpdateTestType(int TestTypeID, string TestTypeTitle, string TestTypeDescription, float TestFees)
         {
             string Query = @"Update TestTypes 
                             Set TestTypeTitle = @TestTypeTitle, TestTypeDescription = @TestTypeDescription, TestTypeFees = @TestFees

@@ -62,6 +62,9 @@
             this.tbFeesValue.Name = "tbFeesValue";
             this.tbFeesValue.Size = new System.Drawing.Size(311, 24);
             this.tbFeesValue.TabIndex = 53;
+            this.tbFeesValue.TextChanged += new System.EventHandler(this.UpdateTestType_DataChanged);
+            this.tbFeesValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbFeesValue_KeyPress);
+            this.tbFeesValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbFeesValue_Validating);
             // 
             // tbTitleValue
             // 
@@ -71,6 +74,8 @@
             this.tbTitleValue.Name = "tbTitleValue";
             this.tbTitleValue.Size = new System.Drawing.Size(311, 24);
             this.tbTitleValue.TabIndex = 52;
+            this.tbTitleValue.TextChanged += new System.EventHandler(this.UpdateTestType_DataChanged);
+            this.tbTitleValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbTitleValue_Validating);
             // 
             // btnSave
             // 
@@ -84,6 +89,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -97,6 +103,7 @@
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblTestFees
             // 
@@ -164,11 +171,14 @@
             this.tbTestDescriptionValue.Name = "tbTestDescriptionValue";
             this.tbTestDescriptionValue.Size = new System.Drawing.Size(311, 137);
             this.tbTestDescriptionValue.TabIndex = 61;
+            this.tbTestDescriptionValue.TextChanged += new System.EventHandler(this.UpdateTestType_DataChanged);
+            this.tbTestDescriptionValue.Validating += new System.ComponentModel.CancelEventHandler(this.tbTestDescriptionValue_Validating);
             // 
             // frmUpdateTestType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(904, 636);
             this.Controls.Add(this.lblTestTypeID);
             this.Controls.Add(this.tbFeesValue);
@@ -181,8 +191,11 @@
             this.Controls.Add(this.lblEditTestType);
             this.Controls.Add(this.lblTestDescription);
             this.Controls.Add(this.tbTestDescriptionValue);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmUpdateTestType";
-            this.Text = "frmUpdateTestType";
+            this.Text = "Update Test Type Info";
+            this.Load += new System.EventHandler(this.frmUpdateTestType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errpEditTestHandler)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
