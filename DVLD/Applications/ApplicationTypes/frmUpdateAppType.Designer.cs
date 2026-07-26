@@ -1,6 +1,6 @@
 ﻿namespace DVLD.Applications.ApplicationTypes
 {
-    partial class frmEditAppType
+    partial class frmUpdateAppType
     {
         /// <summary>
         /// Required designer variable.

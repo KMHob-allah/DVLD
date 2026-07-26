@@ -50,7 +50,7 @@ namespace DVLD.Applications.ApplicationTypes
         }
         private void opEditType_Click(object sender, EventArgs e)
         {
-            frmEditAppType frm = new frmEditAppType(Convert.ToInt32(dgvAppTypesList.CurrentRow.Cells["ApplicationTypeID"].Value));
+            frmUpdateAppType frm = new frmUpdateAppType(Convert.ToInt32(dgvAppTypesList.CurrentRow.Cells["ApplicationTypeID"].Value));
             
             frm.ApplicationType_DataChanged += _LoadApplicationTypesList;
            

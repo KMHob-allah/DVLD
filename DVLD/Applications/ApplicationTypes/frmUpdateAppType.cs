@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace DVLD.Applications.ApplicationTypes
 {
-    public partial class frmEditAppType : Form
+    public partial class frmUpdateAppType : Form
     {
         public event EventHandler ApplicationType_DataChanged;
 
         clApplicationType _ApplicationType;
         int _AppTypeID;
 
-        public frmEditAppType(int AppTypeID)
+        public frmUpdateAppType(int AppTypeID)
         {
             _AppTypeID = AppTypeID;
             InitializeComponent();
