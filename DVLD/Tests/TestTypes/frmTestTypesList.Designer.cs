@@ -29,35 +29,36 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dvgTestTypesList = new System.Windows.Forms.DataGridView();
+            this.dgvTestTypesList = new System.Windows.Forms.DataGridView();
             this.cmsTestTypesOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.opEditType = new System.Windows.Forms.ToolStripMenuItem();
             this.lblManageTestTypes = new System.Windows.Forms.Label();
             this.lblRecords = new System.Windows.Forms.Label();
             this.pbAppTypesImage = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgTestTypesList)).BeginInit();
+            this.lblNoData = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTestTypesList)).BeginInit();
             this.cmsTestTypesOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAppTypesImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // dvgTestTypesList
+            // dgvTestTypesList
             // 
-            this.dvgTestTypesList.AllowUserToAddRows = false;
-            this.dvgTestTypesList.AllowUserToDeleteRows = false;
-            this.dvgTestTypesList.AllowUserToOrderColumns = true;
-            this.dvgTestTypesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dvgTestTypesList.BackgroundColor = System.Drawing.Color.White;
-            this.dvgTestTypesList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dvgTestTypesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgTestTypesList.ContextMenuStrip = this.cmsTestTypesOptions;
-            this.dvgTestTypesList.Location = new System.Drawing.Point(54, 190);
-            this.dvgTestTypesList.Name = "dvgTestTypesList";
-            this.dvgTestTypesList.ReadOnly = true;
-            this.dvgTestTypesList.RowHeadersWidth = 51;
-            this.dvgTestTypesList.RowTemplate.Height = 24;
-            this.dvgTestTypesList.Size = new System.Drawing.Size(1012, 365);
-            this.dvgTestTypesList.TabIndex = 10;
+            this.dgvTestTypesList.AllowUserToAddRows = false;
+            this.dgvTestTypesList.AllowUserToDeleteRows = false;
+            this.dgvTestTypesList.AllowUserToOrderColumns = true;
+            this.dgvTestTypesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTestTypesList.BackgroundColor = System.Drawing.Color.White;
+            this.dgvTestTypesList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvTestTypesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTestTypesList.ContextMenuStrip = this.cmsTestTypesOptions;
+            this.dgvTestTypesList.Location = new System.Drawing.Point(54, 190);
+            this.dgvTestTypesList.Name = "dgvTestTypesList";
+            this.dgvTestTypesList.ReadOnly = true;
+            this.dgvTestTypesList.RowHeadersWidth = 51;
+            this.dgvTestTypesList.RowTemplate.Height = 24;
+            this.dgvTestTypesList.Size = new System.Drawing.Size(1012, 365);
+            this.dgvTestTypesList.TabIndex = 10;
             // 
             // cmsTestTypesOptions
             // 
@@ -71,8 +72,9 @@
             // opEditType
             // 
             this.opEditType.Name = "opEditType";
-            this.opEditType.Size = new System.Drawing.Size(176, 24);
+            this.opEditType.Size = new System.Drawing.Size(210, 24);
             this.opEditType.Text = "Edit Test Type";
+            this.opEditType.Click += new System.EventHandler(this.opEditType_Click);
             // 
             // lblManageTestTypes
             // 
@@ -117,14 +119,29 @@
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblNoData
+            // 
+            this.lblNoData.AutoSize = true;
+            this.lblNoData.BackColor = System.Drawing.Color.White;
+            this.lblNoData.Font = new System.Drawing.Font("Cooper Black", 20F);
+            this.lblNoData.ForeColor = System.Drawing.Color.Silver;
+            this.lblNoData.Location = new System.Drawing.Point(265, 339);
+            this.lblNoData.Name = "lblNoData";
+            this.lblNoData.Size = new System.Drawing.Size(616, 39);
+            this.lblNoData.TabIndex = 30;
+            this.lblNoData.Text = "You don\'t have Test Types to show";
+            this.lblNoData.Visible = false;
             // 
             // frmTestTypesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1123, 644);
+            this.Controls.Add(this.lblNoData);
             this.Controls.Add(this.pbAppTypesImage);
-            this.Controls.Add(this.dvgTestTypesList);
+            this.Controls.Add(this.dgvTestTypesList);
             this.Controls.Add(this.lblManageTestTypes);
             this.Controls.Add(this.lblRecords);
             this.Controls.Add(this.btnClose);
@@ -132,7 +149,8 @@
             this.MinimizeBox = false;
             this.Name = "frmTestTypesList";
             this.Text = "Test Types List";
-            ((System.ComponentModel.ISupportInitialize)(this.dvgTestTypesList)).EndInit();
+            this.Load += new System.EventHandler(this.frmTestTypesList_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTestTypesList)).EndInit();
             this.cmsTestTypesOptions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAppTypesImage)).EndInit();
             this.ResumeLayout(false);
@@ -142,12 +160,13 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dvgTestTypesList;
+        private System.Windows.Forms.DataGridView dgvTestTypesList;
         private System.Windows.Forms.ContextMenuStrip cmsTestTypesOptions;
         private System.Windows.Forms.ToolStripMenuItem opEditType;
         private System.Windows.Forms.Label lblManageTestTypes;
         private System.Windows.Forms.Label lblRecords;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.PictureBox pbAppTypesImage;
+        private System.Windows.Forms.Label lblNoData;
     }
 }

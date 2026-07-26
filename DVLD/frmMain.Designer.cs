@@ -243,6 +243,7 @@
             this.opManageTestTypes.Name = "opManageTestTypes";
             this.opManageTestTypes.Size = new System.Drawing.Size(360, 70);
             this.opManageTestTypes.Text = "Manage Test Types";
+            this.opManageTestTypes.Click += new System.EventHandler(this.opManageTestTypes_Click);
             // 
             // opPeople
             // 

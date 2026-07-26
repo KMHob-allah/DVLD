@@ -1,6 +1,7 @@
 ﻿using DVLD.Applications.ApplicationTypes;
 using DVLD.GlobalSettings;
 using DVLD.People;
+using DVLD.Tests.TestTypes;
 using DVLD.Users;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,13 @@ namespace DVLD
         private void opManageAppTypes_Click(object sender, EventArgs e)
         {
             frmAppTypesList frm = new frmAppTypesList();
+            frm.ShowDialog();
+        }
+
+        private void opManageTestTypes_Click(object sender, EventArgs e)
+        {
+            frmTestTypesList frm = new frmTestTypesList();
+
             frm.ShowDialog();
         }
     }
