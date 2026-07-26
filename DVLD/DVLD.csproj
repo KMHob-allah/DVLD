@@ -52,11 +52,11 @@
     <Compile Include="Applications\ApplicationTypes\frmAppTypesList.Designer.cs">
       <DependentUpon>frmAppTypesList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\ApplicationTypes\frmEditAppType.cs">
+    <Compile Include="Applications\ApplicationTypes\frmUpdateAppType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\ApplicationTypes\frmEditAppType.Designer.cs">
-      <DependentUpon>frmEditAppType.cs</DependentUpon>
+    <Compile Include="Applications\ApplicationTypes\frmUpdateAppType.Designer.cs">
+      <DependentUpon>frmUpdateAppType.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -145,8 +145,8 @@
     <EmbeddedResource Include="Applications\ApplicationTypes\frmAppTypesList.resx">
       <DependentUpon>frmAppTypesList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\ApplicationTypes\frmEditAppType.resx">
-      <DependentUpon>frmEditAppType.cs</DependentUpon>
+    <EmbeddedResource Include="Applications\ApplicationTypes\frmUpdateAppType.resx">
+      <DependentUpon>frmUpdateAppType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

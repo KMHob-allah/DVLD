@@ -34,10 +34,12 @@
             this.opEditType = new System.Windows.Forms.ToolStripMenuItem();
             this.lblManageApplicationTypes = new System.Windows.Forms.Label();
             this.lblRecords = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
             this.lblNoData = new System.Windows.Forms.Label();
+            this.pbAppTypesImage = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppTypesList)).BeginInit();
             this.cmsApplicationTypsOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAppTypesImage)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvAppTypesList
@@ -50,7 +52,7 @@
             this.dgvAppTypesList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvAppTypesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAppTypesList.ContextMenuStrip = this.cmsApplicationTypsOptions;
-            this.dgvAppTypesList.Location = new System.Drawing.Point(62, 116);
+            this.dgvAppTypesList.Location = new System.Drawing.Point(62, 221);
             this.dgvAppTypesList.Name = "dgvAppTypesList";
             this.dgvAppTypesList.ReadOnly = true;
             this.dgvAppTypesList.RowHeadersWidth = 51;
@@ -79,7 +81,7 @@
             this.lblManageApplicationTypes.AutoSize = true;
             this.lblManageApplicationTypes.Font = new System.Drawing.Font("Cooper Black", 18F);
             this.lblManageApplicationTypes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblManageApplicationTypes.Location = new System.Drawing.Point(349, 38);
+            this.lblManageApplicationTypes.Location = new System.Drawing.Point(349, 143);
             this.lblManageApplicationTypes.Name = "lblManageApplicationTypes";
             this.lblManageApplicationTypes.Size = new System.Drawing.Size(418, 35);
             this.lblManageApplicationTypes.TabIndex = 5;
@@ -89,18 +91,41 @@
             // 
             this.lblRecords.AutoSize = true;
             this.lblRecords.Font = new System.Drawing.Font("Bookman Old Style", 12F, System.Drawing.FontStyle.Bold);
-            this.lblRecords.Location = new System.Drawing.Point(58, 512);
+            this.lblRecords.Location = new System.Drawing.Point(58, 617);
             this.lblRecords.Name = "lblRecords";
             this.lblRecords.Size = new System.Drawing.Size(145, 24);
             this.lblRecords.TabIndex = 8;
             this.lblRecords.Text = "# Records : 0";
+            // 
+            // lblNoData
+            // 
+            this.lblNoData.AutoSize = true;
+            this.lblNoData.BackColor = System.Drawing.Color.White;
+            this.lblNoData.Font = new System.Drawing.Font("Cooper Black", 20F);
+            this.lblNoData.ForeColor = System.Drawing.Color.Silver;
+            this.lblNoData.Location = new System.Drawing.Point(206, 376);
+            this.lblNoData.Name = "lblNoData";
+            this.lblNoData.Size = new System.Drawing.Size(748, 39);
+            this.lblNoData.TabIndex = 20;
+            this.lblNoData.Text = "You don\'t have Application Types to show";
+            this.lblNoData.Visible = false;
+            // 
+            // pbAppTypesImage
+            // 
+            this.pbAppTypesImage.Image = global::DVLD.Properties.Resources.Application_Types_512;
+            this.pbAppTypesImage.Location = new System.Drawing.Point(477, 12);
+            this.pbAppTypesImage.Name = "pbAppTypesImage";
+            this.pbAppTypesImage.Size = new System.Drawing.Size(214, 131);
+            this.pbAppTypesImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbAppTypesImage.TabIndex = 28;
+            this.pbAppTypesImage.TabStop = false;
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Bookman Old Style", 12F);
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(940, 502);
+            this.btnClose.Location = new System.Drawing.Point(940, 607);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 45);
             this.btnClose.TabIndex = 7;
@@ -109,24 +134,12 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // lblNoData
-            // 
-            this.lblNoData.AutoSize = true;
-            this.lblNoData.BackColor = System.Drawing.Color.White;
-            this.lblNoData.Font = new System.Drawing.Font("Cooper Black", 20F);
-            this.lblNoData.ForeColor = System.Drawing.Color.Silver;
-            this.lblNoData.Location = new System.Drawing.Point(206, 271);
-            this.lblNoData.Name = "lblNoData";
-            this.lblNoData.Size = new System.Drawing.Size(748, 39);
-            this.lblNoData.TabIndex = 20;
-            this.lblNoData.Text = "You don\'t have Application Types to show";
-            this.lblNoData.Visible = false;
-            // 
             // frmAppTypesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1133, 584);
+            this.ClientSize = new System.Drawing.Size(1133, 674);
+            this.Controls.Add(this.pbAppTypesImage);
             this.Controls.Add(this.lblNoData);
             this.Controls.Add(this.dgvAppTypesList);
             this.Controls.Add(this.lblManageApplicationTypes);
@@ -139,6 +152,7 @@
             this.Load += new System.EventHandler(this.frmAppTypesList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppTypesList)).EndInit();
             this.cmsApplicationTypsOptions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAppTypesImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +167,6 @@
         private System.Windows.Forms.Label lblRecords;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblNoData;
+        private System.Windows.Forms.PictureBox pbAppTypesImage;
     }
 }

@@ -24,11 +24,11 @@ namespace DVLD.Applications.ApplicationTypes
         }
         private void _SetAppTypesListHeaders()
         {
-            dgvAppTypesList.Columns[0].HeaderText = "Application Type ID";
+            dgvAppTypesList.Columns[0].HeaderText = "ID";
 
-            dgvAppTypesList.Columns[1].HeaderText = "Application Type Title";
+            dgvAppTypesList.Columns[1].HeaderText = "Title";
 
-            dgvAppTypesList.Columns[2].HeaderText = "Application Type Fees";           
+            dgvAppTypesList.Columns[2].HeaderText = "Fees";           
         }
         private void _LoadApplicationTypesList(object sender, EventArgs e)
         {
