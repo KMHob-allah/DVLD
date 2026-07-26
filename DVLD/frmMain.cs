@@ -54,5 +54,11 @@ namespace DVLD
             this.Close();
 
         }
+
+        private void opManageAppTypes_Click(object sender, EventArgs e)
+        {
+            frmAppTypesList frm = new frmAppTypesList();
+            frm.ShowDialog();
+        }
     }
 }

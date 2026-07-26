@@ -234,6 +234,7 @@
             this.opManageAppTypes.Name = "opManageAppTypes";
             this.opManageAppTypes.Size = new System.Drawing.Size(360, 70);
             this.opManageAppTypes.Text = "Manage Application Types";
+            this.opManageAppTypes.Click += new System.EventHandler(this.opManageAppTypes_Click);
             // 
             // opManageTestTypes
             // 

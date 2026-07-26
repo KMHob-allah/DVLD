@@ -16,15 +16,15 @@ namespace DVLD_Business
 
         public clApplicationType()
         {
-            this.TypeID = -1;
-            this.Title = string.Empty;
-            this.Fees = 0f;
+            this.AppTypeID = -1;
+            this.AppTypeTitle = string.Empty;
+            this.AppTypeFees = 0f;
         }
         private clApplicationType(int TypeID, string Title, float Fees)
         {
-            this.TypeID = TypeID;
-            this.Title = Title;
-            this.Fees = Fees;
+            this.AppTypeID = TypeID;
+            this.AppTypeTitle = Title;
+            this.AppTypeFees = Fees;
         }
 
         static public DataTable GetAllAppTypes()
@@ -45,9 +45,9 @@ namespace DVLD_Business
             else return null;
         }
         
-        public bool UpdateTypeInfo(string NewTitle = this.AppTypeTitle, float NewFees = this.AppTypeFees)
+        public bool UpdateTypeInfo(string NewTitle , float NewFees )
         {
-            return clApplicationTypeData.UpdateAppType(this.TypeID, NewTitle, NewFees);
+            return clApplicationTypeData.UpdateAppType(this.AppTypeID, NewTitle, NewFees);
         }
     }
 }
