@@ -1,4 +1,5 @@
-﻿using DVLD.GlobalSettings;
+﻿using DVLD.Applications.ApplicationTypes;
+using DVLD.GlobalSettings;
 using DVLD.People;
 using DVLD.Users;
 using System;
@@ -28,25 +29,21 @@ namespace DVLD
             frmPeopleManagement frm = new frmPeopleManagement();
             frm.ShowDialog();
         }
-
         private void opUsers_Click(object sender, EventArgs e)
         {
             frmUsersList frm = new frmUsersList();
             frm.ShowDialog();
         }
-
         private void opCurrentUserInfo_Click(object sender, EventArgs e)
         {
             frmUserInfo frm = new frmUserInfo(clGlobalSettings.CurrentUser.UserID);
             frm.ShowDialog();
         }
-
         private void opChangePassword_Click(object sender, EventArgs e)
         {
             frmChangePassword frm = new frmChangePassword(clGlobalSettings.CurrentUser.UserID);
             frm.ShowDialog();
         }
-
         private void opSignOut_Click(object sender, EventArgs e)
         {
             clGlobalSettings.CurrentUser = null;
@@ -54,7 +51,6 @@ namespace DVLD
             this.Close();
 
         }
-
         private void opManageAppTypes_Click(object sender, EventArgs e)
         {
             frmAppTypesList frm = new frmAppTypesList();

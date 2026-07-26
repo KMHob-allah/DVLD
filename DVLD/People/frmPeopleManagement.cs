@@ -35,7 +35,7 @@ namespace DVLD.People
             cbFilters.Items.Add("Phone");
             cbFilters.Items.Add("Email");       
         }
-        private void _SetdgvPeopleListHeaders()
+        private void _SetPeopleListHeaders()
         {
             dgvPeopleList.Columns[0].HeaderText = "Person ID";
 
@@ -68,7 +68,7 @@ namespace DVLD.People
                 lblNoData.Visible = false;
                 dgvPeopleList.DataSource = dvPeopleList;
 
-                _SetdgvPeopleListHeaders();
+                _SetPeopleListHeaders();
             }
 
         }
