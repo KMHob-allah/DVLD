@@ -29,33 +29,34 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dvgAppTypesList = new System.Windows.Forms.DataGridView();
+            this.dgvAppTypesList = new System.Windows.Forms.DataGridView();
             this.cmsApplicationTypsOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.opEditType = new System.Windows.Forms.ToolStripMenuItem();
             this.lblManageApplicationTypes = new System.Windows.Forms.Label();
             this.lblRecords = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgAppTypesList)).BeginInit();
+            this.lblNoData = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppTypesList)).BeginInit();
             this.cmsApplicationTypsOptions.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dvgAppTypesList
+            // dgvAppTypesList
             // 
-            this.dvgAppTypesList.AllowUserToAddRows = false;
-            this.dvgAppTypesList.AllowUserToDeleteRows = false;
-            this.dvgAppTypesList.AllowUserToOrderColumns = true;
-            this.dvgAppTypesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dvgAppTypesList.BackgroundColor = System.Drawing.Color.White;
-            this.dvgAppTypesList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dvgAppTypesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgAppTypesList.ContextMenuStrip = this.cmsApplicationTypsOptions;
-            this.dvgAppTypesList.Location = new System.Drawing.Point(62, 116);
-            this.dvgAppTypesList.Name = "dvgAppTypesList";
-            this.dvgAppTypesList.ReadOnly = true;
-            this.dvgAppTypesList.RowHeadersWidth = 51;
-            this.dvgAppTypesList.RowTemplate.Height = 24;
-            this.dvgAppTypesList.Size = new System.Drawing.Size(1012, 365);
-            this.dvgAppTypesList.TabIndex = 6;
+            this.dgvAppTypesList.AllowUserToAddRows = false;
+            this.dgvAppTypesList.AllowUserToDeleteRows = false;
+            this.dgvAppTypesList.AllowUserToOrderColumns = true;
+            this.dgvAppTypesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAppTypesList.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAppTypesList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvAppTypesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAppTypesList.ContextMenuStrip = this.cmsApplicationTypsOptions;
+            this.dgvAppTypesList.Location = new System.Drawing.Point(62, 116);
+            this.dgvAppTypesList.Name = "dgvAppTypesList";
+            this.dgvAppTypesList.ReadOnly = true;
+            this.dgvAppTypesList.RowHeadersWidth = 51;
+            this.dgvAppTypesList.RowTemplate.Height = 24;
+            this.dgvAppTypesList.Size = new System.Drawing.Size(1012, 365);
+            this.dgvAppTypesList.TabIndex = 6;
             // 
             // cmsApplicationTypsOptions
             // 
@@ -71,6 +72,7 @@
             this.opEditType.Name = "opEditType";
             this.opEditType.Size = new System.Drawing.Size(227, 24);
             this.opEditType.Text = "Edit Application Type";
+            this.opEditType.Click += new System.EventHandler(this.opEditType_Click);
             // 
             // lblManageApplicationTypes
             // 
@@ -105,13 +107,28 @@
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblNoData
+            // 
+            this.lblNoData.AutoSize = true;
+            this.lblNoData.BackColor = System.Drawing.Color.White;
+            this.lblNoData.Font = new System.Drawing.Font("Cooper Black", 20F);
+            this.lblNoData.ForeColor = System.Drawing.Color.Silver;
+            this.lblNoData.Location = new System.Drawing.Point(206, 271);
+            this.lblNoData.Name = "lblNoData";
+            this.lblNoData.Size = new System.Drawing.Size(748, 39);
+            this.lblNoData.TabIndex = 20;
+            this.lblNoData.Text = "You don\'t have Application Types to show";
+            this.lblNoData.Visible = false;
             // 
             // frmAppTypesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 584);
-            this.Controls.Add(this.dvgAppTypesList);
+            this.Controls.Add(this.lblNoData);
+            this.Controls.Add(this.dgvAppTypesList);
             this.Controls.Add(this.lblManageApplicationTypes);
             this.Controls.Add(this.lblRecords);
             this.Controls.Add(this.btnClose);
@@ -119,7 +136,8 @@
             this.MinimizeBox = false;
             this.Name = "frmAppTypesList";
             this.Text = "Application Types List";
-            ((System.ComponentModel.ISupportInitialize)(this.dvgAppTypesList)).EndInit();
+            this.Load += new System.EventHandler(this.frmAppTypesList_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppTypesList)).EndInit();
             this.cmsApplicationTypsOptions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -128,11 +146,12 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dvgAppTypesList;
+        private System.Windows.Forms.DataGridView dgvAppTypesList;
         private System.Windows.Forms.ContextMenuStrip cmsApplicationTypsOptions;
         private System.Windows.Forms.ToolStripMenuItem opEditType;
         private System.Windows.Forms.Label lblManageApplicationTypes;
         private System.Windows.Forms.Label lblRecords;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblNoData;
     }
 }
