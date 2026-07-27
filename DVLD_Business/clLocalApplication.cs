@@ -39,7 +39,7 @@ namespace DVLD_Business
 
         static public DataTable GetAllLocalAppsList()
         {
-            return clLocalApplicationData.LoadLocalAppsList():
+            return clLocalApplicationData.LoadLocalAppsList();
         }
 
         private bool _AddNewLocalApp()
@@ -54,11 +54,14 @@ namespace DVLD_Business
         }
         public bool Delete()
         {
-            bool IsDeleted = false;
+            if (clLocalApplicationData.DeleteLocalApp(this.LocalApplicationID))
+            {
+                if (base.Delete()) return true;
 
-            if(clLocalApplicationData.DeleteLocalApp(this.LocalApplicationID)) if (base.Delete()) return true;            
+                else return false;
+            }
 
-            return IsDeleted;            
+            else return false;
         }
 
         static public clLocalApplication FindByLocalAppID(int LocalApplicationID)
@@ -68,7 +71,7 @@ namespace DVLD_Business
 
             if (clLocalApplicationData.LoadLocalApp(LocalApplicationID, ref ApplicationID, ref LicenseClasssID))
             {
-                clLocalApplication Application = clApplication.Find(ApplicationID);
+                clApplication Application = clApplication.Find(ApplicationID);
 
                 return new clLocalApplication(LocalApplicationID, LicenseClasssID, Application.ApplicationID,
                     Application.ApplicantPersonID, Application.ApplicationDate,
@@ -85,7 +88,7 @@ namespace DVLD_Business
 
             if (clLocalApplicationData.LoadLocalApp(ref LocalApplicationID, ApplicationID, ref LicenseClasssID))
             {
-                clLocalApplication Application = clApplication.Find(ApplicationID);
+                clApplication Application = clApplication.Find(ApplicationID);
 
                 return new clLocalApplication(LocalApplicationID, LicenseClasssID, Application.ApplicationID,
                     Application.ApplicantPersonID, Application.ApplicationDate,
@@ -98,6 +101,8 @@ namespace DVLD_Business
 
         public bool Save()
         {
+            // Can We Use this.Mode And base.Mode ? Are They The Same ?
+
             eMode CurrentMode = Mode;
 
             bool IsSaved = false;

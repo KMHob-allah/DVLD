@@ -39,7 +39,7 @@ namespace DVLD_Business
 
         static public DataTable GetAllLicenseClasses()
         {
-            return DVLD_DataAccess.clLicenseClass.LoadLicenseClasses();
+            return clLocalApplicationData.LoadLocalAppsList();
         }
 
         static public clLicenseClass Find(int LicenseClassID)

@@ -29,7 +29,7 @@ namespace DVLD_Business
             Completed
         }
 
-        private eMode _Mode;
+        protected eMode Mode;
 
         public int ApplicationID { get; set; }
         public int ApplicantPersonID { get; set; }
@@ -56,9 +56,9 @@ namespace DVLD_Business
             PaidFees = 0f;
             CreatedByUserID = -1;
 
-            _Mode = eMode.Add;
+            Mode = eMode.Add;
         }
-        private clApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate,
+        protected clApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate,
            eApplicationType ApplicationType, eApplicationStatus ApplicationStatus, DateTime LastStatusDate,
            float PaidFees, int CreatedByUserID)
         {
@@ -75,7 +75,7 @@ namespace DVLD_Business
             this.UserInfo = clUser.FindByUserID(CreatedByUserID);
             this.ApplicationTypeInfo = clApplicationType.Find(ApplicationID);
 
-            _Mode = eMode.Update;
+            Mode = eMode.Update;
         }
  
         static public DataTable GetAllAppList()
@@ -121,13 +121,13 @@ namespace DVLD_Business
         {
             bool IsSaved = false;
 
-           switch(_Mode)
+           switch(Mode)
             {
                 case eMode.Add:
                 {
                     if(_AddNewApp())
                     {
-                        _Mode = eMode.Update;
+                        Mode = eMode.Update;
                         IsSaved = true;
                     }
 
@@ -159,10 +159,11 @@ namespace DVLD_Business
             return _UpdateAppStatus(eApplicationStatus.Completed);
         }
 
-        static public bool DeleteApplication(int ApplicationID)
+        public bool Delete()
         {
-            return clApplication.DeleteApplication(ApplicationID);
+            return clApplicationData.DeleteApplication(this.ApplicationID);
         }
+
         static public bool IsExist(int ApplicationID)
         {
             return clApplicationData.IsApplicationExist(ApplicationID);

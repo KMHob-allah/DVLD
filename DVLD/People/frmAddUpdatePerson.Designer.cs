@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.lblAddEditPerson = new System.Windows.Forms.Label();
             this.pnlUserInfo = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.tbThirdNameValue = new System.Windows.Forms.TextBox();
             this.lblPersonID = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
@@ -52,6 +54,7 @@
             this.tbFirstNameValue = new System.Windows.Forms.TextBox();
             this.lnklblSetImage = new System.Windows.Forms.LinkLabel();
             this.tbLastNameValue = new System.Windows.Forms.TextBox();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.tbSecondNameValue = new System.Windows.Forms.TextBox();
             this.dtpBirthDateValue = new System.Windows.Forms.DateTimePicker();
             this.tbPhoneValue = new System.Windows.Forms.TextBox();
@@ -61,12 +64,9 @@
             this.tbEmailValue = new System.Windows.Forms.TextBox();
             this.errpAddEditHandler = new System.Windows.Forms.ErrorProvider(this.components);
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.pnlUserInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errpAddEditHandler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errpAddEditHandler)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAddEditPerson
@@ -118,6 +118,34 @@
             this.pnlUserInfo.Name = "pnlUserInfo";
             this.pnlUserInfo.Size = new System.Drawing.Size(1238, 524);
             this.pnlUserInfo.TabIndex = 67;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Cooper Black", 10F);
+            this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(1081, 453);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(133, 46);
+            this.btnSave.TabIndex = 64;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Cooper Black", 10F);
+            this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(943, 453);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(133, 46);
+            this.btnClose.TabIndex = 63;
+            this.btnClose.Text = "Close";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // tbThirdNameValue
             // 
@@ -338,6 +366,16 @@
             this.tbLastNameValue.TextChanged += new System.EventHandler(this.PersonData_Changed);
             this.tbLastNameValue.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             // 
+            // pbPersonImage
+            // 
+            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbPersonImage.Location = new System.Drawing.Point(943, 102);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(271, 247);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 57;
+            this.pbPersonImage.TabStop = false;
+            // 
             // tbSecondNameValue
             // 
             this.tbSecondNameValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -419,48 +457,11 @@
             // 
             this.OpenFileDialog.FileName = "OpenFileDialog";
             // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Cooper Black", 10F);
-            this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(1081, 453);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(133, 46);
-            this.btnSave.TabIndex = 64;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Font = new System.Drawing.Font("Cooper Black", 10F);
-            this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(943, 453);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(133, 46);
-            this.btnClose.TabIndex = 63;
-            this.btnClose.Text = "Close";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // pbPersonImage
-            // 
-            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbPersonImage.Location = new System.Drawing.Point(943, 102);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(271, 247);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersonImage.TabIndex = 57;
-            this.pbPersonImage.TabStop = false;
-            // 
             // frmAddUpdatePerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1261, 624);
             this.Controls.Add(this.pnlUserInfo);
@@ -474,8 +475,8 @@
             this.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTextBox);
             this.pnlUserInfo.ResumeLayout(false);
             this.pnlUserInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errpAddEditHandler)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errpAddEditHandler)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
