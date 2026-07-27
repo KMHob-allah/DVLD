@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace DVLD.Global
 {
-    public class clUtil
+    static public class clUtil
     {
         public static string GenerateGUID()
         {

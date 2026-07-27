@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DVLD.Global
 {
-    public class clValidation
+    static public class clValidation
     {
         public static bool IsValidateEmail(string EmailAddress)
         {
