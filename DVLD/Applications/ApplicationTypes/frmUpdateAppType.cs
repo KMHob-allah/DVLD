@@ -16,11 +16,12 @@ namespace DVLD.Applications
         public event EventHandler ApplicationType_DataChanged;
 
         clApplicationType _ApplicationType;
-        int _AppTypeID;
 
-        public frmUpdateAppType(int AppTypeID)
+        clApplicationType.eApplicationType _AppType;
+
+        public frmUpdateAppType(clApplicationType.eApplicationType AppTypeID)
         {
-            _AppTypeID = AppTypeID;
+            _AppType = AppTypeID;
             InitializeComponent();
         }
 
@@ -50,7 +51,7 @@ namespace DVLD.Applications
 
         private void frmUpdateAppType_Load(object sender, EventArgs e)
         {
-            _ApplicationType = clApplicationType.Find(_AppTypeID);
+            _ApplicationType = clApplicationType.Find(_AppType);
 
             if (_ApplicationType != null)
             {

@@ -58,6 +58,12 @@
     <Compile Include="Applications\ApplicationTypes\frmUpdateAppType.Designer.cs">
       <DependentUpon>frmUpdateAppType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\LocalApplications\frmAddUpdateLocalApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\LocalApplications\frmAddUpdateLocalApp.Designer.cs">
+      <DependentUpon>frmAddUpdateLocalApp.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\ApplicationTypes\frmUpdateAppType.resx">
       <DependentUpon>frmUpdateAppType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\LocalApplications\frmAddUpdateLocalApp.resx">
+      <DependentUpon>frmAddUpdateLocalApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

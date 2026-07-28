@@ -10,21 +10,25 @@ namespace DVLD_Business
 {
     public class clLocalApplication : clApplication
     {
-        // What should I do : Creating new enum for this class Or Using the same base's enum And What is the difference ?
+        public enum eSaveResult {Success, FaildHasActiveApp, FaildHasActiveLicense, Faild}
+        public enum eMode { Add, Update}
+
+        eMode _Mode;
 
         public int LocalApplicationID { get; set; }
         public int LicenseClassID { get; set; }    
-            
+        
+        public clLicenseClass LicenseClassInfo { get; set; }
 
         public clLocalApplication()
         {
             LocalApplicationID = -1;
             LicenseClassID = -1;
 
-            this.Mode = eMode.Add;
+            _Mode = eMode.Add;
         }
         private clLocalApplication(int LocalApplicationID, int LicenseClassID, int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate,
-           eApplicationType ApplicationType, eApplicationStatus ApplicationStatus, DateTime LastStatusDate,
+           clApplicationType.eApplicationType ApplicationType, eApplicationStatus ApplicationStatus, DateTime LastStatusDate,
            float PaidFees, int CreatedByUserID) 
             
             : base(ApplicationID, ApplicantPersonID, ApplicationDate,
@@ -34,7 +38,9 @@ namespace DVLD_Business
             this.LocalApplicationID = LocalApplicationID;
             this.LicenseClassID = LicenseClassID;
 
-            this.Mode = eMode.Update;
+            LicenseClassInfo = clLicenseClass.Find(this.LicenseClassID);
+
+            _Mode = eMode.Update;
         }
 
         static public DataTable GetAllLocalAppsList()
@@ -99,39 +105,36 @@ namespace DVLD_Business
             else return null;
         }
 
-        public bool Save()
+        public eSaveResult Save()
         {
-            // Can We Use this.Mode And base.Mode ? Are They The Same ?
+            eSaveResult SaveResult = eSaveResult.Faild;
 
-            eMode CurrentMode = Mode;
-
-            bool IsSaved = false;
+            // I Should Check If This Local Application's Person Has An Active License For The Same License Class
+            // I Should Check If This Local Application Has An Active Application
 
             if(base.Save())
             {
-                switch(CurrentMode)
+                switch(_Mode)
                 {
                     case eMode.Add:
                     {
                         if (_AddNewLocalApp())
-                        {
-                               
-                            CurrentMode = eMode.Update;
-                            IsSaved = true;
+                        {                               
+                            _Mode = eMode.Update;
+                            SaveResult = eSaveResult.Success;
                         }
                         break;
                     }
 
                     case eMode.Update:
                     {
-                        if(_UpdateLocalApp()) IsSaved  = true;
+                        if(_UpdateLocalApp()) SaveResult = eSaveResult.Success;
                         break;
                     }
                 }
             }
 
-            return IsSaved;
+            return SaveResult;
         }
-
     }
 }

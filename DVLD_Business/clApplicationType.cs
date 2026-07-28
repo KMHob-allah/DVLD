@@ -10,19 +10,30 @@ namespace DVLD_Business
 {
     public class clApplicationType
     {
-        public int ID { get; set; }
+        public enum eApplicationType
+        {
+            NewLocalDrivingLicenseService = 1,
+            RenewDrivingLicenseService,
+            ReplacementforLostDrivingLicense,
+            ReplacementforDamagedDrivingLicense,
+            ReleaseDetainedDrivingLicsense,
+            NewInternationalLicense,
+            RetakeTest,
+            Unknown
+        }
+        public eApplicationType ID { get; set; }
         public string Title { get; set; }
         public float Fees { get; set; }
 
         public clApplicationType()
         {
-            this.ID = -1;
+            this.ID = eApplicationType.Unknown;
             this.Title = string.Empty;
             this.Fees = 0f;
         }
-        private clApplicationType(int TypeID, string Title, float Fees)
+        private clApplicationType(eApplicationType ID, string Title, float Fees)
         {
-            this.ID = TypeID;
+            this.ID = ID;
             this.Title = Title;
             this.Fees = Fees;
         }
@@ -32,12 +43,12 @@ namespace DVLD_Business
             return clApplicationTypeData.LoadAllAppTypes();
         }
 
-        static public clApplicationType Find(int ApplicationTypeID)
+        static public clApplicationType Find(eApplicationType ApplicationTypeID)
         {
             string Title = string.Empty;
             float Fees = 0f;
 
-            if (clApplicationTypeData.LoadAppType(ApplicationTypeID, ref Title, ref Fees))
+            if (clApplicationTypeData.LoadAppType((int)ApplicationTypeID, ref Title, ref Fees))
             {
                 return new clApplicationType(ApplicationTypeID, Title, Fees);
             }
@@ -47,7 +58,7 @@ namespace DVLD_Business
         
         public bool UpdateTypeInfo()
         {
-            return clApplicationTypeData.UpdateAppType(this.ID, this.Title, this.Fees);
+            return clApplicationTypeData.UpdateAppType((int)this.ID, this.Title, this.Fees);
         }
     }
 }

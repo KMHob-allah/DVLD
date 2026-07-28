@@ -10,18 +10,7 @@ namespace DVLD_Business
 {
     public class clApplication
     {
-        public enum eMode { Add, Update}
-        public enum eApplicationType
-        {
-            NewLocalDrivingLicenseService = 1,
-            RenewDrivingLicenseService,
-            ReplacementforLostDrivingLicense,
-            ReplacementforDamagedDrivingLicense,
-            ReleaseDetainedDrivingLicsense,
-            NewInternationalLicense,
-            RetakeTest,
-            Unknown
-        }
+        public enum eMode { Add, Update}       
         public enum eApplicationStatus
         {
             New = 1,
@@ -29,12 +18,12 @@ namespace DVLD_Business
             Completed
         }
 
-        protected eMode Mode;
+        private eMode Mode;
 
         public int ApplicationID { get; set; }
         public int ApplicantPersonID { get; set; }
         public DateTime ApplicationDate { get; set; }
-        public eApplicationType ApplicationType { get; set; }
+        public clApplicationType.eApplicationType ApplicationType { get; set; }
         public eApplicationStatus ApplicationStatus { get; set; }
         public DateTime LastStatusDate { get; set; }
         public float PaidFees { get; set; }
@@ -50,7 +39,7 @@ namespace DVLD_Business
             ApplicationID = -1;
             ApplicantPersonID = -1;
             ApplicationDate = DateTime.MinValue;
-            ApplicationType = eApplicationType.Unknown;
+            ApplicationType = clApplicationType .eApplicationType.Unknown;
             ApplicationStatus = eApplicationStatus.New;
             LastStatusDate = DateTime.MinValue;
             PaidFees = 0f;
@@ -59,7 +48,7 @@ namespace DVLD_Business
             Mode = eMode.Add;
         }
         protected clApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate,
-           eApplicationType ApplicationType, eApplicationStatus ApplicationStatus, DateTime LastStatusDate,
+           clApplicationType.eApplicationType ApplicationType, eApplicationStatus ApplicationStatus, DateTime LastStatusDate,
            float PaidFees, int CreatedByUserID)
         {
             this.ApplicationID = ApplicationID;
@@ -73,7 +62,7 @@ namespace DVLD_Business
 
             this.PersonInfo = clPerson.Find(ApplicantPersonID);
             this.UserInfo = clUser.FindByUserID(CreatedByUserID);
-            this.ApplicationTypeInfo = clApplicationType.Find(ApplicationID);
+            this.ApplicationTypeInfo = clApplicationType.Find(ApplicationType);
 
             Mode = eMode.Update;
         }
@@ -97,7 +86,7 @@ namespace DVLD_Business
                 ref ApplicationType, ref ApplicationStatus, ref LastStatusDate, ref PaidFees, ref CreatedByUserID))
             {
                 return new clApplication(ApplicationID, ApplicantPersonID, ApplicationDate,
-                (eApplicationType)ApplicationType, (eApplicationStatus)ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
+                (clApplicationType.eApplicationType)ApplicationType, (eApplicationStatus)ApplicationStatus, LastStatusDate, PaidFees, CreatedByUserID);
             }
 
             else return null;
@@ -169,11 +158,11 @@ namespace DVLD_Business
             return clApplicationData.IsApplicationExist(ApplicationID);
         }
 
-        static public bool PersonHasActiveApp(int ApplicationPersonID, eApplicationType ApplicationTypeID)
+        static public bool PersonHasActiveApp(int ApplicantPersonID, clApplicationType. eApplicationType ApplicationTypeID)
         {
-            return clApplicationData.PersonHasActiveApp(ApplicationPersonID, (byte)ApplicationTypeID);
+            return clApplicationData.PersonHasActiveApp(ApplicantPersonID, (byte)ApplicationTypeID);
         }
-        static public bool PersonHasActiveAppForLicenseClass(int ApplicationPersonID, eApplicationType ApplicationTypeID, int LicenseClass)
+        static public bool PersonHasActiveAppForLicenseClass(int ApplicationPersonID, clApplicationType.eApplicationType ApplicationTypeID, int LicenseClass)
         {
             return clApplicationData.PersonHasActiveAppForLicenseClass(ApplicationPersonID, (byte)ApplicationTypeID, LicenseClass);
         }

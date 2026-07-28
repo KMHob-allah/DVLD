@@ -1,4 +1,5 @@
 ﻿using DVLD.Applications.ApplicationTypes;
+using DVLD.Applications.LocalApplications;
 using DVLD.GlobalSettings;
 using DVLD.People;
 using DVLD.Tests.TestTypes;
@@ -61,6 +62,13 @@ namespace DVLD
         private void opManageTestTypes_Click(object sender, EventArgs e)
         {
             frmTestTypesList frm = new frmTestTypesList();
+
+            frm.ShowDialog();
+        }
+
+        private void opLocalLicense_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateLocalApp frm = new frmAddUpdateLocalApp();
 
             frm.ShowDialog();
         }

@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lblLocalLicenseApp = new System.Windows.Forms.Label();
+            this.lblHeader = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblAddEditUser = new System.Windows.Forms.Label();
             this.tcPersonApplicationInfo = new System.Windows.Forms.TabControl();
             this.tpPersonInfo = new System.Windows.Forms.TabPage();
+            this.ctrlPersonCardWithFilter1 = new DVLD.People.Controls.ctrlPersonCardWithFilter();
             this.btnNext = new System.Windows.Forms.Button();
             this.tpApplicationInfo = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -50,7 +51,6 @@
             this.lblApplicationID = new System.Windows.Forms.Label();
             this.lblApplicationIDValue = new System.Windows.Forms.Label();
             this.errpAppInfoHandler = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ctrlPersonCardWithFilter1 = new DVLD.People.Controls.ctrlPersonCardWithFilter();
             this.tcPersonApplicationInfo.SuspendLayout();
             this.tpPersonInfo.SuspendLayout();
             this.tpApplicationInfo.SuspendLayout();
@@ -58,16 +58,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.errpAppInfoHandler)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblLocalLicenseApp
+            // lblHeader
             // 
-            this.lblLocalLicenseApp.AutoSize = true;
-            this.lblLocalLicenseApp.Font = new System.Drawing.Font("Cooper Black", 18F);
-            this.lblLocalLicenseApp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblLocalLicenseApp.Location = new System.Drawing.Point(322, 34);
-            this.lblLocalLicenseApp.Name = "lblLocalLicenseApp";
-            this.lblLocalLicenseApp.Size = new System.Drawing.Size(612, 35);
-            this.lblLocalLicenseApp.TabIndex = 26;
-            this.lblLocalLicenseApp.Text = "New Local Driving License Application";
+            this.lblHeader.AutoSize = true;
+            this.lblHeader.Font = new System.Drawing.Font("Cooper Black", 18F);
+            this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblHeader.Location = new System.Drawing.Point(322, 34);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(612, 35);
+            this.lblHeader.TabIndex = 26;
+            this.lblHeader.Text = "New Local Driving License Application";
             // 
             // btnClose
             // 
@@ -81,6 +81,7 @@
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
@@ -94,6 +95,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblAddEditUser
             // 
@@ -116,6 +118,7 @@
             this.tcPersonApplicationInfo.SelectedIndex = 0;
             this.tcPersonApplicationInfo.Size = new System.Drawing.Size(1107, 575);
             this.tcPersonApplicationInfo.TabIndex = 25;
+            this.tcPersonApplicationInfo.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tcPersonApplicationInfo_Selecting);
             // 
             // tpPersonInfo
             // 
@@ -130,6 +133,17 @@
             this.tpPersonInfo.Text = "Person Info";
             this.tpPersonInfo.UseVisualStyleBackColor = true;
             // 
+            // ctrlPersonCardWithFilter1
+            // 
+            this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(27, 13);
+            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
+            this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(1045, 467);
+            this.ctrlPersonCardWithFilter1.TabIndex = 6;
+            this.ctrlPersonCardWithFilter1.WhenPersonSelected += new System.Action<int>(this.ctrlPersonCardWithFilter1_WhenPersonSelected);
+            // 
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("Bookman Old Style", 12F);
@@ -142,6 +156,7 @@
             this.btnNext.Text = "Next";
             this.btnNext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // tpApplicationInfo
             // 
@@ -194,10 +209,10 @@
             // lblCreatedBy
             // 
             this.lblCreatedBy.AutoSize = true;
-            this.lblCreatedBy.Font = new System.Drawing.Font("Bookman Old Style", 10F);
+            this.lblCreatedBy.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
             this.lblCreatedBy.Location = new System.Drawing.Point(42, 236);
             this.lblCreatedBy.Name = "lblCreatedBy";
-            this.lblCreatedBy.Size = new System.Drawing.Size(104, 21);
+            this.lblCreatedBy.Size = new System.Drawing.Size(108, 20);
             this.lblCreatedBy.TabIndex = 19;
             this.lblCreatedBy.Text = "Created By";
             // 
@@ -214,10 +229,10 @@
             // lblApplicationFees
             // 
             this.lblApplicationFees.AutoSize = true;
-            this.lblApplicationFees.Font = new System.Drawing.Font("Bookman Old Style", 10F);
+            this.lblApplicationFees.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
             this.lblApplicationFees.Location = new System.Drawing.Point(42, 179);
             this.lblApplicationFees.Name = "lblApplicationFees";
-            this.lblApplicationFees.Size = new System.Drawing.Size(150, 21);
+            this.lblApplicationFees.Size = new System.Drawing.Size(157, 20);
             this.lblApplicationFees.TabIndex = 17;
             this.lblApplicationFees.Text = "Application Fees";
             // 
@@ -230,14 +245,15 @@
             this.cbClasses.Name = "cbClasses";
             this.cbClasses.Size = new System.Drawing.Size(341, 29);
             this.cbClasses.TabIndex = 16;
+            this.cbClasses.SelectedIndexChanged += new System.EventHandler(this.cbClasses_SelectedIndexChanged);
             // 
             // lblLicenseClass
             // 
             this.lblLicenseClass.AutoSize = true;
-            this.lblLicenseClass.Font = new System.Drawing.Font("Bookman Old Style", 10F);
+            this.lblLicenseClass.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
             this.lblLicenseClass.Location = new System.Drawing.Point(42, 293);
             this.lblLicenseClass.Name = "lblLicenseClass";
-            this.lblLicenseClass.Size = new System.Drawing.Size(125, 21);
+            this.lblLicenseClass.Size = new System.Drawing.Size(129, 20);
             this.lblLicenseClass.TabIndex = 15;
             this.lblLicenseClass.Text = "License Class";
             // 
@@ -254,20 +270,20 @@
             // lblApplicationDate
             // 
             this.lblApplicationDate.AutoSize = true;
-            this.lblApplicationDate.Font = new System.Drawing.Font("Bookman Old Style", 10F);
+            this.lblApplicationDate.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
             this.lblApplicationDate.Location = new System.Drawing.Point(42, 122);
             this.lblApplicationDate.Name = "lblApplicationDate";
-            this.lblApplicationDate.Size = new System.Drawing.Size(150, 21);
+            this.lblApplicationDate.Size = new System.Drawing.Size(157, 20);
             this.lblApplicationDate.TabIndex = 13;
             this.lblApplicationDate.Text = "Application Date";
             // 
             // lblApplicationID
             // 
             this.lblApplicationID.AutoSize = true;
-            this.lblApplicationID.Font = new System.Drawing.Font("Bookman Old Style", 10F);
+            this.lblApplicationID.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
             this.lblApplicationID.Location = new System.Drawing.Point(42, 65);
             this.lblApplicationID.Name = "lblApplicationID";
-            this.lblApplicationID.Size = new System.Drawing.Size(130, 21);
+            this.lblApplicationID.Size = new System.Drawing.Size(136, 20);
             this.lblApplicationID.TabIndex = 5;
             this.lblApplicationID.Text = "Application ID";
             // 
@@ -285,16 +301,6 @@
             // 
             this.errpAppInfoHandler.ContainerControl = this;
             // 
-            // ctrlPersonCardWithFilter1
-            // 
-            this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
-            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(27, 13);
-            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
-            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(1045, 467);
-            this.ctrlPersonCardWithFilter1.TabIndex = 6;
-            // 
             // frmAddUpdateLocalApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -302,7 +308,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1214, 739);
-            this.Controls.Add(this.lblLocalLicenseApp);
+            this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblAddEditUser);
@@ -311,6 +317,7 @@
             this.MinimizeBox = false;
             this.Name = "frmAddUpdateLocalApp";
             this.Text = "Add / Update Local Application Info";
+            this.Load += new System.EventHandler(this.frmAddUpdateLocalApp_Load);
             this.tcPersonApplicationInfo.ResumeLayout(false);
             this.tpPersonInfo.ResumeLayout(false);
             this.tpApplicationInfo.ResumeLayout(false);
@@ -324,7 +331,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblLocalLicenseApp;
+        private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblAddEditUser;

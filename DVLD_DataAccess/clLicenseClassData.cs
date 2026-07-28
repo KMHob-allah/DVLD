@@ -13,7 +13,7 @@ namespace DVLD_DataAccess
 
         static public DataTable LoadAllLicenseClassesList()
         {
-            string Query = @"SELECT * FROM LicenseClasses";
+            string Query = @"SELECT LicenseClassID, ClassName FROM LicenseClasses";
 
             DataTable dtClassesList = new DataTable();
 

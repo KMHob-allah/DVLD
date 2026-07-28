@@ -124,6 +124,7 @@
             this.opLocalLicense.Size = new System.Drawing.Size(283, 38);
             this.opLocalLicense.Text = "Local License";
             this.opLocalLicense.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.opLocalLicense.Click += new System.EventHandler(this.opLocalLicense_Click);
             // 
             // opInternationalLicense
             // 

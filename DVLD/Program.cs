@@ -1,4 +1,5 @@
-﻿using DVLD.GlobalSettings;
+﻿using DVLD.Applications.LocalApplications;
+using DVLD.GlobalSettings;
 using DVLD.People;
 using DVLD.Users;
 using System;
