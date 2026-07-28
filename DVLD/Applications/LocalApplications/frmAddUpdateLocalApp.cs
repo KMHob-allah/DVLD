@@ -109,7 +109,17 @@ namespace DVLD.Applications.LocalApplications
 
         private void _FillLocalApplicationInfo()
         {
-            // Add Mode
+            
+            if(_Mode == eMode.Update)
+            {
+                _LocalApplication.CreatedByUserID = clGlobalSettings.CurrentUser.UserID;
+                _LocalApplication.LicenseClassID = Convert.ToInt32(cbClasses.SelectedValue);
+
+                return;
+            }
+
+            // Will continue just in add mode
+
             _LocalApplication.ApplicantPersonID = ctrlPersonCardWithFilter1.PersonID;
 
             _LocalApplication.CreatedByUserID = clGlobalSettings.CurrentUser.UserID;
@@ -253,7 +263,8 @@ namespace DVLD.Applications.LocalApplications
 
                 case clLocalApplication.eSaveResult.FaildHasActiveApp:
                 {
-                    MessageBox.Show("Choose another License Class, The selected Person Already have an active application for the selected class with ID : "/* + ActiveApplicationID*/, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Choose another License Class, The selected Person Already have an active application for the selected class",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
 
@@ -271,6 +282,7 @@ namespace DVLD.Applications.LocalApplications
 
                     MessageBox.Show("Application saved successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ctrlPersonCardWithFilter1.FilterEnabled = false;
+                    btnSave.Enabled = false;
                     LocalApplication_DataSaved?.Invoke(this, EventArgs.Empty);
 
                     break;

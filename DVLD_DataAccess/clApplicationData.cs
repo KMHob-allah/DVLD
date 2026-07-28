@@ -121,6 +121,7 @@ namespace DVLD_DataAccess
             using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
             using (SqlCommand Command = new SqlCommand(Query, Connection))
             {
+                Command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
                 Command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
                 Command.Parameters.AddWithValue("@ApplicationDate", ApplicationDate);
                 Command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
@@ -182,7 +183,7 @@ namespace DVLD_DataAccess
             object Result = null;
 
             string Query = @"SELECT 1 FROM Applications A 
-                             WHERE A.ApplicantPersonID = @PersonID AND A.ApplicationTypeID = @ApplicationTypeID And A.ApplicationStatus = 1";
+                             WHERE A.ApplicantPersonID = @ApplicantPersonID AND A.ApplicationTypeID = @ApplicationTypeID And A.ApplicationStatus = 1";
 
             using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
             {

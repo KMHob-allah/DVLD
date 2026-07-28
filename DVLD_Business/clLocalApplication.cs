@@ -108,9 +108,18 @@ namespace DVLD_Business
         public eSaveResult Save()
         {
             eSaveResult SaveResult = eSaveResult.Faild;
+            
+            if(clLicense.IsLicenseExist(this.ApplicantPersonID, LicenseClassID))
+            {
+                SaveResult = eSaveResult.FaildHasActiveLicense;
+                return SaveResult;
+            }
 
-            // I Should Check If This Local Application's Person Has An Active License For The Same License Class
-            // I Should Check If This Local Application Has An Active Application
+            if(clLocalApplication.PersonHasActiveAppForLicenseClass(this.ApplicantPersonID, this.ApplicationType, this.LicenseClassID))
+            {
+                SaveResult = eSaveResult.FaildHasActiveApp;
+                return SaveResult;
+            }
 
             if(base.Save())
             {
