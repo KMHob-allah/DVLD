@@ -141,7 +141,8 @@ namespace DVLD_Business
 
         public bool Cancel()
         {
-            return _UpdateAppStatus(eApplicationStatus.Canceled);
+            if (this.ApplicationStatus == eApplicationStatus.New) return _UpdateAppStatus(eApplicationStatus.Canceled);
+            else return false;
         }
         public bool SetComplete()
         {

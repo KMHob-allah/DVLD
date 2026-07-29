@@ -15,6 +15,8 @@ namespace DVLD.Applications.LocalApplications
 {
     public partial class ctrlLocalAppCard : UserControl
     {
+        public event EventHandler LocalApplicationInfoChanged;
+
         private clLocalApplication _LocalApp;
         private int _LocalAppID;
 
@@ -31,6 +33,7 @@ namespace DVLD.Applications.LocalApplications
         public ctrlLocalAppCard()
         {
             InitializeComponent();
+            ctrlApplicationCard1.ApplicationInfoChanged += WhenApplicationInfoChanged;
         }       
 
         public void _SetDefaultValues()
@@ -67,6 +70,10 @@ namespace DVLD.Applications.LocalApplications
             _FillLocalAppInfo();           
         }
 
+        private void WhenApplicationInfoChanged(object sender, EventArgs e)
+        {
+            LocalApplicationInfoChanged?.Invoke(this, null);
+        }
            
 
     }

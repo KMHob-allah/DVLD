@@ -82,7 +82,7 @@ namespace DVLD.Applications.LocalApplications
 
         //}
 
-        public event EventHandler LocalApplication_DataSaved;
+        public event EventHandler LocalApplicationDataSaved;
         enum eMode { Add, Update }
 
         private eMode _Mode;
@@ -190,7 +190,7 @@ namespace DVLD.Applications.LocalApplications
             lblAppFeesValue.Text = _LocalApplication.PaidFees.ToString();
             lblCeatedByValue.Text = _LocalApplication.UserInfo.UserName.ToString();
 
-            cbClasses.ValueMember = _LocalApplication.LicenseClassID.ToString();
+            //cbClasses.ValueMember = _LocalApplication.LicenseClassID.ToString();
 
         }
         private void _FillcbClasses()
@@ -290,7 +290,7 @@ namespace DVLD.Applications.LocalApplications
                     MessageBox.Show("Application saved successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ctrlPersonCardWithFilter1.FilterEnabled = false;
                     btnSave.Enabled = false;
-                    LocalApplication_DataSaved?.Invoke(this, EventArgs.Empty);
+                    LocalApplicationDataSaved?.Invoke(this, EventArgs.Empty);
 
                     break;
                 }

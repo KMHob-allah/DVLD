@@ -34,30 +34,31 @@
             this.lblFiterBy = new System.Windows.Forms.Label();
             this.cbFilters = new System.Windows.Forms.ComboBox();
             this.lblRecords = new System.Windows.Forms.Label();
-            this.opShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.opShowLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.opIssueDrivingLicenseFirstTime = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.opSchduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.opSchduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.opSchduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.opSchduleTests = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.opCancelApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.opDeleteApplication = new System.Windows.Forms.ToolStripMenuItem();
-            this.opEditApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.opShowAppDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsApplicationOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dvgLocalLicenseApplications = new System.Windows.Forms.DataGridView();
+            this.opShowAppDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.opEditApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.opDeleteApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.opCancelApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.opSchduleTests = new System.Windows.Forms.ToolStripMenuItem();
+            this.opSchduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.opSchduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.opSchduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.opIssueDrivingLicenseFirstTime = new System.Windows.Forms.ToolStripMenuItem();
+            this.opShowLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.opShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvLocalAppsList = new System.Windows.Forms.DataGridView();
             this.pbPeople = new System.Windows.Forms.PictureBox();
             this.btnNewLocalLicenseApplication = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblNoData = new System.Windows.Forms.Label();
             this.cmsApplicationOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgLocalLicenseApplications)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocalAppsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPeople)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,11 +77,13 @@
             // 
             this.tbUserFilterationValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbUserFilterationValue.Font = new System.Drawing.Font("Bookman Old Style", 8.25F);
-            this.tbUserFilterationValue.Location = new System.Drawing.Point(400, 310);
+            this.tbUserFilterationValue.Location = new System.Drawing.Point(439, 310);
             this.tbUserFilterationValue.Name = "tbUserFilterationValue";
-            this.tbUserFilterationValue.Size = new System.Drawing.Size(224, 24);
+            this.tbUserFilterationValue.Size = new System.Drawing.Size(277, 24);
             this.tbUserFilterationValue.TabIndex = 22;
             this.tbUserFilterationValue.Visible = false;
+            this.tbUserFilterationValue.TextChanged += new System.EventHandler(this.tbUserFilterationValue_TextChanged);
+            this.tbUserFilterationValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbUserFilterationValue_KeyPress);
             // 
             // lblFiterBy
             // 
@@ -101,8 +104,9 @@
             this.cbFilters.FormattingEnabled = true;
             this.cbFilters.Location = new System.Drawing.Point(144, 310);
             this.cbFilters.Name = "cbFilters";
-            this.cbFilters.Size = new System.Drawing.Size(224, 27);
+            this.cbFilters.Size = new System.Drawing.Size(277, 27);
             this.cbFilters.TabIndex = 20;
+            this.cbFilters.SelectedIndexChanged += new System.EventHandler(this.cbFilters_SelectedIndexChanged);
             // 
             // lblRecords
             // 
@@ -114,105 +118,35 @@
             this.lblRecords.TabIndex = 18;
             this.lblRecords.Text = "# Records : 0";
             // 
-            // opShowPersonLicenseHistory
-            // 
-            this.opShowPersonLicenseHistory.Name = "opShowPersonLicenseHistory";
-            this.opShowPersonLicenseHistory.Size = new System.Drawing.Size(312, 24);
-            this.opShowPersonLicenseHistory.Text = "Show Person License History";
-            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(309, 6);
-            // 
-            // opShowLicense
-            // 
-            this.opShowLicense.Name = "opShowLicense";
-            this.opShowLicense.Size = new System.Drawing.Size(312, 24);
-            this.opShowLicense.Text = "Show License";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(313, 6);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(309, 6);
-            // 
-            // opIssueDrivingLicenseFirstTime
-            // 
-            this.opIssueDrivingLicenseFirstTime.Name = "opIssueDrivingLicenseFirstTime";
-            this.opIssueDrivingLicenseFirstTime.Size = new System.Drawing.Size(312, 24);
-            this.opIssueDrivingLicenseFirstTime.Text = "Issue Driving License (First Time)";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(313, 6);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(309, 6);
-            // 
-            // opSchduleStreetTest
-            // 
-            this.opSchduleStreetTest.Name = "opSchduleStreetTest";
-            this.opSchduleStreetTest.Size = new System.Drawing.Size(239, 26);
-            this.opSchduleStreetTest.Text = "Schdule Street Test";
-            // 
-            // opSchduleWrittenTest
-            // 
-            this.opSchduleWrittenTest.Name = "opSchduleWrittenTest";
-            this.opSchduleWrittenTest.Size = new System.Drawing.Size(239, 26);
-            this.opSchduleWrittenTest.Text = "Schdule Written Test";
-            // 
-            // opSchduleVisionTest
-            // 
-            this.opSchduleVisionTest.Name = "opSchduleVisionTest";
-            this.opSchduleVisionTest.Size = new System.Drawing.Size(239, 26);
-            this.opSchduleVisionTest.Text = "Schdule Vision Test";
-            // 
-            // opSchduleTests
-            // 
-            this.opSchduleTests.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.opSchduleVisionTest,
-            this.opSchduleWrittenTest,
-            this.opSchduleStreetTest});
-            this.opSchduleTests.Name = "opSchduleTests";
-            this.opSchduleTests.Size = new System.Drawing.Size(312, 24);
-            this.opSchduleTests.Text = "Schdule Tests";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(313, 6);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(309, 6);
-            // 
-            // opCancelApplication
-            // 
-            this.opCancelApplication.Name = "opCancelApplication";
-            this.opCancelApplication.Size = new System.Drawing.Size(312, 24);
-            this.opCancelApplication.Text = "Cancel Application";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(313, 6);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(309, 6);
-            // 
-            // opDeleteApplication
-            // 
-            this.opDeleteApplication.Name = "opDeleteApplication";
-            this.opDeleteApplication.Size = new System.Drawing.Size(312, 24);
-            this.opDeleteApplication.Text = "Delete Application";
-            // 
-            // opEditApplication
-            // 
-            this.opEditApplication.Name = "opEditApplication";
-            this.opEditApplication.Size = new System.Drawing.Size(312, 24);
-            this.opEditApplication.Text = "Edit Application";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(313, 6);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(309, 6);
-            // 
-            // opShowAppDetails
-            // 
-            this.opShowAppDetails.Name = "opShowAppDetails";
-            this.opShowAppDetails.Size = new System.Drawing.Size(312, 24);
-            this.opShowAppDetails.Text = "Show Application Details";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(313, 6);
             // 
             // cmsApplicationOptions
             // 
@@ -234,25 +168,111 @@
             this.toolStripSeparator5,
             this.opShowPersonLicenseHistory});
             this.cmsApplicationOptions.Name = "cmsOptions";
-            this.cmsApplicationOptions.Size = new System.Drawing.Size(313, 232);
+            this.cmsApplicationOptions.Size = new System.Drawing.Size(317, 276);
+            this.cmsApplicationOptions.Opening += new System.ComponentModel.CancelEventHandler(this.cmsApplicationOptions_Opening);
             // 
-            // dvgLocalLicenseApplications
+            // opShowAppDetails
             // 
-            this.dvgLocalLicenseApplications.AllowUserToAddRows = false;
-            this.dvgLocalLicenseApplications.AllowUserToDeleteRows = false;
-            this.dvgLocalLicenseApplications.AllowUserToOrderColumns = true;
-            this.dvgLocalLicenseApplications.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dvgLocalLicenseApplications.BackgroundColor = System.Drawing.Color.White;
-            this.dvgLocalLicenseApplications.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dvgLocalLicenseApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgLocalLicenseApplications.ContextMenuStrip = this.cmsApplicationOptions;
-            this.dvgLocalLicenseApplications.Location = new System.Drawing.Point(29, 356);
-            this.dvgLocalLicenseApplications.Name = "dvgLocalLicenseApplications";
-            this.dvgLocalLicenseApplications.ReadOnly = true;
-            this.dvgLocalLicenseApplications.RowHeadersWidth = 51;
-            this.dvgLocalLicenseApplications.RowTemplate.Height = 24;
-            this.dvgLocalLicenseApplications.Size = new System.Drawing.Size(1413, 387);
-            this.dvgLocalLicenseApplications.TabIndex = 17;
+            this.opShowAppDetails.Image = global::DVLD.Properties.Resources.info;
+            this.opShowAppDetails.Name = "opShowAppDetails";
+            this.opShowAppDetails.Size = new System.Drawing.Size(316, 26);
+            this.opShowAppDetails.Text = "Show Application Details";
+            this.opShowAppDetails.Click += new System.EventHandler(this.opShowAppDetails_Click);
+            // 
+            // opEditApplication
+            // 
+            this.opEditApplication.Image = global::DVLD.Properties.Resources.edit_32;
+            this.opEditApplication.Name = "opEditApplication";
+            this.opEditApplication.Size = new System.Drawing.Size(316, 26);
+            this.opEditApplication.Text = "Edit Application";
+            this.opEditApplication.Click += new System.EventHandler(this.opEditApplication_Click);
+            // 
+            // opDeleteApplication
+            // 
+            this.opDeleteApplication.Image = global::DVLD.Properties.Resources.Delete_32_2;
+            this.opDeleteApplication.Name = "opDeleteApplication";
+            this.opDeleteApplication.Size = new System.Drawing.Size(316, 26);
+            this.opDeleteApplication.Text = "Delete Application";
+            this.opDeleteApplication.Click += new System.EventHandler(this.opDeleteApplication_Click);
+            // 
+            // opCancelApplication
+            // 
+            this.opCancelApplication.Image = global::DVLD.Properties.Resources.Delete_32;
+            this.opCancelApplication.Name = "opCancelApplication";
+            this.opCancelApplication.Size = new System.Drawing.Size(316, 26);
+            this.opCancelApplication.Text = "Cancel Application";
+            this.opCancelApplication.Click += new System.EventHandler(this.opCancelApplication_Click);
+            // 
+            // opSchduleTests
+            // 
+            this.opSchduleTests.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opSchduleVisionTest,
+            this.opSchduleWrittenTest,
+            this.opSchduleStreetTest});
+            this.opSchduleTests.Image = global::DVLD.Properties.Resources.Schedule_Test_32;
+            this.opSchduleTests.Name = "opSchduleTests";
+            this.opSchduleTests.Size = new System.Drawing.Size(316, 26);
+            this.opSchduleTests.Text = "Schdule Tests";
+            // 
+            // opSchduleVisionTest
+            // 
+            this.opSchduleVisionTest.Image = global::DVLD.Properties.Resources.Vision_Test_32;
+            this.opSchduleVisionTest.Name = "opSchduleVisionTest";
+            this.opSchduleVisionTest.Size = new System.Drawing.Size(239, 26);
+            this.opSchduleVisionTest.Text = "Schdule Vision Test";
+            // 
+            // opSchduleWrittenTest
+            // 
+            this.opSchduleWrittenTest.Image = global::DVLD.Properties.Resources.Written_Test_32;
+            this.opSchduleWrittenTest.Name = "opSchduleWrittenTest";
+            this.opSchduleWrittenTest.Size = new System.Drawing.Size(239, 26);
+            this.opSchduleWrittenTest.Text = "Schdule Written Test";
+            // 
+            // opSchduleStreetTest
+            // 
+            this.opSchduleStreetTest.Image = global::DVLD.Properties.Resources.Street_Test_32;
+            this.opSchduleStreetTest.Name = "opSchduleStreetTest";
+            this.opSchduleStreetTest.Size = new System.Drawing.Size(239, 26);
+            this.opSchduleStreetTest.Text = "Schdule Street Test";
+            // 
+            // opIssueDrivingLicenseFirstTime
+            // 
+            this.opIssueDrivingLicenseFirstTime.Image = global::DVLD.Properties.Resources.IssueDrivingLicense_32;
+            this.opIssueDrivingLicenseFirstTime.Name = "opIssueDrivingLicenseFirstTime";
+            this.opIssueDrivingLicenseFirstTime.Size = new System.Drawing.Size(316, 26);
+            this.opIssueDrivingLicenseFirstTime.Text = "Issue Driving License (First Time)";
+            // 
+            // opShowLicense
+            // 
+            this.opShowLicense.Image = global::DVLD.Properties.Resources.License_View_32;
+            this.opShowLicense.Name = "opShowLicense";
+            this.opShowLicense.Size = new System.Drawing.Size(316, 26);
+            this.opShowLicense.Text = "Show License";
+            // 
+            // opShowPersonLicenseHistory
+            // 
+            this.opShowPersonLicenseHistory.Image = global::DVLD.Properties.Resources.PersonLicenseHistory_32;
+            this.opShowPersonLicenseHistory.Name = "opShowPersonLicenseHistory";
+            this.opShowPersonLicenseHistory.Size = new System.Drawing.Size(316, 26);
+            this.opShowPersonLicenseHistory.Text = "Show Person License History";
+            // 
+            // dgvLocalAppsList
+            // 
+            this.dgvLocalAppsList.AllowUserToAddRows = false;
+            this.dgvLocalAppsList.AllowUserToDeleteRows = false;
+            this.dgvLocalAppsList.AllowUserToOrderColumns = true;
+            this.dgvLocalAppsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLocalAppsList.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLocalAppsList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvLocalAppsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLocalAppsList.ContextMenuStrip = this.cmsApplicationOptions;
+            this.dgvLocalAppsList.Location = new System.Drawing.Point(29, 356);
+            this.dgvLocalAppsList.Name = "dgvLocalAppsList";
+            this.dgvLocalAppsList.ReadOnly = true;
+            this.dgvLocalAppsList.RowHeadersWidth = 51;
+            this.dgvLocalAppsList.RowTemplate.Height = 24;
+            this.dgvLocalAppsList.Size = new System.Drawing.Size(1462, 387);
+            this.dgvLocalAppsList.TabIndex = 17;
             // 
             // pbPeople
             // 
@@ -268,32 +288,47 @@
             // 
             this.btnNewLocalLicenseApplication.Font = new System.Drawing.Font("Bookman Old Style", 12F);
             this.btnNewLocalLicenseApplication.Image = global::DVLD.Properties.Resources.New_Application_64;
-            this.btnNewLocalLicenseApplication.Location = new System.Drawing.Point(1348, 265);
+            this.btnNewLocalLicenseApplication.Location = new System.Drawing.Point(1384, 258);
             this.btnNewLocalLicenseApplication.Name = "btnNewLocalLicenseApplication";
-            this.btnNewLocalLicenseApplication.Size = new System.Drawing.Size(94, 81);
+            this.btnNewLocalLicenseApplication.Size = new System.Drawing.Size(107, 92);
             this.btnNewLocalLicenseApplication.TabIndex = 24;
             this.btnNewLocalLicenseApplication.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNewLocalLicenseApplication.UseVisualStyleBackColor = true;
+            this.btnNewLocalLicenseApplication.Click += new System.EventHandler(this.btnNewLocalLicenseApplication_Click);
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Bookman Old Style", 12F);
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1308, 762);
+            this.btnClose.Location = new System.Drawing.Point(1357, 762);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 45);
             this.btnClose.TabIndex = 19;
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblNoData
+            // 
+            this.lblNoData.AutoSize = true;
+            this.lblNoData.Font = new System.Drawing.Font("Cooper Black", 20F);
+            this.lblNoData.ForeColor = System.Drawing.Color.Silver;
+            this.lblNoData.Location = new System.Drawing.Point(270, 494);
+            this.lblNoData.Name = "lblNoData";
+            this.lblNoData.Size = new System.Drawing.Size(997, 39);
+            this.lblNoData.TabIndex = 26;
+            this.lblNoData.Text = "You don\'t have local driving license applications to show";
+            this.lblNoData.Visible = false;
             // 
             // frmLocalAppsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1473, 837);
+            this.ClientSize = new System.Drawing.Size(1525, 837);
+            this.Controls.Add(this.lblNoData);
             this.Controls.Add(this.pbPeople);
             this.Controls.Add(this.btnNewLocalLicenseApplication);
             this.Controls.Add(this.lblLocalLicenseApplications);
@@ -301,14 +336,15 @@
             this.Controls.Add(this.lblFiterBy);
             this.Controls.Add(this.cbFilters);
             this.Controls.Add(this.lblRecords);
-            this.Controls.Add(this.dvgLocalLicenseApplications);
+            this.Controls.Add(this.dgvLocalAppsList);
             this.Controls.Add(this.btnClose);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLocalAppsList";
-            this.Text = "frmLocalAppsList";
+            this.Text = "Local Driving License Applications";
+            this.Load += new System.EventHandler(this.frmLocalAppsList_Load);
             this.cmsApplicationOptions.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dvgLocalLicenseApplications)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocalAppsList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPeople)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -341,8 +377,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem opShowAppDetails;
         private System.Windows.Forms.ContextMenuStrip cmsApplicationOptions;
-        private System.Windows.Forms.DataGridView dvgLocalLicenseApplications;
+        private System.Windows.Forms.DataGridView dgvLocalAppsList;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.PictureBox pbPeople;
+        private System.Windows.Forms.Label lblNoData;
     }
 }

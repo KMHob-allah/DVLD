@@ -31,20 +31,20 @@
             this.components = new System.ComponentModel.Container();
             this.dgvPeopleList = new System.Windows.Forms.DataGridView();
             this.cmsPersonOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.opShowDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.opAddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.opEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.opDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.opSendEmail = new System.Windows.Forms.ToolStripMenuItem();
+            this.opSendSMS = new System.Windows.Forms.ToolStripMenuItem();
             this.lblPeopleList = new System.Windows.Forms.Label();
             this.tbUserFilterationValue = new System.Windows.Forms.TextBox();
             this.cbFilters = new System.Windows.Forms.ComboBox();
             this.lblRecords = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblNoData = new System.Windows.Forms.Label();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.opShowDetails = new System.Windows.Forms.ToolStripMenuItem();
-            this.opAddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
-            this.opEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.opDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.opSendEmail = new System.Windows.Forms.ToolStripMenuItem();
-            this.opSendSMS = new System.Windows.Forms.ToolStripMenuItem();
             this.pbPeople = new System.Windows.Forms.PictureBox();
             this.btnAddNewPerson = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -88,6 +88,64 @@
             this.cmsPersonOptions.Name = "cmsOptions";
             this.cmsPersonOptions.Size = new System.Drawing.Size(196, 172);
             this.cmsPersonOptions.Opening += new System.ComponentModel.CancelEventHandler(this.cmsPersonOptions_Opening);
+            // 
+            // opShowDetails
+            // 
+            this.opShowDetails.Image = global::DVLD.Properties.Resources.info;
+            this.opShowDetails.Name = "opShowDetails";
+            this.opShowDetails.Size = new System.Drawing.Size(195, 26);
+            this.opShowDetails.Text = "Show Details";
+            this.opShowDetails.Click += new System.EventHandler(this.opShowDetails_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(192, 6);
+            // 
+            // opAddNewPerson
+            // 
+            this.opAddNewPerson.Image = global::DVLD.Properties.Resources.AddPerson_32;
+            this.opAddNewPerson.Name = "opAddNewPerson";
+            this.opAddNewPerson.Size = new System.Drawing.Size(195, 26);
+            this.opAddNewPerson.Text = "Add New Person";
+            this.opAddNewPerson.Click += new System.EventHandler(this.opAddNewPerson_Click);
+            // 
+            // opEdit
+            // 
+            this.opEdit.Image = global::DVLD.Properties.Resources.Details;
+            this.opEdit.Name = "opEdit";
+            this.opEdit.Size = new System.Drawing.Size(195, 26);
+            this.opEdit.Text = "Edit";
+            this.opEdit.Click += new System.EventHandler(this.opEdit_Click);
+            // 
+            // opDelete
+            // 
+            this.opDelete.Image = global::DVLD.Properties.Resources.recycle_bin;
+            this.opDelete.Name = "opDelete";
+            this.opDelete.Size = new System.Drawing.Size(195, 26);
+            this.opDelete.Text = "Delete";
+            this.opDelete.Click += new System.EventHandler(this.opDelete_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(192, 6);
+            // 
+            // opSendEmail
+            // 
+            this.opSendEmail.Image = global::DVLD.Properties.Resources.send_mail;
+            this.opSendEmail.Name = "opSendEmail";
+            this.opSendEmail.Size = new System.Drawing.Size(195, 26);
+            this.opSendEmail.Text = "Send Email";
+            this.opSendEmail.Click += new System.EventHandler(this.UnImplementedFeatures_Click);
+            // 
+            // opSendSMS
+            // 
+            this.opSendSMS.Image = global::DVLD.Properties.Resources.call_32;
+            this.opSendSMS.Name = "opSendSMS";
+            this.opSendSMS.Size = new System.Drawing.Size(195, 26);
+            this.opSendSMS.Text = "Send SMS";
+            this.opSendSMS.Click += new System.EventHandler(this.UnImplementedFeatures_Click);
             // 
             // lblPeopleList
             // 
@@ -156,64 +214,6 @@
             this.lblNoData.TabIndex = 19;
             this.lblNoData.Text = "You don\'t have people to show";
             this.lblNoData.Visible = false;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(192, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(192, 6);
-            // 
-            // opShowDetails
-            // 
-            this.opShowDetails.Image = global::DVLD.Properties.Resources.info;
-            this.opShowDetails.Name = "opShowDetails";
-            this.opShowDetails.Size = new System.Drawing.Size(195, 26);
-            this.opShowDetails.Text = "Show Details";
-            this.opShowDetails.Click += new System.EventHandler(this.opShowDetails_Click);
-            // 
-            // opAddNewPerson
-            // 
-            this.opAddNewPerson.Image = global::DVLD.Properties.Resources.AddPerson_32;
-            this.opAddNewPerson.Name = "opAddNewPerson";
-            this.opAddNewPerson.Size = new System.Drawing.Size(195, 26);
-            this.opAddNewPerson.Text = "Add New Person";
-            this.opAddNewPerson.Click += new System.EventHandler(this.opAddNewPerson_Click);
-            // 
-            // opEdit
-            // 
-            this.opEdit.Image = global::DVLD.Properties.Resources.Details;
-            this.opEdit.Name = "opEdit";
-            this.opEdit.Size = new System.Drawing.Size(195, 26);
-            this.opEdit.Text = "Edit";
-            this.opEdit.Click += new System.EventHandler(this.opEdit_Click);
-            // 
-            // opDelete
-            // 
-            this.opDelete.Image = global::DVLD.Properties.Resources.recycle_bin;
-            this.opDelete.Name = "opDelete";
-            this.opDelete.Size = new System.Drawing.Size(195, 26);
-            this.opDelete.Text = "Delete";
-            this.opDelete.Click += new System.EventHandler(this.opDelete_Click);
-            // 
-            // opSendEmail
-            // 
-            this.opSendEmail.Image = global::DVLD.Properties.Resources.send_mail;
-            this.opSendEmail.Name = "opSendEmail";
-            this.opSendEmail.Size = new System.Drawing.Size(195, 26);
-            this.opSendEmail.Text = "Send Email";
-            this.opSendEmail.Click += new System.EventHandler(this.UnImplementedFeatures_Click);
-            // 
-            // opSendSMS
-            // 
-            this.opSendSMS.Image = global::DVLD.Properties.Resources.call_32;
-            this.opSendSMS.Name = "opSendSMS";
-            this.opSendSMS.Size = new System.Drawing.Size(195, 26);
-            this.opSendSMS.Text = "Send SMS";
-            this.opSendSMS.Click += new System.EventHandler(this.UnImplementedFeatures_Click);
             // 
             // pbPeople
             // 

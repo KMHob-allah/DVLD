@@ -274,6 +274,14 @@ namespace DVLD.Users
             frmChangePassword frm = new frmChangePassword(Convert.ToInt32(dgvUsersList.CurrentRow.Cells["UserID"].Value));
             frm.ShowDialog();
 
-        }        
+        }
+
+        private void cmsUserOptions_Opening(object sender, CancelEventArgs e)
+        {
+            if (dgvUsersList.Rows.Count == 0)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

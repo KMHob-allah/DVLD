@@ -72,59 +72,59 @@
             // opSendSMS
             // 
             this.opSendSMS.Name = "opSendSMS";
-            this.opSendSMS.Size = new System.Drawing.Size(200, 24);
+            this.opSendSMS.Size = new System.Drawing.Size(210, 24);
             this.opSendSMS.Text = "Send SMS";
             this.opSendSMS.Click += new System.EventHandler(this.opSendSMS_Click);
             // 
             // opSendEmail
             // 
             this.opSendEmail.Name = "opSendEmail";
-            this.opSendEmail.Size = new System.Drawing.Size(200, 24);
+            this.opSendEmail.Size = new System.Drawing.Size(210, 24);
             this.opSendEmail.Text = "Send Email";
             this.opSendEmail.Click += new System.EventHandler(this.opSendEmail_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(207, 6);
             // 
             // opChangePassword
             // 
             this.opChangePassword.Name = "opChangePassword";
-            this.opChangePassword.Size = new System.Drawing.Size(200, 24);
+            this.opChangePassword.Size = new System.Drawing.Size(210, 24);
             this.opChangePassword.Text = "Change Password";
             this.opChangePassword.Click += new System.EventHandler(this.opChangePassword_Click);
             // 
             // opDelete
             // 
             this.opDelete.Name = "opDelete";
-            this.opDelete.Size = new System.Drawing.Size(200, 24);
+            this.opDelete.Size = new System.Drawing.Size(210, 24);
             this.opDelete.Text = "Delete";
             this.opDelete.Click += new System.EventHandler(this.opDelete_Click);
             // 
             // opEdit
             // 
             this.opEdit.Name = "opEdit";
-            this.opEdit.Size = new System.Drawing.Size(200, 24);
+            this.opEdit.Size = new System.Drawing.Size(210, 24);
             this.opEdit.Text = "Edit";
             this.opEdit.Click += new System.EventHandler(this.opEdit_Click);
             // 
             // opAddNewUser
             // 
             this.opAddNewUser.Name = "opAddNewUser";
-            this.opAddNewUser.Size = new System.Drawing.Size(200, 24);
+            this.opAddNewUser.Size = new System.Drawing.Size(210, 24);
             this.opAddNewUser.Text = "Add New User";
             this.opAddNewUser.Click += new System.EventHandler(this.opAddNewUser_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
             // 
             // opShowDetails
             // 
             this.opShowDetails.Name = "opShowDetails";
-            this.opShowDetails.Size = new System.Drawing.Size(200, 24);
+            this.opShowDetails.Size = new System.Drawing.Size(210, 24);
             this.opShowDetails.Text = "Show Details";
             this.opShowDetails.Click += new System.EventHandler(this.opShowDetails_Click);
             // 
@@ -143,7 +143,8 @@
             this.opSendEmail,
             this.opSendSMS});
             this.cmsUserOptions.Name = "cmsOptions";
-            this.cmsUserOptions.Size = new System.Drawing.Size(201, 184);
+            this.cmsUserOptions.Size = new System.Drawing.Size(211, 212);
+            this.cmsUserOptions.Opening += new System.ComponentModel.CancelEventHandler(this.cmsUserOptions_Opening);
             // 
             // lblManageUsers
             // 

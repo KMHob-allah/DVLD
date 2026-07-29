@@ -183,6 +183,7 @@
             this.opLocalApps.Name = "opLocalApps";
             this.opLocalApps.Size = new System.Drawing.Size(393, 38);
             this.opLocalApps.Text = "Local Driving License Applications";
+            this.opLocalApps.Click += new System.EventHandler(this.opLocalApps_Click);
             // 
             // opInternationalApps
             // 

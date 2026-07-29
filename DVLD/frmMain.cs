@@ -72,5 +72,11 @@ namespace DVLD
 
             frm.ShowDialog();
         }
+
+        private void opLocalApps_Click(object sender, EventArgs e)
+        {
+            frmLocalAppsList frm = new frmLocalAppsList();
+            frm.ShowDialog();
+        }
     }
 }

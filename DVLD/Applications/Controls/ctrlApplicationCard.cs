@@ -15,6 +15,8 @@ namespace DVLD.Applications.Controls
 {
     public partial class ctrlApplicationCard : UserControl
     {
+        public event EventHandler ApplicationInfoChanged;
+
         private clApplication _Application;
         private int _ApplicationID;
 
@@ -71,11 +73,16 @@ namespace DVLD.Applications.Controls
             _FillAppInfo();
         }      
 
-        private void lnklblViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)        
+        private void lnklblViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmPersonInfo frm = new frmPersonInfo(_Application.ApplicantPersonID);
+            frm.PersonInfo_Changed += WhenApplication_DataChanged;
             frm.ShowDialog();
+        }
 
+        private void WhenApplication_DataChanged(object sender, EventArgs e)
+        {
+            ApplicationInfoChanged?.Invoke(this, null);
         }
     }
 }
