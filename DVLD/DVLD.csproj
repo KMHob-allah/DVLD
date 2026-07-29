@@ -58,11 +58,29 @@
     <Compile Include="Applications\ApplicationTypes\frmUpdateAppType.Designer.cs">
       <DependentUpon>frmUpdateAppType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Controls\ctrlApplicationCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Applications\Controls\ctrlApplicationCard.Designer.cs">
+      <DependentUpon>ctrlApplicationCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\LocalApplications\ctrlLocalAppCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Applications\LocalApplications\ctrlLocalAppCard.Designer.cs">
+      <DependentUpon>ctrlLocalAppCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\LocalApplications\frmAddUpdateLocalApp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Applications\LocalApplications\frmAddUpdateLocalApp.Designer.cs">
       <DependentUpon>frmAddUpdateLocalApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\LocalApplications\frmLocalAppInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\LocalApplications\frmLocalAppInfo.Designer.cs">
+      <DependentUpon>frmLocalAppInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -166,8 +184,17 @@
     <EmbeddedResource Include="Applications\ApplicationTypes\frmUpdateAppType.resx">
       <DependentUpon>frmUpdateAppType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Controls\ctrlApplicationCard.resx">
+      <DependentUpon>ctrlApplicationCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\LocalApplications\ctrlLocalAppCard.resx">
+      <DependentUpon>ctrlLocalAppCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Applications\LocalApplications\frmAddUpdateLocalApp.resx">
       <DependentUpon>frmAddUpdateLocalApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\LocalApplications\frmLocalAppInfo.resx">
+      <DependentUpon>frmLocalAppInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
