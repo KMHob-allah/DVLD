@@ -75,6 +75,8 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblLocalAppDetails);
             this.Controls.Add(this.ctrlLocalAppCard1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLocalAppInfo";
             this.Text = "frmLocalAppInfo";
             this.ResumeLayout(false);
