@@ -162,11 +162,15 @@ namespace DVLD_Business
         {
             return clApplicationData.PersonHasActiveApp(ApplicantPersonID, (byte)ApplicationTypeID);
         }
-        static public bool PersonHasActiveAppForLicenseClass(int ApplicationPersonID, clApplicationType.eApplicationType ApplicationTypeID, int LicenseClass)
+       
+        static public bool PersonHasActiveAppForLicenseClass(int ApplicantPersonID, clApplicationType.eApplicationType ApplicationTypeID, int LicenseClass)
         {
-            return clApplicationData.PersonHasActiveAppForLicenseClass(ApplicationPersonID, (byte)ApplicationTypeID, LicenseClass);
+            return clApplicationData.PersonHasActiveAppForLicenseClass(ApplicantPersonID, (byte)ApplicationTypeID, LicenseClass);
         }
 
-
+        static public bool HasLegalDrivingAge(int ApplicantPersonID, int LicenseClass)
+        {
+            return clApplicationData.HasLegalDrivingAge(ApplicantPersonID, LicenseClass);
+        }
     }
 }

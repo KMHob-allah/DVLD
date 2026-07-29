@@ -268,6 +268,13 @@ namespace DVLD.Applications.LocalApplications
                     break;
                 }
 
+                case clLocalApplication.eSaveResult.FaildLessThanMinAge:
+                {
+                    MessageBox.Show("Sorry, The applicant does not meet the minimum legal age requirenment for this license class",
+                        "Age Restriction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                }
+
                 case clLocalApplication.eSaveResult.Success:
                 {
                     if (_Mode == eMode.Add)

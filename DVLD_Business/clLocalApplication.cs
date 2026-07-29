@@ -10,7 +10,7 @@ namespace DVLD_Business
 {
     public class clLocalApplication : clApplication
     {
-        public enum eSaveResult {Success, FaildHasActiveApp, FaildHasActiveLicense, Faild}
+        public enum eSaveResult {Success, FaildHasActiveApp, FaildHasActiveLicense, FaildLessThanMinAge, Faild}
         public enum eMode { Add, Update}
 
         eMode _Mode;
@@ -118,6 +118,12 @@ namespace DVLD_Business
             if(clLocalApplication.PersonHasActiveAppForLicenseClass(this.ApplicantPersonID, this.ApplicationType, this.LicenseClassID))
             {
                 SaveResult = eSaveResult.FaildHasActiveApp;
+                return SaveResult;
+            }
+
+            if(!clLocalApplication.HasLegalDrivingAge(this.ApplicantPersonID, this.LicenseClassID))
+            {
+                SaveResult = eSaveResult.FaildLessThanMinAge;
                 return SaveResult;
             }
 

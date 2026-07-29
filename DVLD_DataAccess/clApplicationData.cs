@@ -228,6 +228,34 @@ namespace DVLD_DataAccess
 
             return Result != null;
         }
+      
+        // I Prefer To Put This Function To Local Driving License Application Data
+        static public bool HasLegalDrivingAge(int ApplicantPersonID, int LicenseClassID)
+        {
+            int Result ;
+
+            string Query = @"IF EXISTS (SELECT 1 FROM People P WHERE P.PersonID = @ApplicantPersonID AND
+                            (DATEDIFF(YEAR, BirthDate, GETDATE()) - 
+                            CASE WHEN DATEADD(YEAR, DATEDIFF(YEAR,BirthDate, GETDATE()), BirthDate) > GETDATE() THEN 1 ELSE 0 END)
+                            >= (SELECT L.MinimumAllowedAge FROM LicenseClasses L WHERE L.LicenseClassID = @LicenseClassID))
+                            BEGIN SELECT 1;END
+                            ELSE BEGIN SELECT 0; END";
+
+            using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
+            {
+                using (SqlCommand Command = new SqlCommand(Query, Connection))
+                {
+                    Command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
+                    Command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+                    Connection.Open();
+                    Result = Convert.ToInt32(Command.ExecuteScalar());
+                }
+            }
+
+            return Result == 1;
+        }
+
         static public bool UpdateAppStatus(int ApplicationID, byte NewStatus)
         {
             int RowsAffected;
