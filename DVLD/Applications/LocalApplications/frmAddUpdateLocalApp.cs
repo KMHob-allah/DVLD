@@ -284,7 +284,7 @@ namespace DVLD.Applications.LocalApplications
                         _LocalAppID = _LocalApplication.LocalApplicationID;
 
                         _Mode = eMode.Update;
-                        lblAddEditUser.Text = "Update Local Driving License Application";
+                        lblHeader.Text = "Update Local Driving License Application";
                     }
 
                     MessageBox.Show("Application saved successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

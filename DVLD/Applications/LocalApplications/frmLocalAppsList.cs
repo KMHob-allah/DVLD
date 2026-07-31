@@ -36,7 +36,7 @@ namespace DVLD.Applications.LocalApplications
             {
                 if (cbFilters.SelectedItem.ToString() == "Local Application ID") 
                 {
-                    dvLocalAppsList.RowFilter = $"LocalDrivingLicenseApplicationID = '{Convert.ToInt32(_Value)}'";
+                    dvLocalAppsList.RowFilter = $"LocalAppID = '{Convert.ToInt32(_Value)}'";
                 }
 
                 else dvLocalAppsList.RowFilter = $"{ColumnName} LIKE '{_Value}%'";
@@ -112,66 +112,37 @@ namespace DVLD.Applications.LocalApplications
         }
         private void _HandleEnablityOptions()
         {
-            int LocalAppID = Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value);
+            int LocalAppID = Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells[0].Value);
             int PassedTests = Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells["PassedTestCount"].Value);
-            string Status = dgvLocalAppsList.CurrentRow.Cells["Status"].Value.ToString();
+            
+            clLocalApplication LocalApp = clLocalApplication.FindByLocalAppID(LocalAppID);           
 
             _ResetcmsOptions();
 
-            // opDeletion Did not handled
-            // opEditation Did not handled
-            // Issue Driving License First Time Did not handled
-            // Show License Did not handled
+            bool IsPassedVisionTest  = LocalApp.DoesPassedTestType(clTestType.eTestType.Vision);
+            bool IsPassedWrittenTest = LocalApp.DoesPassedTestType(clTestType.eTestType.Written);
+            bool IsPassedStreetTest  = LocalApp.DoesPassedTestType(clTestType.eTestType.Street);
+            bool IsLicenseIssued     = LocalApp.IsLicenseIssued();
 
+            clApplication.eApplicationStatus Status = LocalApp.ApplicationStatus;
+
+            opEditApplication.Enabled = (Status == clApplication.eApplicationStatus.New && !IsPassedVisionTest && !LocalApp.HasAnyAppointment());
             
-            switch (PassedTests)
-            {
-                case 0: 
+            opDeleteApplication.Enabled = ((Status == clApplication.eApplicationStatus.New || Status == clApplication.eApplicationStatus.Cancelled) && !IsPassedVisionTest && !LocalApp.HasAnyAppointment());
 
-                    _HandleTestsEnablity(true, false, false); // Enable Vision Test
-                    
-                    break;
+            opCancelApplication.Enabled = (Status == clApplication.eApplicationStatus.New && !IsPassedVisionTest);
 
-                case 1:
+            opSchduleTests.Enabled = (Status == clApplication.eApplicationStatus.New && !IsPassedStreetTest);
 
-                    _HandleTestsEnablity(false, true, false); // Enable Written Test                   
+            opSchduleVisionTest.Enabled = (opSchduleTests.Enabled && !IsPassedVisionTest);
 
-                    break;
+            opSchduleWrittenTest.Enabled = (opSchduleTests.Enabled && IsPassedVisionTest);
 
-                case 2:
+            opSchduleStreetTest.Enabled = (opSchduleTests.Enabled && IsPassedWrittenTest);
 
-                    _HandleTestsEnablity(false, false, true); // Enable Street Test                   
+            opIssueDrivingLicenseFirstTime.Enabled = (Status == clApplication.eApplicationStatus.New && IsPassedStreetTest && !IsLicenseIssued);
 
-                    break;
-
-                case 3:
-
-                    opSchduleTests.Enabled = false; // Disable All Tests                    
-
-                    break;
-            }
-
-            switch(status)
-            {
-                case "New":
-                {
-                        opCancelApplication.Enabled = true;
-                    break;
-                }
-
-                case "Canceled":
-                {
-                        opCancelApplication.Enabled = false;
-                    break;
-                }
-
-                case "Completed":
-                {
-                        opCancelApplication.Enabled = false;
-                        break;
-                }
-            }
-          
+            opShowLicense.Enabled = (Status == clApplication.eApplicationStatus.New && IsLicenseIssued);            
         }
 
         private void btnNewLocalLicenseApplication_Click(object sender, EventArgs e)
@@ -187,13 +158,13 @@ namespace DVLD.Applications.LocalApplications
 
         private void opShowAppDetails_Click(object sender, EventArgs e)
         {
-            frmLocalAppInfo frm = new frmLocalAppInfo(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value));
+            frmLocalAppInfo frm = new frmLocalAppInfo(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells[0].Value));
             frm.LocalAppInfoChanged += WhenLocalAppInfoChanged;            
             frm.ShowDialog();
         }
         private void opEditApplication_Click(object sender, EventArgs e)
         {
-            frmAddUpdateLocalApp frm = new frmAddUpdateLocalApp(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells["LocalDrivingLicenseApplicationID"].Value));
+            frmAddUpdateLocalApp frm = new frmAddUpdateLocalApp(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells["LocalAppID"].Value));
             frm.LocalApplicationDataSaved += WhenLocalAppInfoChanged;
             frm.ShowDialog();
         }
@@ -220,9 +191,9 @@ namespace DVLD.Applications.LocalApplications
                         else MessageBox.Show("Application was not Deleted, Because it has data linked to it", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    catch (SqlException ex)
+                    catch (SqlException)
                     {
-                        MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Could not delete the application", "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         //Log Later
                     }
                 }               
@@ -239,7 +210,7 @@ namespace DVLD.Applications.LocalApplications
                 {
                         if (LocalApplication.Cancel())
                         {
-                            MessageBox.Show("Application canceled successfully",
+                            MessageBox.Show("Application cancelled successfully",
                              "Cancelation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             _RefreshLocalAppsList(this, null);
                             _ResetRecords(this, null);

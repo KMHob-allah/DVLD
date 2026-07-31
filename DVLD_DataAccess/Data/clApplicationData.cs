@@ -77,16 +77,16 @@ namespace DVLD_DataAccess
 
             string Query = @"INSERT INTO 
                            Applications 
-                           (PersonID,ApplicationDate,ApplicationStatus,LastStatusDate, ApplicationTypeID, PaidFees,CreatedByUserID)
+                           (ApplicantPersonID,ApplicationDate,ApplicationStatus,LastStatusDate, ApplicationTypeID, PaidFees,CreatedByUserID)
                            VALUES
-                           (@PersonID,@ApplicationDate,@ApplicationStatus,@LastStatusDate,@ApplicationTypeID, @PaidFees,@CreatedByUserID);
+                           (@ApplicantPersonID,@ApplicationDate,@ApplicationStatus,@LastStatusDate,@ApplicationTypeID, @PaidFees,@CreatedByUserID);
                            SELECT SCOPE_IDENTITY()";
 
 
             using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
             using (SqlCommand Command = new SqlCommand(Query, Connection))
             {
-                Command.Parameters.AddWithValue("@PersonID", ApplicantPersonID);
+                Command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
                 Command.Parameters.AddWithValue("@ApplicationDate", ApplicationDate);
                 Command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
                 Command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
@@ -207,7 +207,7 @@ namespace DVLD_DataAccess
 
             string Query = @"SELECT 1 FROM Applications App
                             INNER JOIN LocalDrivingLicenseApplications LDLA ON App.ApplicationID = LDLA.ApplicationID 
-                            WHERE App.PersonID = @PersonID  
+                            WHERE App.ApplicantPersonID = @ApplicantPersonID  
                             AND App.ApplicationTypeID = @ApplicationTypeID
                             AND LDLA.LicenseClassID = @LicenseClassID 
                             AND App.ApplicationStatus = 1;
@@ -217,7 +217,7 @@ namespace DVLD_DataAccess
             {
                 using (SqlCommand Command = new SqlCommand(Query, Connection))
                 {
-                    Command.Parameters.AddWithValue("@PersonID", ApplicantPersonID);
+                    Command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
                     Command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
                     Command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
 

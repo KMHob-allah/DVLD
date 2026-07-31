@@ -166,6 +166,7 @@ namespace DVLD_Business
         {
             return clLocalApplicationData.HasAnyAppointment(this.LocalApplicationID);
         }
+
         public bool IsLicenseIssued()
         {
             return GetActiveLicenseIDByPersonID() != -1;

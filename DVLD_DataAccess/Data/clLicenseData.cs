@@ -167,7 +167,7 @@ namespace DVLD_DataAccess
 
         static public clLegalAgeInfo GetPersonBirthDateAndMinAllowdAgeForLicenseClass(int PersonID, int LicenseClassID)
         {
-            string Query = @"SELECT P.BirthDate, LC.MinimunAllowedAge 
+            string Query = @"SELECT P.BirthDate, LC.MinimumAllowedAge 
                              From People P, LicenseClasses LC 
                              WHERE P.PersonID = @PersonID AND LC.LicenseClassID = @LicenseClassID";
                       
@@ -189,7 +189,7 @@ namespace DVLD_DataAccess
                         LegalAgeInfo = new clLegalAgeInfo();
 
                         LegalAgeInfo.BirthDate = (DateTime)Reader["BirthDate"];
-                        LegalAgeInfo.MinimumAllowedAge = (int)Reader["MinimumAllowedAge"];
+                        LegalAgeInfo.MinimumAllowedAge = Convert.ToInt32(Reader["MinimumAllowedAge"]);
 
                     }
                 }

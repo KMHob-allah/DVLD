@@ -15,7 +15,7 @@ namespace DVLD_Business
         public enum eApplicationStatus
         {
             New = 1,
-            Canceled,
+            Cancelled,
             Completed
         }
 
@@ -142,7 +142,7 @@ namespace DVLD_Business
 
         public bool Cancel()
         {
-            if (this.ApplicationStatus == eApplicationStatus.New) return _UpdateAppStatus(eApplicationStatus.Canceled);
+            if (this.ApplicationStatus == eApplicationStatus.New) return _UpdateAppStatus(eApplicationStatus.Cancelled);
             else return false;
         }
         public bool SetComplete()
