@@ -41,16 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clApplicationData.cs" />
-    <Compile Include="clApplicationTypeData.cs" />
-    <Compile Include="clCountryData.cs" />
-    <Compile Include="clLicenseClassData.cs" />
-    <Compile Include="clLicenseData.cs" />
-    <Compile Include="clLocalApplicationData.cs" />
-    <Compile Include="clPeopleData.cs" />
-    <Compile Include="clSettings.cs" />
-    <Compile Include="clTestTypeData.cs" />
-    <Compile Include="clUserData.cs" />
+    <Compile Include="Data\clApplicationData.cs" />
+    <Compile Include="Data\clApplicationTypeData.cs" />
+    <Compile Include="Data\clCountryData.cs" />
+    <Compile Include="Data\clLicenseClassData.cs" />
+    <Compile Include="Data\clLicenseData.cs" />
+    <Compile Include="Data\clLocalApplicationData.cs" />
+    <Compile Include="Data\clPeopleData.cs" />
+    <Compile Include="Data\clSettings.cs" />
+    <Compile Include="Data\clTestAppointmentData.cs" />
+    <Compile Include="Data\clTestTypeData.cs" />
+    <Compile Include="Data\clUserData.cs" />
+    <Compile Include="DTOs\clLegalAgeInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
