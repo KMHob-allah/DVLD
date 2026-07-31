@@ -151,5 +151,29 @@ namespace DVLD_Business
 
             return SaveResult;
         }
+
+
+        public bool DoesPassedTestType(clTestType.eTestType TestType)
+        {
+            return clLocalApplicationData.DoesPassedTestType(this.LocalApplicationID, (int)TestType); ;
+        }
+
+        public bool HasAppointmentForTestType(bool Active, clTestType.eTestType TestType)
+        {
+            return clLocalApplicationData.HasAppointmentForTestType(this.LocalApplicationID, Active, (int)TestType);
+        }
+        public bool HasAnyAppointment()
+        {
+            return clLocalApplicationData.HasAnyAppointment(this.LocalApplicationID);
+        }
+        public bool IsLicenseIssued()
+        {
+            return GetActiveLicenseIDByPersonID() != -1;
+        }
+
+        private int GetActiveLicenseIDByPersonID()
+        {
+            return clLicenseData.LoadActiveLicenseIDByPersonID(this.ApplicantPersonID, this.LicenseClassID);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DVLD_DataAccess;
+using DVLD_DataAccess.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -146,7 +147,8 @@ namespace DVLD_Business
         }
         public bool SetComplete()
         {
-            return _UpdateAppStatus(eApplicationStatus.Completed);
+            if (this.ApplicationStatus == eApplicationStatus.New) return _UpdateAppStatus(eApplicationStatus.Completed);
+            else return false;
         }
 
         public bool Delete()
@@ -169,9 +171,13 @@ namespace DVLD_Business
             return clApplicationData.PersonHasActiveAppForLicenseClass(ApplicantPersonID, (byte)ApplicationTypeID, LicenseClass);
         }
 
-        static public bool HasLegalDrivingAge(int ApplicantPersonID, int LicenseClass)
+        static public bool HasLegalDrivingAge(int PersonID, int LicenseClassID)
         {
-            return clApplicationData.HasLegalDrivingAge(ApplicantPersonID, LicenseClass);
+           clLegalAgeInfo LegalAgeInfo = clLicenseData.GetPersonBirthDateAndMinAllowdAgeForLicenseClass(PersonID, LicenseClassID);
+
+            if (LegalAgeInfo is null) return false;
+
+            return (clDateHelper.CalculateAgeInYears(LegalAgeInfo.BirthDate) >= LegalAgeInfo.MinimumAllowedAge);          
         }
     }
 }
