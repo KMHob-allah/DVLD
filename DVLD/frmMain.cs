@@ -49,6 +49,7 @@ namespace DVLD
         private void opSignOut_Click(object sender, EventArgs e)
         {
             clGlobalSettings.CurrentUser = null;
+            // Must Refresh UserName And Password When User Change His Password 
             _LoginScreen.Show();
             this.Close();
 
@@ -58,21 +59,18 @@ namespace DVLD
             frmAppTypesList frm = new frmAppTypesList();
             frm.ShowDialog();
         }
-
         private void opManageTestTypes_Click(object sender, EventArgs e)
         {
             frmTestTypesList frm = new frmTestTypesList();
 
             frm.ShowDialog();
         }
-
         private void opLocalLicense_Click(object sender, EventArgs e)
         {
             frmAddUpdateLocalApp frm = new frmAddUpdateLocalApp();
 
             frm.ShowDialog();
         }
-
         private void opLocalApps_Click(object sender, EventArgs e)
         {
             frmLocalAppsList frm = new frmLocalAppsList();

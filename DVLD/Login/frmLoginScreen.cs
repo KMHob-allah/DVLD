@@ -134,5 +134,10 @@ namespace DVLD.GlobalSettings
             this.Close();
 
         }
+
+        private void frmLoginScreen_Shown(object sender, EventArgs e)
+        {
+
+        }
     }
 }

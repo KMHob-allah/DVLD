@@ -31,14 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.cbActivationStatus = new System.Windows.Forms.ComboBox();
             this.opSendSMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.opSendEmail = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.opChangePassword = new System.Windows.Forms.ToolStripMenuItem();
-            this.opDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.opEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.opAddNewUser = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.opShowDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsUserOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lblManageUsers = new System.Windows.Forms.Label();
             this.tbUserFilterationValue = new System.Windows.Forms.TextBox();
@@ -46,10 +40,16 @@
             this.cbFilters = new System.Windows.Forms.ComboBox();
             this.lblRecords = new System.Windows.Forms.Label();
             this.dgvUsersList = new System.Windows.Forms.DataGridView();
+            this.lblNoData = new System.Windows.Forms.Label();
             this.pbPeople = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddNewUser = new System.Windows.Forms.Button();
-            this.lblNoData = new System.Windows.Forms.Label();
+            this.opShowDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.opAddNewUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.opEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.opDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.opChangePassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.opSendEmail = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsUserOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsersList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPeople)).BeginInit();
@@ -71,62 +71,21 @@
             // 
             // opSendSMS
             // 
+            this.opSendSMS.Image = global::DVLD.Properties.Resources.call_32;
             this.opSendSMS.Name = "opSendSMS";
-            this.opSendSMS.Size = new System.Drawing.Size(210, 24);
+            this.opSendSMS.Size = new System.Drawing.Size(204, 26);
             this.opSendSMS.Text = "Send SMS";
             this.opSendSMS.Click += new System.EventHandler(this.opSendSMS_Click);
-            // 
-            // opSendEmail
-            // 
-            this.opSendEmail.Name = "opSendEmail";
-            this.opSendEmail.Size = new System.Drawing.Size(210, 24);
-            this.opSendEmail.Text = "Send Email";
-            this.opSendEmail.Click += new System.EventHandler(this.opSendEmail_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(207, 6);
-            // 
-            // opChangePassword
-            // 
-            this.opChangePassword.Name = "opChangePassword";
-            this.opChangePassword.Size = new System.Drawing.Size(210, 24);
-            this.opChangePassword.Text = "Change Password";
-            this.opChangePassword.Click += new System.EventHandler(this.opChangePassword_Click);
-            // 
-            // opDelete
-            // 
-            this.opDelete.Name = "opDelete";
-            this.opDelete.Size = new System.Drawing.Size(210, 24);
-            this.opDelete.Text = "Delete";
-            this.opDelete.Click += new System.EventHandler(this.opDelete_Click);
-            // 
-            // opEdit
-            // 
-            this.opEdit.Name = "opEdit";
-            this.opEdit.Size = new System.Drawing.Size(210, 24);
-            this.opEdit.Text = "Edit";
-            this.opEdit.Click += new System.EventHandler(this.opEdit_Click);
-            // 
-            // opAddNewUser
-            // 
-            this.opAddNewUser.Name = "opAddNewUser";
-            this.opAddNewUser.Size = new System.Drawing.Size(210, 24);
-            this.opAddNewUser.Text = "Add New User";
-            this.opAddNewUser.Click += new System.EventHandler(this.opAddNewUser_Click);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(201, 6);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
-            // 
-            // opShowDetails
-            // 
-            this.opShowDetails.Name = "opShowDetails";
-            this.opShowDetails.Size = new System.Drawing.Size(210, 24);
-            this.opShowDetails.Text = "Show Details";
-            this.opShowDetails.Click += new System.EventHandler(this.opShowDetails_Click);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(201, 6);
             // 
             // cmsUserOptions
             // 
@@ -143,7 +102,7 @@
             this.opSendEmail,
             this.opSendSMS});
             this.cmsUserOptions.Name = "cmsOptions";
-            this.cmsUserOptions.Size = new System.Drawing.Size(211, 212);
+            this.cmsUserOptions.Size = new System.Drawing.Size(205, 198);
             this.cmsUserOptions.Opening += new System.ComponentModel.CancelEventHandler(this.cmsUserOptions_Opening);
             // 
             // lblManageUsers
@@ -220,6 +179,18 @@
             this.dgvUsersList.Size = new System.Drawing.Size(1257, 387);
             this.dgvUsersList.TabIndex = 19;
             // 
+            // lblNoData
+            // 
+            this.lblNoData.AutoSize = true;
+            this.lblNoData.Font = new System.Drawing.Font("Cooper Black", 20F);
+            this.lblNoData.ForeColor = System.Drawing.Color.Silver;
+            this.lblNoData.Location = new System.Drawing.Point(432, 434);
+            this.lblNoData.Name = "lblNoData";
+            this.lblNoData.Size = new System.Drawing.Size(527, 39);
+            this.lblNoData.TabIndex = 29;
+            this.lblNoData.Text = "You don\'t have Users to show";
+            this.lblNoData.Visible = false;
+            // 
             // pbPeople
             // 
             this.pbPeople.Image = global::DVLD.Properties.Resources.Users_2_400;
@@ -256,17 +227,53 @@
             this.btnAddNewUser.UseVisualStyleBackColor = true;
             this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
             // 
-            // lblNoData
+            // opShowDetails
             // 
-            this.lblNoData.AutoSize = true;
-            this.lblNoData.Font = new System.Drawing.Font("Cooper Black", 20F);
-            this.lblNoData.ForeColor = System.Drawing.Color.Silver;
-            this.lblNoData.Location = new System.Drawing.Point(432, 434);
-            this.lblNoData.Name = "lblNoData";
-            this.lblNoData.Size = new System.Drawing.Size(527, 39);
-            this.lblNoData.TabIndex = 29;
-            this.lblNoData.Text = "You don\'t have Users to show";
-            this.lblNoData.Visible = false;
+            this.opShowDetails.Image = global::DVLD.Properties.Resources.info2;
+            this.opShowDetails.Name = "opShowDetails";
+            this.opShowDetails.Size = new System.Drawing.Size(204, 26);
+            this.opShowDetails.Text = "Show Details";
+            this.opShowDetails.Click += new System.EventHandler(this.opShowDetails_Click);
+            // 
+            // opAddNewUser
+            // 
+            this.opAddNewUser.Image = global::DVLD.Properties.Resources.Add_New_User_32;
+            this.opAddNewUser.Name = "opAddNewUser";
+            this.opAddNewUser.Size = new System.Drawing.Size(204, 26);
+            this.opAddNewUser.Text = "Add New User";
+            this.opAddNewUser.Click += new System.EventHandler(this.opAddNewUser_Click);
+            // 
+            // opEdit
+            // 
+            this.opEdit.Image = global::DVLD.Properties.Resources.Edit_User_32;
+            this.opEdit.Name = "opEdit";
+            this.opEdit.Size = new System.Drawing.Size(204, 26);
+            this.opEdit.Text = "Edit";
+            this.opEdit.Click += new System.EventHandler(this.opEdit_Click);
+            // 
+            // opDelete
+            // 
+            this.opDelete.Image = global::DVLD.Properties.Resources.Delete_User_32;
+            this.opDelete.Name = "opDelete";
+            this.opDelete.Size = new System.Drawing.Size(204, 26);
+            this.opDelete.Text = "Delete";
+            this.opDelete.Click += new System.EventHandler(this.opDelete_Click);
+            // 
+            // opChangePassword
+            // 
+            this.opChangePassword.Image = global::DVLD.Properties.Resources.Password_32;
+            this.opChangePassword.Name = "opChangePassword";
+            this.opChangePassword.Size = new System.Drawing.Size(204, 26);
+            this.opChangePassword.Text = "Change Password";
+            this.opChangePassword.Click += new System.EventHandler(this.opChangePassword_Click);
+            // 
+            // opSendEmail
+            // 
+            this.opSendEmail.Image = global::DVLD.Properties.Resources.send_mail;
+            this.opSendEmail.Name = "opSendEmail";
+            this.opSendEmail.Size = new System.Drawing.Size(204, 26);
+            this.opSendEmail.Text = "Send Email";
+            this.opSendEmail.Click += new System.EventHandler(this.opSendEmail_Click);
             // 
             // frmUsersList
             // 

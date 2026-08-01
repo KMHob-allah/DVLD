@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DVLD.GlobalSettings;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,16 +57,19 @@ namespace DVLD.Users
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(!this.ValidateChildren())
+            string NewPassword = tbNewPasswordValue.Text.Trim();
+            if (!this.ValidateChildren())
             {
                 MessageBox.Show("Please Fix the Errors", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }            
+            }
 
-            if(ctrlUserCard1.User.ChangePassword(tbNewPasswordValue.Text.Trim()))
+            if (ctrlUserCard1.User.ChangePassword(NewPassword)) 
             {
                 MessageBox.Show("Password changed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnSave.Enabled = false;
+
+                clGlobalSettings.RememberUsernameAndPassword(clGlobalSettings.CurrentUser.UserName, NewPassword);
             }
 
             else MessageBox.Show("An error accured, Password was not changed", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Warning);

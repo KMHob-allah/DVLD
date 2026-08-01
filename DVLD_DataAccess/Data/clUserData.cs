@@ -304,6 +304,7 @@ namespace DVLD_DataAccess
                 using (SqlCommand command = new SqlCommand(Query, connection))
                 {
                     command.Parameters.AddWithValue("@UserID", UserID);                        
+                    command.Parameters.AddWithValue("@Password", NewPassword);                        
                     connection.Open();
                     RowsAffected = command.ExecuteNonQuery();                        
                 }

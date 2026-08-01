@@ -31,22 +31,22 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLoginScreen));
             this.pnlLogin = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tbUserName = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
+            this.pbPasswordImage = new System.Windows.Forms.PictureBox();
+            this.pbUserImage = new System.Windows.Forms.PictureBox();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.chkRememberMe = new System.Windows.Forms.CheckBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.lblLogin = new System.Windows.Forms.Label();
             this.errpLoginHandler = new System.Windows.Forms.ErrorProvider(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.pbPasswordImage = new System.Windows.Forms.PictureBox();
-            this.pbUserImage = new System.Windows.Forms.PictureBox();
-            this.btnLogin = new System.Windows.Forms.Button();
             this.pnlLoginImage = new System.Windows.Forms.Panel();
             this.pnlLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errpLoginHandler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPasswordImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errpLoginHandler)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlLogin
@@ -68,6 +68,17 @@
             this.pnlLogin.Size = new System.Drawing.Size(701, 574);
             this.pnlLogin.TabIndex = 3;
             // 
+            // button1
+            // 
+            this.button1.Image = global::DVLD.Properties.Resources.closeBlack32;
+            this.button1.Location = new System.Drawing.Point(642, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(56, 45);
+            this.button1.TabIndex = 8;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tbUserName
             // 
             this.tbUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -88,6 +99,39 @@
             this.tbPassword.Size = new System.Drawing.Size(292, 27);
             this.tbPassword.TabIndex = 2;
             this.tbPassword.Validating += new System.ComponentModel.CancelEventHandler(this.tbPassword_Validating);
+            // 
+            // pbPasswordImage
+            // 
+            this.pbPasswordImage.Image = global::DVLD.Properties.Resources.Password_32;
+            this.pbPasswordImage.Location = new System.Drawing.Point(215, 272);
+            this.pbPasswordImage.Name = "pbPasswordImage";
+            this.pbPasswordImage.Size = new System.Drawing.Size(28, 30);
+            this.pbPasswordImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPasswordImage.TabIndex = 7;
+            this.pbPasswordImage.TabStop = false;
+            // 
+            // pbUserImage
+            // 
+            this.pbUserImage.Image = global::DVLD.Properties.Resources.User_32__2;
+            this.pbUserImage.Location = new System.Drawing.Point(215, 200);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.Size = new System.Drawing.Size(28, 30);
+            this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbUserImage.TabIndex = 6;
+            this.pbUserImage.TabStop = false;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
+            this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogin.Location = new System.Drawing.Point(311, 454);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(134, 50);
+            this.btnLogin.TabIndex = 4;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // chkRememberMe
             // 
@@ -137,50 +181,6 @@
             // 
             this.errpLoginHandler.ContainerControl = this;
             // 
-            // button1
-            // 
-            this.button1.Image = global::DVLD.Properties.Resources.closeBlack32;
-            this.button1.Location = new System.Drawing.Point(642, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 45);
-            this.button1.TabIndex = 8;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // pbPasswordImage
-            // 
-            this.pbPasswordImage.Image = global::DVLD.Properties.Resources.Password_32;
-            this.pbPasswordImage.Location = new System.Drawing.Point(215, 272);
-            this.pbPasswordImage.Name = "pbPasswordImage";
-            this.pbPasswordImage.Size = new System.Drawing.Size(28, 30);
-            this.pbPasswordImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPasswordImage.TabIndex = 7;
-            this.pbPasswordImage.TabStop = false;
-            // 
-            // pbUserImage
-            // 
-            this.pbUserImage.Image = global::DVLD.Properties.Resources.User_32__2;
-            this.pbUserImage.Location = new System.Drawing.Point(215, 200);
-            this.pbUserImage.Name = "pbUserImage";
-            this.pbUserImage.Size = new System.Drawing.Size(28, 30);
-            this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbUserImage.TabIndex = 6;
-            this.pbUserImage.TabStop = false;
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
-            this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogin.Location = new System.Drawing.Point(311, 454);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(134, 50);
-            this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
             // pnlLoginImage
             // 
             this.pnlLoginImage.BackColor = System.Drawing.Color.White;
@@ -207,11 +207,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login Screen";
             this.Load += new System.EventHandler(this.frmLoginScreen_Load);
+            this.Shown += new System.EventHandler(this.frmLoginScreen_Shown);
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errpLoginHandler)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPasswordImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errpLoginHandler)).EndInit();
             this.ResumeLayout(false);
 
         }
