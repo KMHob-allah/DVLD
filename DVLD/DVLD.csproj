@@ -95,6 +95,18 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Global\clGlobalSettings.cs" />
+    <Compile Include="Licenses\ctrlLicenseCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Licenses\ctrlLicenseCard.Designer.cs">
+      <DependentUpon>ctrlLicenseCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\frmIssueLocalDrivingLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\frmIssueLocalDrivingLicense.Designer.cs">
+      <DependentUpon>frmIssueLocalDrivingLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\frmLoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +154,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\TestAppointments\frmSchduledTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\TestAppointments\frmSchduledTest.Designer.cs">
+      <DependentUpon>frmSchduledTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\TestAppointments\frmSchduleTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\TestAppointments\frmSchduleTest.Designer.cs">
+      <DependentUpon>frmSchduleTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\TestAppointments\frmTestAppointmentsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\TestAppointments\frmTestAppointmentsList.Designer.cs">
+      <DependentUpon>frmTestAppointmentsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tests\TestTypes\frmTestTypesList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +238,12 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\ctrlLicenseCard.resx">
+      <DependentUpon>ctrlLicenseCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\frmIssueLocalDrivingLicense.resx">
+      <DependentUpon>frmIssueLocalDrivingLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\frmLoginScreen.resx">
       <DependentUpon>frmLoginScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,6 +269,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\TestAppointments\frmSchduledTest.resx">
+      <DependentUpon>frmSchduledTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\TestAppointments\frmSchduleTest.resx">
+      <DependentUpon>frmSchduleTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\TestAppointments\frmTestAppointmentsList.resx">
+      <DependentUpon>frmTestAppointmentsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tests\TestTypes\frmTestTypesList.resx">
       <DependentUpon>frmTestTypesList.cs</DependentUpon>
@@ -457,7 +502,7 @@
     <None Include="Resources\TestType 512.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Licenses\" />
+    <None Include="Resources\IssueDrivingLicense 321.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\New Application 64.png" />
@@ -494,6 +539,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Street Test 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddAppointment 32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
