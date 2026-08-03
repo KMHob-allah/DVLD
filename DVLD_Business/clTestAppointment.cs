@@ -11,39 +11,40 @@ namespace DVLD_Business
 {
     public class clTestAppointment
     {
-        public enum eMode { Add, Update, }
+        public enum eMode { Add, Update }
 
         eMode _Mode;
         public int AppointmentID { get; set; }
-        public int TestTypeID { get; set; }
+        public clTestType.eTestType TestType { get; set; }
         public int LocalAppID { get; set; }
         public DateTime AppointmentDate { get; set; }
         public float PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
         public bool IsLocked { get; set; }
-        public int? RetakeTestAppID { get; set; }
+        public int RetakeTestAppID { get; set; }
 
-        public clLocalApplication LocalApplicationInfo { get; set; }        
+        public clLocalApplication LocalApplicationInfo { get; set; }
+        public clApplication ApplicationInfo { get; set; }
         public clUser UserInfo { get; set; }
 
         public clTestAppointment()
         {
             this.AppointmentID = -1;
-            this.TestTypeID = -1;
+            this.TestType = clTestType.eTestType.Vision;
             this.LocalAppID = -1;
             this.AppointmentDate = DateTime.MinValue;
             this.PaidFees = 0f;
             this.CreatedByUserID = -1;
             this.IsLocked = false;
-            this.RetakeTestAppID = null;
+            this.RetakeTestAppID = -1;
 
             _Mode= eMode.Add;
         }
-        private clTestAppointment(int TestAppointmentID, int TestTypeID, int LocalAppID, DateTime AppointmentDate, 
-            float PaidFees, int CreatedByUserID, bool IsLocked, int? RetakeTestAppID)
+        private clTestAppointment(int TestAppointmentID, clTestType.eTestType TestType, int LocalAppID, DateTime AppointmentDate, 
+            float PaidFees, int CreatedByUserID, bool IsLocked, int RetakeTestAppID)
         {
             this.AppointmentID = TestAppointmentID;
-            this.TestTypeID = TestTypeID;
+            this.TestType = TestType;
             this.LocalAppID = LocalAppID;
             this.AppointmentDate = AppointmentDate;
             this.PaidFees = PaidFees;
@@ -53,9 +54,17 @@ namespace DVLD_Business
             _Mode = eMode.Update;
 
             LocalApplicationInfo = clLocalApplication.FindByLocalAppID(LocalAppID);
+            ApplicationInfo = clApplication.Find(this.RetakeTestAppID);
             UserInfo = clUser.FindByUserID(CreatedByUserID);
         }
 
+        public int TestID
+        {
+            get
+            {
+               return clTestAppointmentData.LoadTestID(this.AppointmentID);
+            }
+        }
 
         static public DataTable GetAppointmentsListForLocalApp(int LocalAppID, int TestTypeID)
         {
@@ -68,14 +77,14 @@ namespace DVLD_Business
         }
         private bool _AddNewAppointment()
         {
-            this.AppointmentID = clTestAppointmentData.AddNew(this.TestTypeID, this.LocalAppID,
+            this.AppointmentID = clTestAppointmentData.AddNew((int)this.TestType, this.LocalAppID,
                 this.AppointmentDate, this.PaidFees, this.CreatedByUserID, this.IsLocked, this.RetakeTestAppID);
 
             return this.AppointmentID != -1;
         }
         private bool _UpdateAppointment()
         {
-            return clTestAppointmentData.Update(this.AppointmentID, this.TestTypeID,
+            return clTestAppointmentData.Update(this.AppointmentID, (int)this.TestType,
                 this.LocalAppID, this.AppointmentDate, this.PaidFees, this.CreatedByUserID, this.IsLocked, this.RetakeTestAppID);
         }
 
@@ -107,21 +116,41 @@ namespace DVLD_Business
 
         static public clTestAppointment Find(int AppointmentID)
         {
-            int TestTypeID = -1;
+            int TestType = -1;
             int LocalAppID = -1;
             DateTime AppointmentDate = DateTime.MinValue;
             float PaidFees = 0f;
             int CreatedByUserID = -1;
             bool IsLocked = false;
-            int? RetakeTestAppID = null;
+            int RetakeTestAppID = -1;
 
-            if (clTestAppointmentData.LoadTestAppointment(AppointmentID, ref TestTypeID, ref LocalAppID,
+            if (clTestAppointmentData.LoadTestAppointment(AppointmentID, ref TestType, ref LocalAppID,
                 ref AppointmentDate, ref PaidFees, ref CreatedByUserID, ref IsLocked, ref RetakeTestAppID))
             {
-                return new clTestAppointment(AppointmentID, TestTypeID, LocalAppID,
+                return new clTestAppointment(AppointmentID, (clTestType.eTestType)TestType, LocalAppID,
                  AppointmentDate, PaidFees, CreatedByUserID, IsLocked, RetakeTestAppID);
             }
             else return null;
         }
+
+        static public clTestAppointment FindLastTestAppointment(int LocalAppID, int TestType)
+        {
+            int AppointmentID = -1;
+            DateTime AppointmentDate = DateTime.MinValue;
+            float PaidFees = 0f;
+            int CreatedByUserID = -1;
+            bool IsLocked = false;
+            int RetakeTestAppID = -1;
+
+            if (clTestAppointmentData.LoadTestAppointment(AppointmentID, ref TestType, ref LocalAppID,
+                ref AppointmentDate, ref PaidFees, ref CreatedByUserID, ref IsLocked, ref RetakeTestAppID))
+            {
+                return new clTestAppointment(AppointmentID, (clTestType.eTestType)TestType, LocalAppID,
+                 AppointmentDate, PaidFees, CreatedByUserID, IsLocked, RetakeTestAppID);
+            }
+
+            else return null;
+        }
+
     }
 }

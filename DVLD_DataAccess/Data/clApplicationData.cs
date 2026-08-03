@@ -109,7 +109,7 @@ namespace DVLD_DataAccess
             int AffectedRows = 0;
 
             string Query = @"Update Applications                             
-                           Set PersonID = @PersonID,
+                           Set ApplicantPersonID = @ApplicantPersonID,
                                ApplicationDate = @ApplicationDate,
                                ApplicationStatus = @ApplicationStatus,
                                LastStatusDate = @LastStatusDate,
@@ -122,7 +122,7 @@ namespace DVLD_DataAccess
             using (SqlCommand Command = new SqlCommand(Query, Connection))
             {
                 Command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
-                Command.Parameters.AddWithValue("@PersonID", ApplicantPersonID);
+                Command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
                 Command.Parameters.AddWithValue("@ApplicationDate", ApplicationDate);
                 Command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
                 Command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);

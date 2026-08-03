@@ -176,5 +176,10 @@ namespace DVLD_Business
         {
             return clLicenseData.LoadActiveLicenseIDByPersonID(this.ApplicantPersonID, this.LicenseClassID);
         }
+
+        public int TotalTrailsPerTest(clTestType.eTestType TestType)
+        {
+            return clLocalApplicationData.TotalTrailsPerTest(this.LocalApplicationID, (int)TestType);
+        }
     }
 }

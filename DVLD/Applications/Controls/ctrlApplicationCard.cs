@@ -49,7 +49,7 @@ namespace DVLD.Applications.Controls
             lblAppIDValue.Text = _Application.ApplicationID.ToString();
             lblStatusValue.Text = _Application.ApplicationStatus.ToString();
             lblFeesValue.Text = _Application.PaidFees.ToString();
-            lblTypeValue.Text = _Application.ApplicationType.ToString();
+            lblTypeValue.Text = _Application.ApplicationTypeInfo.Title;
             lblApplicantValue.Text = _Application.PersonInfo.FullName();
             lblDateValue.Text = _Application.ApplicationDate.ToString();
             lblStatusDateValue.Text = _Application.LastStatusDate.ToString();

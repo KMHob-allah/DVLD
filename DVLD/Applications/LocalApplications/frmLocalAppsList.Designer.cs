@@ -220,6 +220,7 @@
             this.opSchduleVisionTest.Name = "opSchduleVisionTest";
             this.opSchduleVisionTest.Size = new System.Drawing.Size(239, 26);
             this.opSchduleVisionTest.Text = "Schdule Vision Test";
+            this.opSchduleVisionTest.Click += new System.EventHandler(this.opSchduleVisionTest_Click);
             // 
             // opSchduleWrittenTest
             // 

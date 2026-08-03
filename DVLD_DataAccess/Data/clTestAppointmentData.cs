@@ -39,7 +39,7 @@ namespace DVLD_DataAccess
         }
         static public DataTable LoadAllAppointmentsList()
         {
-            string Query = @"SELECT * FROM TestAppointment";
+            string Query = @"SELECT * FROM TestAppointments_View";
 
             DataTable dtTestAppointmentsList = new DataTable();
 
@@ -58,9 +58,45 @@ namespace DVLD_DataAccess
             return dtTestAppointmentsList;
         }
 
+        static public bool LoadLastTestAppointment(ref int TestAppointmentID, int TestTypeID,
+                int LocalDrivingLicenseApplicationID, ref DateTime AppointmentDate, ref float PaidFees, ref int CreatedByUserID,
+                ref bool IsLocked, ref int? RetakeTestAppID)
+        {
+            bool IsFound = false;
+
+            string Query = @"SELECT TOP 1 * FROM TestAppointments 
+                            WHERE TestAppointmentID = @TestAppointmentID AND TestTypeID = @TestTypeID 
+                            ORDER BY AppointmentDate DESC;";
+
+            using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+
+                Connection.Open();
+
+                SqlDataReader Reader = Command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    TestAppointmentID = Convert.ToInt32(Reader["TestAppointmentID"]);
+                    AppointmentDate = (DateTime)Reader["AppointmentDate"];
+                    PaidFees = Convert.ToSingle(Reader["PaidFees"]);
+                    CreatedByUserID = Convert.ToInt32(Reader["CreatedByUserID"]);
+                    IsLocked = Convert.ToBoolean(Reader["IsLocked"]);
+
+                    if (Reader["RetakeTestAppID"] == DBNull.Value) RetakeTestAppID = null;
+                    else RetakeTestAppID = Convert.ToInt32(Reader["RetakeTestAppID"]);
+
+                }
+            }
+
+            return IsFound;
+        }
+
         static public bool LoadTestAppointment(int TestAppointmentID, ref int TestTypeID,
                 ref int LocalDrivingLicenseApplicationID, ref DateTime AppointmentDate, ref float PaidFees, ref int CreatedByUserID,
-                ref bool IsLocked, ref int? RetakeTestAppID)
+                ref bool IsLocked, ref int RetakeTestAppID)
         {
             bool IsFound = false;
 
@@ -85,7 +121,7 @@ namespace DVLD_DataAccess
                     CreatedByUserID = Convert.ToInt32(Reader["CreatedByUserID"]);
                     IsLocked = Convert.ToBoolean(Reader["IsLocked"]);
 
-                    if (Reader["RetakeTestAppID"] == DBNull.Value) RetakeTestAppID = null;
+                    if (Reader["RetakeTestAppID"] == DBNull.Value) RetakeTestAppID = -1;
                     else RetakeTestAppID = Convert.ToInt32(Reader["RetakeTestAppID"]);
 
                 }
@@ -161,7 +197,28 @@ namespace DVLD_DataAccess
             return RowsAffected != 0;
         }
 
+        static public int LoadTestID(int TestAppointmentID)
+        {
+            int TestID = -1;
 
-        // Get Test ID Did not Implemented Yet
+            string Query = @"SELECT TestID FROM Tests WHERE TestAppointmentID = @TestAppointmentID";
+
+            using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
+            {
+                using (SqlCommand Command = new SqlCommand(Query, Connection))
+                {
+                    Command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+
+                    Connection.Open();
+
+                    object Result = Command.ExecuteScalar();
+
+                    if (Result != null) TestID = Convert.ToInt32(Result);
+                }
+            }
+
+            return TestID;
+        }
+
     }
 }

@@ -94,7 +94,7 @@
             // 
             this.lblDateValue.AutoSize = true;
             this.lblDateValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblDateValue.Location = new System.Drawing.Point(843, 45);
+            this.lblDateValue.Location = new System.Drawing.Point(883, 45);
             this.lblDateValue.Name = "lblDateValue";
             this.lblDateValue.Size = new System.Drawing.Size(37, 21);
             this.lblDateValue.TabIndex = 21;
@@ -104,7 +104,7 @@
             // 
             this.lblStatusDateValue.AutoSize = true;
             this.lblStatusDateValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblStatusDateValue.Location = new System.Drawing.Point(843, 89);
+            this.lblStatusDateValue.Location = new System.Drawing.Point(883, 89);
             this.lblStatusDateValue.Name = "lblStatusDateValue";
             this.lblStatusDateValue.Size = new System.Drawing.Size(37, 21);
             this.lblStatusDateValue.TabIndex = 20;
@@ -114,7 +114,7 @@
             // 
             this.lblCreatedByValue.AutoSize = true;
             this.lblCreatedByValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblCreatedByValue.Location = new System.Drawing.Point(843, 133);
+            this.lblCreatedByValue.Location = new System.Drawing.Point(883, 133);
             this.lblCreatedByValue.Name = "lblCreatedByValue";
             this.lblCreatedByValue.Size = new System.Drawing.Size(37, 21);
             this.lblCreatedByValue.TabIndex = 19;
@@ -136,9 +136,9 @@
             this.lblStatusDate.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
             this.lblStatusDate.Location = new System.Drawing.Point(715, 89);
             this.lblStatusDate.Name = "lblStatusDate";
-            this.lblStatusDate.Size = new System.Drawing.Size(113, 20);
+            this.lblStatusDate.Size = new System.Drawing.Size(157, 20);
             this.lblStatusDate.TabIndex = 17;
-            this.lblStatusDate.Text = "Status Date";
+            this.lblStatusDate.Text = "Last Status Date";
             // 
             // lblCreatedBy
             // 

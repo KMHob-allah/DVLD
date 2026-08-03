@@ -50,7 +50,7 @@
             this.lblFees = new System.Windows.Forms.Label();
             this.lblDrivingClass = new System.Windows.Forms.Label();
             this.lblDrivingLicenseAppID = new System.Windows.Forms.Label();
-            this.lblSchduleTest = new System.Windows.Forms.Label();
+            this.lblSchduleTestHeader = new System.Windows.Forms.Label();
             this.gbRetakeTestInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +78,7 @@
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblTotalFeesValue
             // 
@@ -285,16 +286,16 @@
             this.lblDrivingLicenseAppID.TabIndex = 37;
             this.lblDrivingLicenseAppID.Text = "Driving License App ID";
             // 
-            // lblSchduleTest
+            // lblSchduleTestHeader
             // 
-            this.lblSchduleTest.AutoSize = true;
-            this.lblSchduleTest.Font = new System.Drawing.Font("Bookman Old Style", 20F, System.Drawing.FontStyle.Bold);
-            this.lblSchduleTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblSchduleTest.Location = new System.Drawing.Point(210, 25);
-            this.lblSchduleTest.Name = "lblSchduleTest";
-            this.lblSchduleTest.Size = new System.Drawing.Size(248, 40);
-            this.lblSchduleTest.TabIndex = 36;
-            this.lblSchduleTest.Text = "Schdule Test";
+            this.lblSchduleTestHeader.AutoSize = true;
+            this.lblSchduleTestHeader.Font = new System.Drawing.Font("Bookman Old Style", 20F, System.Drawing.FontStyle.Bold);
+            this.lblSchduleTestHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblSchduleTestHeader.Location = new System.Drawing.Point(210, 25);
+            this.lblSchduleTestHeader.Name = "lblSchduleTestHeader";
+            this.lblSchduleTestHeader.Size = new System.Drawing.Size(248, 40);
+            this.lblSchduleTestHeader.TabIndex = 36;
+            this.lblSchduleTestHeader.Text = "Schdule Test";
             // 
             // frmSchduleTest
             // 
@@ -320,11 +321,12 @@
             this.Controls.Add(this.lblFees);
             this.Controls.Add(this.lblDrivingClass);
             this.Controls.Add(this.lblDrivingLicenseAppID);
-            this.Controls.Add(this.lblSchduleTest);
+            this.Controls.Add(this.lblSchduleTestHeader);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSchduleTest";
             this.Text = "Schdule Test";
+            this.Load += new System.EventHandler(this.frmSchduleTest_Load);
             this.gbRetakeTestInfo.ResumeLayout(false);
             this.gbRetakeTestInfo.PerformLayout();
             this.ResumeLayout(false);
@@ -356,6 +358,6 @@
         private System.Windows.Forms.Label lblFees;
         private System.Windows.Forms.Label lblDrivingClass;
         private System.Windows.Forms.Label lblDrivingLicenseAppID;
-        private System.Windows.Forms.Label lblSchduleTest;
+        private System.Windows.Forms.Label lblSchduleTestHeader;
     }
 }

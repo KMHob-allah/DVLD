@@ -1,4 +1,5 @@
 ﻿using DVLD.People;
+using DVLD.Tests.TestAppointments;
 using DVLD_Business;
 using System;
 using System.Collections.Generic;
@@ -164,7 +165,7 @@ namespace DVLD.Applications.LocalApplications
         }
         private void opEditApplication_Click(object sender, EventArgs e)
         {
-            frmAddUpdateLocalApp frm = new frmAddUpdateLocalApp(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells["LocalAppID"].Value));
+            frmAddUpdateLocalApp frm = new frmAddUpdateLocalApp(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells[0].Value));
             frm.LocalApplicationDataSaved += WhenLocalAppInfoChanged;
             frm.ShowDialog();
         }
@@ -283,6 +284,13 @@ namespace DVLD.Applications.LocalApplications
         {
             _RefreshLocalAppsList(sender, EventArgs.Empty);
             _ResetRecords(sender, EventArgs.Empty);
+        }
+
+        private void opSchduleVisionTest_Click(object sender, EventArgs e)
+        {
+            frmTestAppointmentsList frm = new frmTestAppointmentsList(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells[0].Value),
+                frmTestAppointmentsList.eTestType.Vision);
+            frm.ShowDialog();
         }
     }
 }
