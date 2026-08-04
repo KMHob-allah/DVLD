@@ -15,14 +15,13 @@ namespace DVLD.Tests.TestAppointments
     {
         //public event EventHandler AppointmentDataChanged;
 
-        public enum eTestType { Vision = 1, Written, Street }
+        //public enum eTestType { Vision = 1, Written, Street }
 
 
-        eTestType CurrentTest;
-        //bool PassedTest = false;
+        clTestType.eTestType CurrentTest;
         int LocalAppID;
 
-        public frmTestAppointmentsList(int LocalAppID, eTestType Test)
+        public frmTestAppointmentsList(int LocalAppID, clTestType.eTestType Test)
         {
             this.LocalAppID = LocalAppID;
 
@@ -47,17 +46,17 @@ namespace DVLD.Tests.TestAppointments
         {
             switch (CurrentTest)
             {
-                case eTestType.Vision:
+                case clTestType.eTestType.Vision:
 
                     lblHeader.Text = "Vision Test Appointment";
                     break;
 
-                case eTestType.Written:
+                case clTestType.eTestType.Written:
 
                     lblHeader.Text = "Written Test Appointment";
                     break;
 
-                case eTestType.Street:
+                case clTestType.eTestType.Street:
 
                     lblHeader.Text = "Street Test Appointment";
                     break;
@@ -86,28 +85,27 @@ namespace DVLD.Tests.TestAppointments
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
 
-            //if (clLocalApplication.ha(LocalAppID, true, (int)CurrentTest))
-            //{
-            //    MessageBox.Show("Person already has an active appointment for this test, You cannot add a new appointment",
-            //        "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            if (ctrlLocalAppCard1.LocalAppInfo.HasAppointmentForTestType(true, CurrentTest))
+            {
+                MessageBox.Show("Person already has an active appointment for this test, You cannot add a new appointment",
+                    "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
 
-            //if (PassedTest)
-            //{
-            //    MessageBox.Show("Person already passed this test before, You can only retake faild tests",
-            //       "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            if (ctrlLocalAppCard1.LocalAppInfo.DoesPassedTestType(CurrentTest))
+            {
+                MessageBox.Show("Person already passed this test before, You can only retake faild tests",
+                   "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            //else
-            //{
-            //    frmSchduleTest.eStatus Status = frmSchduleTest.Trail > 0 ? frmSchduleTest.eStatus.Retake : frmSchduleTest.eStatus.FirstTime;
-            //    frmSchduleTest frm = new frmSchduleTest(LocalAppID, -1, Status, CurrentTest, frmSchduleTest.eMode.Add, false);
-            //    frm.AppointmentSaved += _LoadAppointmentList;
-            //    frm.AppointmentSaved += _ResetRecords;
-            //    frm.ShowDialog();
-            //}
+           
+            frmSchduleTest frm = new frmSchduleTest(LocalAppID,CurrentTest);
+            frm.AppointmentDataSaved += _LoadAppointmentList;
+            frm.AppointmentDataSaved += _ResetRecords;
+            frm.ShowDialog();
+            
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

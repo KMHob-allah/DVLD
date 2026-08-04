@@ -18,6 +18,7 @@ namespace DVLD.Applications.Controls
         public event EventHandler ApplicationInfoChanged;
 
         private clApplication _Application;
+
         private int _ApplicationID;
 
         public clApplication ApplicationInfo

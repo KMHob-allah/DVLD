@@ -59,7 +59,7 @@
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
             this.lblMessage.ForeColor = System.Drawing.Color.Red;
-            this.lblMessage.Location = new System.Drawing.Point(85, 91);
+            this.lblMessage.Location = new System.Drawing.Point(106, 91);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(490, 20);
             this.lblMessage.TabIndex = 52;
@@ -71,7 +71,7 @@
             this.btnClose.Font = new System.Drawing.Font("Bookman Old Style", 12F);
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(42, 686);
+            this.btnClose.Location = new System.Drawing.Point(63, 686);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 45);
             this.btnClose.TabIndex = 50;
@@ -84,7 +84,7 @@
             // 
             this.lblTotalFeesValue.AutoSize = true;
             this.lblTotalFeesValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblTotalFeesValue.Location = new System.Drawing.Point(146, 609);
+            this.lblTotalFeesValue.Location = new System.Drawing.Point(167, 609);
             this.lblTotalFeesValue.Name = "lblTotalFeesValue";
             this.lblTotalFeesValue.Size = new System.Drawing.Size(20, 21);
             this.lblTotalFeesValue.TabIndex = 35;
@@ -94,7 +94,7 @@
             // 
             this.lblRetakeTestAppIDValue.AutoSize = true;
             this.lblRetakeTestAppIDValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblRetakeTestAppIDValue.Location = new System.Drawing.Point(492, 66);
+            this.lblRetakeTestAppIDValue.Location = new System.Drawing.Point(513, 66);
             this.lblRetakeTestAppIDValue.Name = "lblRetakeTestAppIDValue";
             this.lblRetakeTestAppIDValue.Size = new System.Drawing.Size(45, 21);
             this.lblRetakeTestAppIDValue.TabIndex = 15;
@@ -104,7 +104,7 @@
             // 
             this.lblRetakeAppFeesValue.AutoSize = true;
             this.lblRetakeAppFeesValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblRetakeAppFeesValue.Location = new System.Drawing.Point(200, 66);
+            this.lblRetakeAppFeesValue.Location = new System.Drawing.Point(221, 66);
             this.lblRetakeAppFeesValue.Name = "lblRetakeAppFeesValue";
             this.lblRetakeAppFeesValue.Size = new System.Drawing.Size(20, 21);
             this.lblRetakeAppFeesValue.TabIndex = 9;
@@ -114,7 +114,7 @@
             // 
             this.lblRetakeTestAppID.AutoSize = true;
             this.lblRetakeTestAppID.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblRetakeTestAppID.Location = new System.Drawing.Point(298, 66);
+            this.lblRetakeTestAppID.Location = new System.Drawing.Point(319, 66);
             this.lblRetakeTestAppID.Name = "lblRetakeTestAppID";
             this.lblRetakeTestAppID.Size = new System.Drawing.Size(182, 20);
             this.lblRetakeTestAppID.TabIndex = 8;
@@ -124,7 +124,7 @@
             // 
             this.lblRetakeAppFees.AutoSize = true;
             this.lblRetakeAppFees.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblRetakeAppFees.Location = new System.Drawing.Point(32, 66);
+            this.lblRetakeAppFees.Location = new System.Drawing.Point(53, 66);
             this.lblRetakeAppFees.Name = "lblRetakeAppFees";
             this.lblRetakeAppFees.Size = new System.Drawing.Size(158, 20);
             this.lblRetakeAppFees.TabIndex = 0;
@@ -135,13 +135,14 @@
             this.btnSave.Font = new System.Drawing.Font("Bookman Old Style", 12F);
             this.btnSave.Image = global::DVLD.Properties.Resources.Save_32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(506, 686);
+            this.btnSave.Location = new System.Drawing.Point(527, 686);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(134, 45);
             this.btnSave.TabIndex = 51;
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // gbRetakeTestInfo
             // 
@@ -152,7 +153,7 @@
             this.gbRetakeTestInfo.Controls.Add(this.lblRetakeAppFees);
             this.gbRetakeTestInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbRetakeTestInfo.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.gbRetakeTestInfo.Location = new System.Drawing.Point(38, 460);
+            this.gbRetakeTestInfo.Location = new System.Drawing.Point(59, 460);
             this.gbRetakeTestInfo.Name = "gbRetakeTestInfo";
             this.gbRetakeTestInfo.Size = new System.Drawing.Size(602, 128);
             this.gbRetakeTestInfo.TabIndex = 49;
@@ -161,7 +162,7 @@
             // 
             // dtpTestDate
             // 
-            this.dtpTestDate.Location = new System.Drawing.Point(276, 383);
+            this.dtpTestDate.Location = new System.Drawing.Point(297, 383);
             this.dtpTestDate.Name = "dtpTestDate";
             this.dtpTestDate.Size = new System.Drawing.Size(253, 22);
             this.dtpTestDate.TabIndex = 48;
@@ -170,7 +171,7 @@
             // 
             this.lblLocalAppIDValue.AutoSize = true;
             this.lblLocalAppIDValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblLocalAppIDValue.Location = new System.Drawing.Point(272, 145);
+            this.lblLocalAppIDValue.Location = new System.Drawing.Point(293, 145);
             this.lblLocalAppIDValue.Name = "lblLocalAppIDValue";
             this.lblLocalAppIDValue.Size = new System.Drawing.Size(45, 21);
             this.lblLocalAppIDValue.TabIndex = 47;
@@ -180,7 +181,7 @@
             // 
             this.lblDrivingClassValue.AutoSize = true;
             this.lblDrivingClassValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblDrivingClassValue.Location = new System.Drawing.Point(272, 193);
+            this.lblDrivingClassValue.Location = new System.Drawing.Point(293, 193);
             this.lblDrivingClassValue.Name = "lblDrivingClassValue";
             this.lblDrivingClassValue.Size = new System.Drawing.Size(37, 21);
             this.lblDrivingClassValue.TabIndex = 46;
@@ -190,7 +191,7 @@
             // 
             this.lblTotalFees.AutoSize = true;
             this.lblTotalFees.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTotalFees.Location = new System.Drawing.Point(38, 609);
+            this.lblTotalFees.Location = new System.Drawing.Point(59, 609);
             this.lblTotalFees.Name = "lblTotalFees";
             this.lblTotalFees.Size = new System.Drawing.Size(102, 20);
             this.lblTotalFees.TabIndex = 34;
@@ -200,7 +201,7 @@
             // 
             this.lblNameValue.AutoSize = true;
             this.lblNameValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblNameValue.Location = new System.Drawing.Point(272, 241);
+            this.lblNameValue.Location = new System.Drawing.Point(293, 241);
             this.lblNameValue.Name = "lblNameValue";
             this.lblNameValue.Size = new System.Drawing.Size(37, 21);
             this.lblNameValue.TabIndex = 45;
@@ -210,7 +211,7 @@
             // 
             this.lblTrailValue.AutoSize = true;
             this.lblTrailValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblTrailValue.Location = new System.Drawing.Point(272, 289);
+            this.lblTrailValue.Location = new System.Drawing.Point(293, 289);
             this.lblTrailValue.Name = "lblTrailValue";
             this.lblTrailValue.Size = new System.Drawing.Size(20, 21);
             this.lblTrailValue.TabIndex = 44;
@@ -220,7 +221,7 @@
             // 
             this.lblFeesValue.AutoSize = true;
             this.lblFeesValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblFeesValue.Location = new System.Drawing.Point(272, 337);
+            this.lblFeesValue.Location = new System.Drawing.Point(293, 337);
             this.lblFeesValue.Name = "lblFeesValue";
             this.lblFeesValue.Size = new System.Drawing.Size(20, 21);
             this.lblFeesValue.TabIndex = 43;
@@ -230,7 +231,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblName.Location = new System.Drawing.Point(38, 241);
+            this.lblName.Location = new System.Drawing.Point(59, 241);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(59, 20);
             this.lblName.TabIndex = 42;
@@ -240,7 +241,7 @@
             // 
             this.lblTrail.AutoSize = true;
             this.lblTrail.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTrail.Location = new System.Drawing.Point(38, 289);
+            this.lblTrail.Location = new System.Drawing.Point(59, 289);
             this.lblTrail.Name = "lblTrail";
             this.lblTrail.Size = new System.Drawing.Size(51, 20);
             this.lblTrail.TabIndex = 41;
@@ -250,7 +251,7 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblDate.Location = new System.Drawing.Point(38, 385);
+            this.lblDate.Location = new System.Drawing.Point(59, 385);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(50, 20);
             this.lblDate.TabIndex = 40;
@@ -260,7 +261,7 @@
             // 
             this.lblFees.AutoSize = true;
             this.lblFees.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblFees.Location = new System.Drawing.Point(38, 337);
+            this.lblFees.Location = new System.Drawing.Point(59, 337);
             this.lblFees.Name = "lblFees";
             this.lblFees.Size = new System.Drawing.Size(50, 20);
             this.lblFees.TabIndex = 39;
@@ -270,7 +271,7 @@
             // 
             this.lblDrivingClass.AutoSize = true;
             this.lblDrivingClass.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblDrivingClass.Location = new System.Drawing.Point(38, 193);
+            this.lblDrivingClass.Location = new System.Drawing.Point(59, 193);
             this.lblDrivingClass.Name = "lblDrivingClass";
             this.lblDrivingClass.Size = new System.Drawing.Size(126, 20);
             this.lblDrivingClass.TabIndex = 38;
@@ -280,7 +281,7 @@
             // 
             this.lblDrivingLicenseAppID.AutoSize = true;
             this.lblDrivingLicenseAppID.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblDrivingLicenseAppID.Location = new System.Drawing.Point(38, 145);
+            this.lblDrivingLicenseAppID.Location = new System.Drawing.Point(59, 145);
             this.lblDrivingLicenseAppID.Name = "lblDrivingLicenseAppID";
             this.lblDrivingLicenseAppID.Size = new System.Drawing.Size(212, 20);
             this.lblDrivingLicenseAppID.TabIndex = 37;
@@ -291,7 +292,7 @@
             this.lblSchduleTestHeader.AutoSize = true;
             this.lblSchduleTestHeader.Font = new System.Drawing.Font("Bookman Old Style", 20F, System.Drawing.FontStyle.Bold);
             this.lblSchduleTestHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblSchduleTestHeader.Location = new System.Drawing.Point(210, 25);
+            this.lblSchduleTestHeader.Location = new System.Drawing.Point(231, 25);
             this.lblSchduleTestHeader.Name = "lblSchduleTestHeader";
             this.lblSchduleTestHeader.Size = new System.Drawing.Size(248, 40);
             this.lblSchduleTestHeader.TabIndex = 36;
@@ -302,7 +303,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(670, 751);
+            this.ClientSize = new System.Drawing.Size(729, 751);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblTotalFeesValue);

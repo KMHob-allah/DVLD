@@ -184,7 +184,7 @@ namespace DVLD_DataAccess
         {
             bool HasAppointment = false;
             string Query = @"SELECT HasAppointmentForTestType = Case 
-                            WHEN EXISTS(SELECT 1 FROM TestAppointments WHERE LocalDrivingLicenseApplicationID = @LocalAppID AND TestTypeID = @TestTypeID AND IsLocked = @Acitve) 
+                            WHEN EXISTS(SELECT 1 FROM TestAppointments WHERE LocalDrivingLicenseApplicationID = @LocalAppID AND TestTypeID = @TestTypeID AND IsLocked = @Active) 
                             THEN 1 ELSE 0 END"; 
             
             using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
@@ -193,7 +193,7 @@ namespace DVLD_DataAccess
                 {
                     Command.Parameters.AddWithValue("@LocalAppID", LocalAppID);
                     Command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
-                    Command.Parameters.AddWithValue("@Active", (Active ? 0:1));
+                    Command.Parameters.AddWithValue("@Active", (Active ? "0":"1"));
                     Connection.Open();
 
                     HasAppointment = Convert.ToBoolean(Command.ExecuteScalar());

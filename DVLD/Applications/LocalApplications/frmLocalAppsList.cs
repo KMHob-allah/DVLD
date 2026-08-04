@@ -289,7 +289,7 @@ namespace DVLD.Applications.LocalApplications
         private void opSchduleVisionTest_Click(object sender, EventArgs e)
         {
             frmTestAppointmentsList frm = new frmTestAppointmentsList(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells[0].Value),
-                frmTestAppointmentsList.eTestType.Vision);
+                clTestType.eTestType.Vision);
             frm.ShowDialog();
         }
     }

@@ -131,14 +131,14 @@ namespace DVLD_DataAccess
         }
 
         static public int AddNew(int TestTypeID, int LocalDrivingLicenseApplicationID,
-                DateTime AppointmentDate, float PaidFees, int CreatedByUserID, bool IsLocked, int? RetakeTestAppID)
+                DateTime AppointmentDate, float PaidFees, int CreatedByUserID, bool IsLocked, int RetakeTestAppID)
         {
             int _TestAppointmentID = -1;
 
             string Query = @"INSERT INTO TestAppointments                             
-                           (TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, PaidFees, CreatedByUserID, IsLocked, RetakeTestAppID)
+                           (TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, PaidFees, CreatedByUserID, IsLocked, RetakeTestApplicationID)
                            VALUES
-                           (@TestTypeID,@LocalDrivingLicenseApplicationID,@AppointmentDate,@PaidFees,@CreatedByUserID,@IsLocked, @RetakeTestAppID);
+                           (@TestTypeID,@LocalDrivingLicenseApplicationID,@AppointmentDate,@PaidFees,@CreatedByUserID,@IsLocked, @RetakeTestApplicationID);
                            SELECT SCOPE_IDENTITY();";
 
             using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
@@ -151,11 +151,11 @@ namespace DVLD_DataAccess
                 Command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
                 Command.Parameters.AddWithValue("@IsLocked", IsLocked);
 
-                if(RetakeTestAppID == null)
+                if(RetakeTestAppID == -1)
                 {
-                    Command.Parameters.AddWithValue("@RetakeTestAppID", DBNull.Value);
+                    Command.Parameters.AddWithValue("@RetakeTestApplicationID", DBNull.Value);
                 }
-                else Command.Parameters.AddWithValue("@RetakeTestAppID", RetakeTestAppID);
+                else Command.Parameters.AddWithValue("@RetakeTestApplicationID", RetakeTestAppID);
 
 
                 Connection.Open();
