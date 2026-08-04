@@ -11,8 +11,8 @@ namespace DVLD_Business
 {
     public class clApplication
     {
-        public enum eMode { Add, Update}       
-        public enum eApplicationStatus
+        public enum eMode : byte { Add, Update}       
+        public enum eApplicationStatus : byte
         {
             New = 1,
             Cancelled,

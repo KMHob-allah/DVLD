@@ -10,7 +10,7 @@ namespace DVLD_Business
 {
     public class clTestType
     {
-        public enum eTestType { Vision = 1, Written, Street}
+        public enum eTestType : byte { Vision = 1, Written, Street}
         public eTestType ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

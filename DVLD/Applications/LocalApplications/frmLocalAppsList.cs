@@ -37,7 +37,7 @@ namespace DVLD.Applications.LocalApplications
             {
                 if (cbFilters.SelectedItem.ToString() == "Local Application ID") 
                 {
-                    dvLocalAppsList.RowFilter = $"LocalAppID = '{Convert.ToInt32(_Value)}'";
+                    dvLocalAppsList.RowFilter = $"_LocalAppID = '{Convert.ToInt32(_Value)}'";
                 }
 
                 else dvLocalAppsList.RowFilter = $"{ColumnName} LIKE '{_Value}%'";

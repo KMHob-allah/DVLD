@@ -15,7 +15,6 @@ namespace DVLD.Tests.TestAppointments
     {
         //public event EventHandler AppointmentDataChanged;
 
-        //public enum eTestType { Vision = 1, Written, Street }
 
 
         clTestType.eTestType CurrentTest;
@@ -113,19 +112,10 @@ namespace DVLD.Tests.TestAppointments
         }
         private void opEdit_Click(object sender, EventArgs e)
         {
-            //int TestAppointmentID = Convert.ToInt32(dgvAppointmentsList.CurrentRow.Cells["TestAppointmentID"].Value);
-            //if (Convert.ToBoolean(dgvAppointmentsList.CurrentRow.Cells["IsLocked"].Value) == true)
-            //{
-            //    frmSchduleTest frm = new frmSchduleTest(LocalAppID, TestAppointmentID, frmSchduleTest.eStatus.FirstTime, CurrentTest, frmSchduleTest.eMode.Update, true);
-            //    //frm.AppointmentSaved += WhenTestPassed;
-            //    frm.ShowDialog();
-            //}
-            //else
-            //{
-            //    frmSchduleTest frm = new frmSchduleTest(LocalAppID, TestAppointmentID, frmSchduleTest.eStatus.FirstTime, CurrentTest, frmSchduleTest.eMode.Update, false);
-            //    frm.AppointmentSaved += WhenTestPassed;
-            //    frm.ShowDialog();
-            //}
+            frmSchduleTest frm = new frmSchduleTest(Convert.ToInt32(dgvAppointmentsList.CurrentRow.Cells[0].Value));
+            frm.AppointmentDataSaved += _LoadAppointmentList;
+            frm.AppointmentDataSaved += _ResetRecords;
+            frm.ShowDialog();          
         }
         private void opTakeTest_Click(object sender, EventArgs e)
         {

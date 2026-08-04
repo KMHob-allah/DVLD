@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DVLD.GlobalSettings;
+using DVLD_Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,29 +9,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DVLD.Tests.TestAppointments.frmSchduleTest;
+using static DVLD_Business.clApplicationType;
 
 namespace DVLD.Tests.TestAppointments
 {
     public partial class frmSchduleTest : Form
     {
         public event EventHandler AppointmentDataSaved;
-        public enum eMode { Add,Update}
+        public enum eMode : byte { Add,Update}
+        public enum eCreationMode : byte { FirstTime, Retake}
 
-        clTestAppointment TestAppointment;
-        clLocalApplication LocalApp;
-        clTestType TestType;
+        clTestAppointment _TestAppointment;
+        clTestType.eTestType _TestTypeID;
+        clLocalApplication _LocalApp;
+        clTestType _TestType;
 
-        clTestType.eTestType TestTypeID;
 
-        int AppointmentID;
-        int LocalAppID;
+        int _AppointmentID;
+        int _LocalAppID;
         
+        eCreation _CreationMode;
         eMode _Mode;
 
 
         public frmSchduleTest(int AppointmentID)
         {
-            this.AppointmentID = AppointmentID;
+            this._AppointmentID = AppointmentID;
 
             _Mode = eMode.Update;
 
@@ -38,59 +43,93 @@ namespace DVLD.Tests.TestAppointments
         }
         public frmSchduleTest(int LocalAppID ,clTestType.eTestType TestTypeID)
         {
-            this.LocalAppID = LocalAppID;
+            this._LocalAppID = LocalAppID;
 
-            this.TestTypeID = TestTypeID;
+            this._TestTypeID = TestTypeID;
 
-            this.AppointmentID = -1;
+            this._AppointmentID = -1;
 
             _Mode = eMode.Add;
 
             InitializeComponent();
         }
 
+        private void _SetTestAppointmentInfo()
+        {
+            lblLocalAppIDValue.Text = _LocalApp.LocalApplicationID.ToString();
+            lblDrivingClassValue.Text = _LocalApp.LicenseClassInfo.ClassName;
+            lblNameValue.Text = _LocalApp.PersonInfo.FullName();
+            lblTrailValue.Text = _LocalApp.TotalTrailsPerTest(_TestTypeID).ToString();
+            lblFeesValue.Text = clTestType.Find(_TestTypeID).Fees.ToString();
 
+            dtpTestDate.MinDate = DateTime.Today;
+            dtpTestDate.Text = DateTime.Now.ToString();
+
+            lblTotalFeesValue.Text = _CalcTotalFees().ToString();
+        }
         private void _SetDefaultValues()
         {
             lblMessage.Visible = false;
 
-            if(_Mode == eMode.Add)
+            if (_Mode == eMode.Add)
             {
-                LocalApp = clLocalApplication.FindByLocalAppID(LocalAppID);
-                TestType = clTestType.Find(TestTypeID);
-                TestAppointment = new clTestAppointment();
+                _LocalApp = clLocalApplication.FindByLocalAppID(_LocalAppID);
 
-            
-                lblLocalAppIDValue.Text = LocalApp.LocalApplicationID.ToString();
-                lblDrivingClassValue.Text = LocalApp.LicenseClassInfo.ClassName;
-                lblNameValue.Text = LocalApp.PersonInfo.FullName();
-                lblTrailValue.Text = LocalApp.TotalTrailsPerTest(TestTypeID).ToString();
-                lblFeesValue.Text = clTestType.Find(TestTypeID).Fees.ToString();
-                dtpTestDate.MinDate = DateTime.Today;
-                dtpTestDate.Text = DateTime.Now.ToString();
-                lblTotalFeesValue.Text = _CalcTotalFees().ToString();
-
-                if (!LocalApp.HasAppointmentForTestType(false, TestTypeID))                   
+                if (_LocalApp == null)
                 {
-                    gbRetakeTestInfo.Enabled = false;
-                    return;                   
+                    MessageBox.Show("Error: No Local Driving License Application with ID : " + _LocalAppID.ToString(),
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnSave.Enabled = false;
+                    return;
                 }
 
-                gbRetakeTestInfo.Enabled = true;
-                clTestAppointment LastTestAppointment = clTestAppointment.FindLastTestAppointment(LocalAppID, (int)TestTypeID);
+                _TestType = clTestType.Find(_TestTypeID);
+                _TestAppointment = new clTestAppointment();
 
-                lblRetakeTestAppIDValue.Text = LastTestAppointment.RetakeTestAppID.ToString();
-                lblRetakeAppFeesValue.Text = LastTestAppointment.ApplicationInfo.PaidFees.ToString();
+                _CreationMode = (_LocalApp.DoesAttendTestType(_TestType.ID) ? eCreationMode.Retake : eCreationMode.FirstTime);
+
+                _SetTestAppointmentInfo();                           
             }
 
             else
             {
-                TestAppointment = clTestAppointment.Find(AppointmentID);
-                LocalAppID = TestAppointment.LocalAppID;
-                TestTypeID = TestAppointment.TestType;
+                _TestAppointment = clTestAppointment.Find(_AppointmentID);
+
+                if (_TestAppointment == null)
+                {
+                    MessageBox.Show("Error: No Appointment with ID = " + _AppointmentID.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnSave.Enabled = false;
+                    return;
+                }
+
+                _LocalAppID = _TestAppointment.LocalAppID;
+                _TestTypeID = _TestAppointment.TestType;
+
+                _CreationMode = (_TestAppointment.LocalApplicationInfo.DoesAttendTestType(_TestType.ID) ? eCreationMode.Retake : eCreationMode.FirstTime);
             }
 
-            switch (TestTypeID)
+            switch(_CreationMode)
+            {
+                case eCreationMode.Retake:
+                {
+                    lblSchduleTestHeader.Text = "Schedule Retake Test";
+                    lblRetakeAppFees.Text = clApplicationType.Find(clApplicationType.eApplicationType.RetakeTest).Fees.ToString();
+                    gbRetakeTestInfo.Enabled = true;
+                    lblRetakeTestAppID.Text = "0";
+                    break;
+                }
+
+                case eCreationMode.FirstTime:
+                {
+                    gbRetakeTestInfo.Enabled = false;
+                    lblRetakeAppFeesValue.Text = "0";
+                    lblRetakeTestAppID.Text = "N/A";
+                    break;
+                }
+            }
+            
+            switch (_TestTypeID)
             {
 
                 case clTestType.eTestType.Vision:
@@ -115,6 +154,13 @@ namespace DVLD.Tests.TestAppointments
                 }
 
             }
+
+            if (!_HandleActiveTestAppointmentConstraint()) return;
+
+            if (!_HandleAppointmentLockedConstraint()) return;
+
+            if (!_HandlePrviousTestConstraint()) return;
+
         }
         private float _CalcTotalFees()
         {
@@ -122,43 +168,167 @@ namespace DVLD.Tests.TestAppointments
         }
         private void _LoadTestAppointmentInfo()
         {                     
-            lblLocalAppIDValue.Text = TestAppointment.LocalAppID.ToString();
-            lblDrivingClassValue.Text = TestAppointment.LocalApplicationInfo.LicenseClassInfo.ClassName;
-            lblNameValue.Text = TestAppointment.LocalApplicationInfo.PersonInfo.FullName();
-            lblTrailValue.Text = TestAppointment.LocalApplicationInfo.TotalTrailsPerTest(TestTypeID).ToString();
-            lblFeesValue.Text = TestAppointment.PaidFees.ToString();
-            dtpTestDate.Text = TestAppointment.AppointmentDate.ToString();
-            lblTotalFeesValue.Text = _CalcTotalFees().ToString();
+            lblLocalAppIDValue.Text = _TestAppointment.LocalAppID.ToString();
+            lblDrivingClassValue.Text = _TestAppointment.LocalApplicationInfo.LicenseClassInfo.ClassName;
+            lblNameValue.Text = _TestAppointment.LocalApplicationInfo.PersonInfo.FullName();
+            lblTrailValue.Text = _TestAppointment.LocalApplicationInfo.TotalTrailsPerTest(_TestTypeID).ToString();
+            lblFeesValue.Text = _TestAppointment.PaidFees.ToString();
 
-            if(TestAppointment.RetakeTestAppID == -1)
+            if (DateTime.Compare(DateTime.Now, _TestAppointment.AppointmentDate) < 0) dtpTestDate.MinDate = DateTime.Now;
+            else dtpTestDate.MinDate = _TestAppointment.AppointmentDate;
+
+            dtpTestDate.Text = _TestAppointment.AppointmentDate.ToString();
+            lblTotalFeesValue.Text = _CalcTotalFees().ToString();           
+
+            if(_TestAppointment.RetakeTestAppID == -1)
             {
-                gbRetakeTestInfo.Enabled = false;
-                return;
+                lblRetakeAppFeesValue.Text = "0";
+                lblRetakeTestAppIDValue.Text = "N/A";
             }
 
-            lblRetakeTestAppIDValue.Text = TestAppointment.RetakeTestAppID.ToString();
-            lblRetakeAppFeesValue.Text = TestAppointment.ApplicationInfo.PaidFees.ToString();          
+            else
+            {
+                lblSchduleTestHeader.Text = "Schdule Retake Test";
+                gbRetakeTestInfo.Enabled = true;
+                lblRetakeTestAppIDValue.Text = _TestAppointment.RetakeTestAppID.ToString();
+                lblRetakeAppFeesValue.Text = _TestAppointment.ApplicationInfo.PaidFees.ToString();          
+            }
+
             
         }
         private void _FillTestAppointment()
         {
-            TestAppointment.TestType = TestTypeID;
-            TestAppointment.LocalAppID = Convert.ToInt32(lblLocalAppIDValue.Text);
-            TestAppointment.AppointmentDate = DateTime.Now;
-            TestAppointment.PaidFees = Convert.ToSingle(lblTotalFeesValue.Text);
-            TestAppointment.CreatedByUserID = GlobalSettings.clGlobalSettings.CurrentUser.UserID;
-            TestAppointment.IsLocked = false;
+            _TestAppointment.TestType = _TestTypeID;
+            _TestAppointment.LocalAppID = Convert.ToInt32(lblLocalAppIDValue.Text);
+
+            if (_Mode == eMode.Add) _TestAppointment.AppointmentDate = DateTime.Now;
+
+            else _TestAppointment.AppointmentDate = (DateTime)dtpTestDate.Value;
+
+            _TestAppointment.PaidFees = Convert.ToSingle(lblTotalFeesValue.Text);
+            _TestAppointment.CreatedByUserID = GlobalSettings.clGlobalSettings.CurrentUser.UserID;
+            _TestAppointment.IsLocked = false;
+
             if(int.TryParse(lblRetakeTestAppIDValue.Text, out int RetakeTestAppID))
             {
-                TestAppointment.RetakeTestAppID = RetakeTestAppID;
+                _TestAppointment.RetakeTestAppID = RetakeTestAppID;
             }
-            else  TestAppointment.RetakeTestAppID = -1;
+            else  _TestAppointment.RetakeTestAppID = -1;
+        }
+
+        private bool _HandleActiveTestAppointmentConstraint()
+        {
+            if (_Mode == eMode.Add && clLocalApplication.HassAppointmentForTestType(_LocalAppID, true, _TestTypeID))
+            {
+                lblUserMessage.Text = "Person Already have an active appointment for this test";
+                btnSave.Enabled = false;
+                dtpTestDate.Enabled = false;
+                return false;
+            }
+
+            return true;
+        }
+        private bool _HandleAppointmentLockedConstraint()
+        {           
+            if (_TestAppointment.IsLocked)
+            {
+                lblMessage.Visible = true;
+                lblMessage.Text = "Person already sat for the test, appointment is locked.";
+                dtpTestDate.Enabled = false;
+                btnSave.Enabled = false;
+                return false;
+
+            }
+
+            else lblMessage.Visible = false;
+
+            return true;
+        }
+        private bool _HandlePrviousTestConstraint()
+        {
+            switch (_TestTypeID)
+            {
+                case clTestType.eTestType.Vision:
+                    lblMessage.Visible = false;
+                    return true;
+
+                case clTestType.eTestType.Written:
+                   
+                    if (!_LocalApp.DoesAttendTestType(clTestType.eTestType.Vision))
+                    {
+                        lblMessage.Text = "Cannot Sechule, Vision Test should be passed first";
+                        lblMessage.Visible = true;
+                        btnSave.Enabled = false;
+                        dtpTestDate.Enabled = false;
+                        return false;
+                    }
+                    else
+                    {
+                        lblMessage.Visible = false;
+                        btnSave.Enabled = true;
+                        dtpTestDate.Enabled = true;
+                    }
+
+
+                    return true;
+
+                case clsTestType.enTestType.StreetTest:
+                   
+                    if (!_LocalApp.DoesAttendTestType(clTestType.eTestType.Written))
+                    {
+                        lblMessage.Text = "Cannot Sechule, Written Test should be passed first";
+                        lblMessage.Visible = true;
+                        btnSave.Enabled = false;
+                        dtpTestDate.Enabled = false;
+                        return false;
+                    }
+                   
+                    else
+                    {
+                        lblMessage.Visible = false;
+                        btnSave.Enabled = true;
+                        dtpTestDate.Enabled = true;
+                    }
+
+                    return true;
+
+            }
+
+            return true;
+
+        }
+        private bool _HandleRetakeApplication()
+        {
+           
+            if (_Mode == eMode.Add && _CreationMode == eCreationMode.Retake)
+            {
+                clApplication Application = new clApplication();
+
+                Application.ApplicantPersonID = _LocalApp.ApplicantPersonID;
+                Application.ApplicationDate = DateTime.Now;
+                Application.ApplicationType = clApplicationType.eApplicationType.RetakeTest;
+                Application.ApplicationStatus = clApplication.eApplicationStatus.Completed;
+                Application.LastStatusDate = DateTime.Now;
+                Application.PaidFees = clApplicationType.Find(ApplicationType).Fees;
+                Application.CreatedByUserID = clGlobalSettings.CurrentUser.UserID;
+
+                if (!Application.Save())
+                {
+                    _TestAppointment.RetakeTestAppID = -1;
+                    MessageBox.Show("Faild to Create application", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                _TestAppointment.RetakeTestAppID = Application.ApplicationID;
+
+            }
+            return true;
         }
 
         private void frmSchduleTest_Load(object sender, EventArgs e)
         {
             _SetDefaultValues();
-
+            
             if(_Mode == eMode.Update) _LoadTestAppointmentInfo();            
         }
 
@@ -167,12 +337,13 @@ namespace DVLD.Tests.TestAppointments
         {
             this.Close();
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!_HandleRetakeApplication()) return;
+
             _FillTestAppointment();
 
-            if(TestAppointment.Save())
+            if(_TestAppointment.Save())
             {
                 MessageBox.Show("Appointment Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 AppointmentDataSaved?.Invoke(this, null);

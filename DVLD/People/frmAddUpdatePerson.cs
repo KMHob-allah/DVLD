@@ -20,7 +20,7 @@ namespace DVLD.People
         public delegate void PersonDataSavedEventHandler(object sender, int PersonID);
 
         public event PersonDataSavedEventHandler PersonDataSaved;
-        public enum eMode { Add, Update };
+        public enum eMode : byte { Add, Update };
 
         private eMode _Mode;
 

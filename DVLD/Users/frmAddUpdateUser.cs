@@ -14,7 +14,7 @@ namespace DVLD.Users
     public partial class frmAddUpdateUser : Form
     {
         public event EventHandler UserDataSaved;
-        enum eMode { Add, Update }
+        enum eMode : byte { Add, Update }
 
         private eMode _Mode;
 

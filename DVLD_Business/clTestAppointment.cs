@@ -11,7 +11,7 @@ namespace DVLD_Business
 {
     public class clTestAppointment
     {
-        public enum eMode { Add, Update }
+        public enum eMode : byte { Add, Update }
 
         eMode _Mode;
         public int AppointmentID { get; set; }

@@ -10,7 +10,7 @@ namespace DVLD_Business
 {
     public class clApplicationType
     {
-        public enum eApplicationType
+        public enum eApplicationType : byte
         {
             NewLocalDrivingLicenseService = 1,
             RenewDrivingLicenseService,

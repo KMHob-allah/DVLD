@@ -10,8 +10,8 @@ namespace DVLD_Business
 {
     public class clPerson
     {
-        public enum eGender { Male, Female, Unknown }
-        public enum eMode { Add, Update};
+        public enum eGender : byte { Male, Female, Unknown }
+        public enum eMode : byte { Add, Update};
 
 
 

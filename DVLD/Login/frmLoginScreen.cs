@@ -13,7 +13,7 @@ namespace DVLD.GlobalSettings
 {
     public partial class frmLoginScreen : Form
     {
-        enum eLoginResult { Success, InvalidUserNameOrPassword, NotActive }
+        enum eLoginResult : byte { Success, InvalidUserNameOrPassword, NotActive }
 
         clUser _CurrentUser;
 

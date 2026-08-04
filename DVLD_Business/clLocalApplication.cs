@@ -5,13 +5,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DVLD_Business.clTestType;
 
 namespace DVLD_Business
 {
     public class clLocalApplication : clApplication
     {
-        public enum eSaveResult {Success, FaildHasActiveApp, FaildHasActiveLicense, FaildLessThanMinAge, Faild}
-        public enum eMode { Add, Update}
+        public enum eSaveResult : byte { Success, FaildHasActiveApp, FaildHasActiveLicense, FaildLessThanMinAge, Faild}
+        public enum eMode : byte { Add, Update}
 
         eMode _Mode;
 
@@ -157,6 +158,10 @@ namespace DVLD_Business
         {
             return clLocalApplicationData.DoesPassedTestType(this.LocalApplicationID, (int)TestType); ;
         }
+        public bool DoesAttendTestType(clTestType.eTestType TestType)
+        {
+            return HasAppointmentForTestType(false, TestType);
+        }
 
         public bool HasAppointmentForTestType(bool Active, clTestType.eTestType TestType)
         {
@@ -165,6 +170,12 @@ namespace DVLD_Business
         public bool HasAnyAppointment()
         {
             return clLocalApplicationData.HasAnyAppointment(this.LocalApplicationID);
+        }
+
+        static public bool HassAppointmentForTestType(int LocalAppID, bool Active, int TestTypeID)
+        {
+            return clLocalApplicationData.HasAppointmentForTestType(LocalAppID, Active, TestTypeID);
+
         }
 
         public bool IsLicenseIssued()

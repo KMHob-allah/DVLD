@@ -121,8 +121,9 @@ namespace DVLD_DataAccess
                     CreatedByUserID = Convert.ToInt32(Reader["CreatedByUserID"]);
                     IsLocked = Convert.ToBoolean(Reader["IsLocked"]);
 
-                    if (Reader["RetakeTestAppID"] == DBNull.Value) RetakeTestAppID = -1;
+                    if (Reader["RetakeTestApplicationID"] == DBNull.Value) RetakeTestAppID = -1;
                     else RetakeTestAppID = Convert.ToInt32(Reader["RetakeTestAppID"]);
+                    IsFound = true;
 
                 }
             }
@@ -166,14 +167,14 @@ namespace DVLD_DataAccess
         }
 
         static public bool Update(int TestAppointmentID, int TestTypeID,
-                int LocalDrivingLicenseApplicationID, DateTime AppointmentDate, float PaidFees, int CreatedByUserID, bool IsLocked, int? RetakeTestAppID)
+                int LocalDrivingLicenseApplicationID, DateTime AppointmentDate, float PaidFees, int CreatedByUserID, bool IsLocked, int RetakeTestAppID)
         {
             int RowsAffected;
 
             string Query = @"Update TestAppointments 
                             Set TestTypeID = @TestTypeID, LocalDrivingLicenseApplicationID= @LocalDrivingLicenseApplicationID,
                             AppointmentDate = @AppointmentDate, PaidFees = @PaidFees, CreatedByUserID = @CreatedByUserID,
-                            IsLocked = @IsLocked, RetakeTestApplicationID = @RetakeTestAppID
+                            IsLocked = @IsLocked, RetakeTestApplicationID = @RetakeTestApplicationID
                             WHERE TestAppointmentID = @TestAppointmentID";
 
 
@@ -187,7 +188,10 @@ namespace DVLD_DataAccess
                 Command.Parameters.AddWithValue("@PaidFees", PaidFees);
                 Command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
                 Command.Parameters.AddWithValue("@IsLocked", IsLocked);
-                Command.Parameters.AddWithValue("@RetakeTestApplicationID", RetakeTestAppID);
+                
+                if(RetakeTestAppID == -1) Command.Parameters.AddWithValue("@RetakeTestApplicationID", DBNull.Value);
+                else Command.Parameters.AddWithValue("@RetakeTestApplicationID", RetakeTestAppID);
+
 
                 Connection.Open();
                 RowsAffected = Command.ExecuteNonQuery();

@@ -292,11 +292,11 @@
             this.lblSchduleTestHeader.AutoSize = true;
             this.lblSchduleTestHeader.Font = new System.Drawing.Font("Bookman Old Style", 20F, System.Drawing.FontStyle.Bold);
             this.lblSchduleTestHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblSchduleTestHeader.Location = new System.Drawing.Point(231, 25);
+            this.lblSchduleTestHeader.Location = new System.Drawing.Point(164, 26);
             this.lblSchduleTestHeader.Name = "lblSchduleTestHeader";
-            this.lblSchduleTestHeader.Size = new System.Drawing.Size(248, 40);
+            this.lblSchduleTestHeader.Size = new System.Drawing.Size(370, 40);
             this.lblSchduleTestHeader.TabIndex = 36;
-            this.lblSchduleTestHeader.Text = "Schdule Test";
+            this.lblSchduleTestHeader.Text = "Schdule Vision Test";
             // 
             // frmSchduleTest
             // 

@@ -10,7 +10,7 @@ namespace DVLD_Business
 {
     public class clUser
     {      
-        public enum eMode { Add, Update}
+        public enum eMode : byte { Add, Update}
 
         public eMode Mode = eMode.Add; 
         public int PersonID { get; set; }

@@ -83,7 +83,7 @@ namespace DVLD.Applications.LocalApplications
         //}
 
         public event EventHandler LocalApplicationDataSaved;
-        enum eMode { Add, Update }
+        enum eMode : byte { Add, Update }
 
         private eMode _Mode;
 
