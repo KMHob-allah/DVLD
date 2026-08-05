@@ -115,7 +115,7 @@ namespace DVLD_DataAccess.Data
                             @TestResult,
                             @Notes,
                             @CreatedByUserID);
-                            UPDATE TestAppointments T SET T.IsLocked = 1 WHERE TestAppointmentID = @TestAppointmentID;
+                            UPDATE TestAppointments SET TestAppointments.IsLocked = 1 WHERE TestAppointmentID = @TestAppointmentID;
                             SELECT SCOPE_IDENTITY();";
 
 

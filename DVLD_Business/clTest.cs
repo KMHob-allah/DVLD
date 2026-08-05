@@ -21,7 +21,7 @@ namespace DVLD_Business
         public clTestAppointment AppointmentInfo { get; set; }
         public clUser UserInfo { get; set; }
 
-        clTest()
+        public clTest()
         {
             this.ID = -1;
             this.AppointmentID = -1;
@@ -31,16 +31,16 @@ namespace DVLD_Business
 
             _Mode = eMode.Add;
         }
-        clTest(int ID, int AppointmentID, bool Result, string Notes, int CreatedByUserID)
+        private clTest(int ID, int AppointmentID, bool Result, string Notes, int CreatedByUserID)
         {
-            ID = ID;
-            AppointmentID = AppointmentID;
-            Result = Result;
-            Notes = Notes;
-            CreatedByUserID = CreatedByUserID;
+            this.ID = ID;
+            this.AppointmentID = AppointmentID;
+            this.Result = Result;
+            this.Notes = Notes;
+            this.CreatedByUserID = CreatedByUserID;
 
-            AppointmentInfo = clTestAppointment.Find(AppointmentID;
-            UserInfo = clUser.Find(CreatedByUserID);
+            this.AppointmentInfo = clTestAppointment.Find(AppointmentID);
+            this.UserInfo = clUser.FindByUserID(CreatedByUserID);
 
             _Mode = eMode.Update;
         }
@@ -58,7 +58,7 @@ namespace DVLD_Business
             string Notes = string.Empty;
             int CreatedByUserID = -1;
 
-            if (clTestData.Find(TestID, ref AppointmentID, ref Result, ref Notes, ref CreatedByUserID))
+            if (clTestData.LoadTest(TestID, ref AppointmentID, ref Result, ref Notes, ref CreatedByUserID))
             {
                 return new clTest(TestID, AppointmentID, Result, Notes, CreatedByUserID);
             }
@@ -72,7 +72,7 @@ namespace DVLD_Business
             string Notes = string.Empty;
             int CreatedByUserID = -1;
 
-            if (clTestData.LoadTestForPerson(PersonID, TestTypeID, LicenseClassID, TestID, ref AppointmentID, ref Result,
+            if (clTestData.LoadTestForPerson(PersonID, (int)TestTypeID, LicenseClassID, ref TestID, ref AppointmentID, ref Result,
                 ref Notes, ref CreatedByUserID))
             {
                 return new clTest(TestID, AppointmentID, Result, Notes, CreatedByUserID);
@@ -82,7 +82,7 @@ namespace DVLD_Business
         
         private bool _AddNewTest()
         {
-            this.ID = return clTestData.AddTest(this.AppointmentID, this.Result, this.Notes, this.CreatedByUserID);
+            this.ID = clTestData.AddTest(this.AppointmentID, this.Result, this.Notes, this.CreatedByUserID);
 
             return this.ID != -1;
         }

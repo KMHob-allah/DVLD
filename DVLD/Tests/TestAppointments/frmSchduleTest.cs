@@ -117,9 +117,9 @@ namespace DVLD.Tests.TestAppointments
                 case eCreationMode.Retake:
                 {
                     lblSchduleTestHeader.Text = "Schedule Retake Test";
-                    lblRetakeAppFees.Text = clApplicationType.Find(clApplicationType.eApplicationType.RetakeTest).Fees.ToString();
+                    lblRetakeAppFeesValue.Text = clApplicationType.Find(clApplicationType.eApplicationType.RetakeTest).Fees.ToString();
                     gbRetakeTestInfo.Enabled = true;
-                    lblRetakeTestAppID.Text = "0";
+                    lblRetakeTestAppIDValue.Text = "N/A";
                     break;
                 }
 

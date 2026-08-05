@@ -137,9 +137,9 @@ namespace DVLD.Applications.LocalApplications
 
             opSchduleVisionTest.Enabled = (opSchduleTests.Enabled && !IsPassedVisionTest);
 
-            opSchduleWrittenTest.Enabled = (opSchduleTests.Enabled && IsPassedVisionTest);
+            opSchduleWrittenTest.Enabled = (opSchduleTests.Enabled && IsPassedVisionTest && !IsPassedWrittenTest);
 
-            opSchduleStreetTest.Enabled = (opSchduleTests.Enabled && IsPassedWrittenTest);
+            opSchduleStreetTest.Enabled = (opSchduleTests.Enabled && IsPassedVisionTest && IsPassedWrittenTest && !IsPassedStreetTest);
 
             opIssueDrivingLicenseFirstTime.Enabled = (Status == clApplication.eApplicationStatus.New && IsPassedStreetTest && !IsLicenseIssued);
 
@@ -290,7 +290,27 @@ namespace DVLD.Applications.LocalApplications
         {
             frmTestAppointmentsList frm = new frmTestAppointmentsList(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells[0].Value),
                 clTestType.eTestType.Vision);
+            frm.TestAppointmentsDataChanged += _RefreshLocalAppsList;
+
             frm.ShowDialog();
         }
+        private void opSchduleWrittenTest_Click(object sender, EventArgs e)
+        {
+            frmTestAppointmentsList frm = new frmTestAppointmentsList(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells[0].Value),
+              clTestType.eTestType.Written);
+
+            frm.TestAppointmentsDataChanged += _RefreshLocalAppsList;
+
+            frm.ShowDialog();
+        }
+        private void opSchduleStreetTest_Click(object sender, EventArgs e)
+        {
+            frmTestAppointmentsList frm = new frmTestAppointmentsList(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells[0].Value),
+                          clTestType.eTestType.Street);
+
+            frm.TestAppointmentsDataChanged += _RefreshLocalAppsList;
+            frm.ShowDialog();
+        }
+
     }
 }

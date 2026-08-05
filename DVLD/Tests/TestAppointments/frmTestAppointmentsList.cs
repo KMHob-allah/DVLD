@@ -13,9 +13,7 @@ namespace DVLD.Tests.TestAppointments
 {
     public partial class frmTestAppointmentsList : Form
     {
-        //public event EventHandler AppointmentDataChanged;
-
-
+        public event EventHandler TestAppointmentsDataChanged;
 
         clTestType.eTestType CurrentTest;
         int LocalAppID;
@@ -83,7 +81,6 @@ namespace DVLD.Tests.TestAppointments
 
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
-
             if (ctrlLocalAppCard1.LocalAppInfo.HasAppointmentForTestType(true, CurrentTest))
             {
                 MessageBox.Show("Person already has an active appointment for this test, You cannot add a new appointment",
@@ -91,18 +88,15 @@ namespace DVLD.Tests.TestAppointments
                 return;
             }
 
-
             if (ctrlLocalAppCard1.LocalAppInfo.DoesPassedTestType(CurrentTest))
             {
                 MessageBox.Show("Person already passed this test before, You can only retake faild tests",
                    "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
            
             frmSchduleTest frm = new frmSchduleTest(LocalAppID,CurrentTest);
-            frm.AppointmentDataSaved += _LoadAppointmentList;
-            frm.AppointmentDataSaved += _ResetRecords;
+            frm.AppointmentDataSaved += WhenAppointmentDataSaved;
             frm.ShowDialog();
             
         }
@@ -113,22 +107,17 @@ namespace DVLD.Tests.TestAppointments
         private void opEdit_Click(object sender, EventArgs e)
         {
             frmSchduleTest frm = new frmSchduleTest(Convert.ToInt32(dgvAppointmentsList.CurrentRow.Cells[0].Value));
-            frm.AppointmentDataSaved += _LoadAppointmentList;
-            frm.AppointmentDataSaved += _ResetRecords;
+            frm.AppointmentDataSaved += WhenAppointmentDataSaved;
+
             frm.ShowDialog();          
         }
         private void opTakeTest_Click(object sender, EventArgs e)
-        {
-            //if (PassedTest)
-            //{
-            //    MessageBox.Show("Person already passed this test before, You can only retake faild tests",
-            //        "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-            //frmSchduledTest frm = new frmSchduledTest(Convert.ToInt32(dgvAppointmentsList.CurrentRow.Cells["TestAppointmentID"].Value));
-            //frm.PersonPassed += WhenTestPassed;
-            //frm.TestResultSaved += WhenAppointmentDataChanged;
-            //frm.ShowDialog();
+        {            
+            frmSchduledTest frm = new frmSchduledTest(Convert.ToInt32(dgvAppointmentsList.CurrentRow.Cells[0].Value));
+            
+            frm.TestDataSaved += WhenAppointmentDataSaved;
+
+            frm.ShowDialog();
         }
 
         private void cmsTestOptions_Opening(object sender, CancelEventArgs e)
@@ -147,16 +136,11 @@ namespace DVLD.Tests.TestAppointments
             ctrlLocalAppCard1.LoadLocalAppInfo(LocalAppID);
          }
 
-        //private void WhenTestPassed(object sender, EventArgs e)
-        //{
-        //    PassedTest = true;
-        //}
-
-        //private void WhenAppointmentDataChanged(object sender, EventArgs e)
-        //{
-        //    _LoadAppointmentList(this, EventArgs.Empty);
-        //    AppointmentDataChanged?.Invoke(this, EventArgs.Empty);
-
-        //}
+        private void WhenAppointmentDataSaved(object sender, EventArgs e)
+        {
+            _LoadAppointmentList(this, EventArgs.Empty);
+            _ResetRecords(this, EventArgs.Empty);
+            TestAppointmentsDataChanged?.Invoke(null, null);
+        }
     }
 }

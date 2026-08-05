@@ -228,6 +228,7 @@
             this.opSchduleWrittenTest.Name = "opSchduleWrittenTest";
             this.opSchduleWrittenTest.Size = new System.Drawing.Size(239, 26);
             this.opSchduleWrittenTest.Text = "Schdule Written Test";
+            this.opSchduleWrittenTest.Click += new System.EventHandler(this.opSchduleWrittenTest_Click);
             // 
             // opSchduleStreetTest
             // 
@@ -235,6 +236,7 @@
             this.opSchduleStreetTest.Name = "opSchduleStreetTest";
             this.opSchduleStreetTest.Size = new System.Drawing.Size(239, 26);
             this.opSchduleStreetTest.Text = "Schdule Street Test";
+            this.opSchduleStreetTest.Click += new System.EventHandler(this.opSchduleStreetTest_Click);
             // 
             // opIssueDrivingLicenseFirstTime
             // 
