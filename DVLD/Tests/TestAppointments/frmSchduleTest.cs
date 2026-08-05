@@ -111,26 +111,6 @@ namespace DVLD.Tests.TestAppointments
 
                 _CreationMode = (_TestAppointment.LocalApplicationInfo.DoesAttendTestType(_TestType.ID) ? eCreationMode.Retake : eCreationMode.FirstTime);
             }
-
-            switch(_CreationMode)
-            {
-                case eCreationMode.Retake:
-                {
-                    lblSchduleTestHeader.Text = "Schedule Retake Test";
-                    lblRetakeAppFeesValue.Text = clApplicationType.Find(clApplicationType.eApplicationType.RetakeTest).Fees.ToString();
-                    gbRetakeTestInfo.Enabled = true;
-                    lblRetakeTestAppIDValue.Text = "N/A";
-                    break;
-                }
-
-                case eCreationMode.FirstTime:
-                {
-                    gbRetakeTestInfo.Enabled = false;
-                    lblRetakeAppFeesValue.Text = "0";
-                    lblRetakeTestAppIDValue.Text = "N/A";
-                    break;
-                }
-            }
             
             switch (_TestTypeID)
             {
@@ -156,6 +136,26 @@ namespace DVLD.Tests.TestAppointments
                         break;
                 }
 
+            }
+
+            switch(_CreationMode)
+            {
+                case eCreationMode.Retake:
+                {
+                    lblSchduleTestHeader.Text = "Schedule Retake Test";
+                    lblRetakeAppFeesValue.Text = clApplicationType.Find(clApplicationType.eApplicationType.RetakeTest).Fees.ToString();
+                    gbRetakeTestInfo.Enabled = true;
+                    lblRetakeTestAppIDValue.Text = "N/A";
+                    break;
+                }
+
+                case eCreationMode.FirstTime:
+                {
+                    gbRetakeTestInfo.Enabled = false;
+                    lblRetakeAppFeesValue.Text = "0";
+                    lblRetakeTestAppIDValue.Text = "N/A";
+                    break;
+                }
             }
 
             if (!_HandleActiveTestAppointmentConstraint()) return;

@@ -76,5 +76,11 @@ namespace DVLD
             frmLocalAppsList frm = new frmLocalAppsList();
             frm.ShowDialog();
         }
+
+        private void opRetakeTest_Click(object sender, EventArgs e)
+        {
+            frmLocalAppsList frm = new frmLocalAppsList();
+            frm.ShowDialog();
+        }
     }
 }

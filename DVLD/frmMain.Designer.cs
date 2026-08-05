@@ -164,6 +164,7 @@
             this.opRetakeTest.Name = "opRetakeTest";
             this.opRetakeTest.Size = new System.Drawing.Size(459, 38);
             this.opRetakeTest.Text = "Retake Test";
+            this.opRetakeTest.Click += new System.EventHandler(this.opRetakeTest_Click);
             // 
             // opManageApps
             // 
