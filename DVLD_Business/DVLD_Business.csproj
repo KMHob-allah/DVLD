@@ -49,6 +49,7 @@
     <Compile Include="clLicenseClass.cs" />
     <Compile Include="clLocalApplication.cs" />
     <Compile Include="clPeople.cs" />
+    <Compile Include="clTest.cs" />
     <Compile Include="clTestAppointment.cs" />
     <Compile Include="clTestType.cs" />
     <Compile Include="clUser.cs" />

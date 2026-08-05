@@ -49,7 +49,7 @@ namespace DVLD.Applications.LocalApplications
 
             lblDrivingLicenseAppIDValue.Text = _LocalApp.LocalApplicationID.ToString();
             lblLicenseClassValue.Text = _LocalApp.LicenseClassInfo.ClassName;
-            lblPassedTestsValue.Text = "0/3"; // Fixed Untill I Continue 
+            lblPassedTestsValue.Text = $"{_LocalApp.PassedTestCount()} / 3";  
 
             ctrlApplicationCard1.LoadApplicationInfo(_LocalApp.ApplicationID);
 

@@ -1,4 +1,5 @@
 ﻿using DVLD_DataAccess;
+using DVLD_DataAccess.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -191,6 +192,10 @@ namespace DVLD_Business
         public int TotalTrailsPerTest(clTestType.eTestType TestType)
         {
             return clLocalApplicationData.TotalTrailsPerTest(this.LocalApplicationID, (int)TestType);
+        }
+        public int PassedTestCount()
+        {
+            return clTestData.PassedTestCount(this.LocalApplicationID);
         }
     }
 }

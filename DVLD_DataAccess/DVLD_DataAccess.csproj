@@ -50,6 +50,7 @@
     <Compile Include="Data\clPeopleData.cs" />
     <Compile Include="Data\clSettings.cs" />
     <Compile Include="Data\clTestAppointmentData.cs" />
+    <Compile Include="Data\clTestData.cs" />
     <Compile Include="Data\clTestTypeData.cs" />
     <Compile Include="Data\clUserData.cs" />
     <Compile Include="DTOs\clLegalAgeInfo.cs" />
