@@ -50,7 +50,22 @@ namespace DVLD_Business
             short DefaultValidityLength = 0;
             float ClassFees = 0f;
 
-            if (clLicenseClassData.LoadLicenseClass(LicenseClassID, ref ClassName, ref ClassDescription, ref MinAllowedAge, ref DefaultValidityLength, ref ClassFees))
+            if (clLicenseClassData.LoadLicenseClassByID(LicenseClassID, ref ClassName, ref ClassDescription, ref MinAllowedAge, ref DefaultValidityLength, ref ClassFees))
+            {
+                return new clLicenseClass(LicenseClassID, ClassName, ClassDescription, MinAllowedAge, DefaultValidityLength, ClassFees);
+            }
+
+            else return null;
+        }
+        static public clLicenseClass Find(string ClassName)
+        {
+            int LicenseClassID = -1;
+            string ClassDescription = string.Empty;
+            short MinAllowedAge = 0;
+            short DefaultValidityLength = 0;
+            float ClassFees = 0f;
+
+            if (clLicenseClassData.LoadLicenseClassByClassName(ref LicenseClassID, ClassName, ref ClassDescription, ref MinAllowedAge, ref DefaultValidityLength, ref ClassFees))
             {
                 return new clLicenseClass(LicenseClassID, ClassName, ClassDescription, MinAllowedAge, DefaultValidityLength, ClassFees);
             }

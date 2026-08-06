@@ -32,7 +32,7 @@ namespace DVLD_DataAccess
             return dtClassesList;
         }
 
-        static public bool LoadLicenseClass(int LicenseClassID, ref string ClassName, ref string ClassDescription,
+        static public bool LoadLicenseClassByID(int LicenseClassID, ref string ClassName, ref string ClassDescription,
             ref short MinAllowedAge, ref short DefaultValidityLength, ref float ClassFees)
         {
             bool IsFound = false;
@@ -67,6 +67,41 @@ namespace DVLD_DataAccess
 
             return IsFound;
         }
-       
+        static public bool LoadLicenseClassByClassName(ref int LicenseClassID, string ClassName, ref string ClassDescription,
+          ref short MinAllowedAge, ref short DefaultValidityLength, ref float ClassFees)
+        {
+            bool IsFound = false;
+
+            string Query = @"SELECT * FROM LicenseClasses WHERE ClassName = @ClassName";
+
+            using (SqlConnection connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    command.Parameters.AddWithValue("@ClassName", ClassName);
+
+                    connection.Open();
+
+                    using (SqlDataReader Reader = command.ExecuteReader())
+                    {
+                        if (Reader.Read())
+                        {
+                            LicenseClassID = Convert.ToInt32(Reader["LicenseClassID"]);
+                            ClassDescription = Reader["ClassDescription"].ToString();
+
+                            MinAllowedAge = Convert.ToInt16(Reader["MinimumAllowedAge"]);
+                            DefaultValidityLength = Convert.ToInt16(Reader["DefaultValidityLength"]);
+
+                            ClassFees = Convert.ToSingle(Reader["ClassFees"]);
+
+                            IsFound = true;
+                        }
+                    }
+                }
+            }
+
+            return IsFound;
+        }
+
     }
 }
