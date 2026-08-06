@@ -1,4 +1,5 @@
-﻿using DVLD_DataAccess.Data;
+﻿using DVLD_DataAccess;
+using DVLD_DataAccess.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -54,7 +55,7 @@ namespace DVLD_Business
 
         static public DataTable GetLicenses(int DriverID)
         {
-            return clLicenseData.LoadDriverLicenses();
+            return clLicenseData.LoadDriverLicenses(DriverID);
         }
         static public DataTable GetInternationalLicenses(int DriverID)
         {

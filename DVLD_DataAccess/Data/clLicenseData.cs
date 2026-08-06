@@ -198,8 +198,80 @@ namespace DVLD_DataAccess
             return LegalAgeInfo;
         }
 
-        // Add New License Did Not Added Yet
+        static public int AddNewLicense(int ApplicationID, int DriverID, int LicenseClassID, DateTime IssueDate, DateTime ExpirationDate,
+            string Notes, float PaidFees, bool IsActive, int IssueReason, int CreatedByUserID)
+        {
+            int LicenseID = -1;
 
-        // Update License Did Not Added Yet
+            string Query = @"INSERT INTO 
+                            Licenses 
+                           (ApplicationID, DriverID,LicenseClassID,IssueDate,ExpirationDate,Notes,PaidFees,IsActive,IssueReason,IssueReason,
+                            CreatedByUserID)
+                           VALUES 
+                            (@ApplicationID,@DriverID,@LicenseClassID,@IssueDate,@ExpirationDate,@Notes,@PaidFees,@IsActive,@IssueReason,
+                            @CreatedByUserID);
+                            SELECT SCOPE_IDENTITY()";
+
+            using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                Command.Parameters.AddWithValue("@DriverID", DriverID);
+                Command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+                Command.Parameters.AddWithValue("@IssueDate", IssueDate);
+                Command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
+                Command.Parameters.AddWithValue("@Notes", Notes);
+                Command.Parameters.AddWithValue("@PaidFees", PaidFees);
+                Command.Parameters.AddWithValue("@IsActive", IsActive);
+                Command.Parameters.AddWithValue("@IssueReason", IssueReason);
+                Command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+                Connection.Open();
+
+                object Result = Command.ExecuteScalar();
+
+                if (Result != null) LicenseID = Convert.ToInt32(Result);
+
+            }
+
+            return LicenseID;
+        }
+        static public bool UpdateLicenseInfo(int LicenseID, int ApplicationID, int DriverID, int LicenseClassID, DateTime IssueDate, DateTime ExpirationDate,
+            string Notes, float PaidFees, bool IsActive, int IssueReason, int CreatedByUserID)
+        {
+            int RowsAffected = 0;
+
+            string Query = @"Update Licenses 
+                            Set
+                            ApplicationID = @ApplicationID, DriverID = @DriverID, LicenseClassID = @LicenseClassID,LicenseClassID = @LicenseClassID, 
+                            IssueDate = @IssueDate, ExpirationDate = @ExpirationDate, Notes = @Notes, PaidFees = @PaidFees, 
+                            IsActive = @IsActive, IssueReason = @IssueReason, CreatedByUserID = @CreatedByUserID
+                            WHERE LicenseID = @LicenseID;";
+
+
+            using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
+            using (SqlCommand Command = new SqlCommand(Query, Connection))
+            {
+                Command.Parameters.AddWithValue("@LicenseID", LicenseID);
+                Command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+                Command.Parameters.AddWithValue("@DriverID", DriverID);
+                Command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+                Command.Parameters.AddWithValue("@IssueDate", IssueDate);
+                Command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
+                Command.Parameters.AddWithValue("@Notes", Notes);
+                Command.Parameters.AddWithValue("@PaidFees", PaidFees);
+                Command.Parameters.AddWithValue("@IsActive", IsActive);
+                Command.Parameters.AddWithValue("@IssueReason", IssueReason);
+                Command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+
+                Connection.Open();
+                RowsAffected = Command.ExecuteNonQuery();
+
+            }
+
+            return RowsAffected > 0;
+        }
+
     }
 }

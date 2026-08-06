@@ -1,4 +1,5 @@
 ﻿using DVLD_DataAccess;
+using DVLD_DataAccess.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ namespace DVLD_Business
 {
     public class clLicense
     {
+        public enum eMode { Add, Update}
         public enum eIssueReason : byte { FirstTime = 1, Renew, ReplacementForDamaged, ReplacementForLost, Unknown }
 
         public int LicenseID { get; set; }
@@ -21,12 +23,13 @@ namespace DVLD_Business
         public string Notes { get; set; }
         public float PaidFees { get; set; }
         public bool IsActive { get; set; }
-        public eIssueReason IssueReason { get; set; }
+        public eIssueReason IssueReason { get; set; }      
         public int CreatedByUserID { get; set; }
 
+        eMode _Mode;
 
         public clApplication ApplicationInfo { get; set; }
-        //public clDriver DriverInfo { get; set; }
+        public clDriver DriverInfo { get; set; }
         public clLicenseClass LicenseClassInfo { get; set; }
         public clUser UserInfo { get; set; }
 
@@ -44,6 +47,8 @@ namespace DVLD_Business
             this.IsActive = false;
             this.IssueReason = eIssueReason.Unknown;
             this.CreatedByUserID = -1;
+
+            _Mode = eMode.Add;
         }
         private clLicense(int LicenseID, int ApplicationID, int DriverID, int LicenseClassID, DateTime IssueDate, DateTime ExpirationDate,
             string Notes, float PaidFees, bool IsActive, eIssueReason IssueReason, int CreatedByUserID)
@@ -61,9 +66,11 @@ namespace DVLD_Business
             this.CreatedByUserID = CreatedByUserID;
 
             this.ApplicationInfo = clApplication.Find(ApplicationID);
-            //this.DriverInfo = clDriver.Find(DriverID);
+            this.DriverInfo = clDriver.FindByDriverID(DriverID);
             this.LicenseClassInfo = clLicenseClass.Find(LicenseClassID);
             this.UserInfo = clUser.FindByUserID(CreatedByUserID);
+
+            _Mode = eMode.Update;
         }
 
 
@@ -93,6 +100,57 @@ namespace DVLD_Business
         static public bool IsLicenseExist(int PersonID, int LicenseClassID)
         {
             return clLicenseData.IsLicenseExist(PersonID, LicenseClassID);
+        }
+
+
+        bool _AddNewLicense()
+        {
+            this.LicenseID = clLicenseData.AddNewLicense(this.ApplicationID, this. DriverID, this. LicenseClassID, this. IssueDate, this. ExpirationDate,
+            this. Notes, this. PaidFees, this. IsActive, (int)this. IssueReason, this. CreatedByUserID);
+
+            return this.LicenseID != -1;
+        }
+        bool _UpdateLicense()
+        {
+            return clLicenseData.UpdateLicenseInfo(this. LicenseID, this. ApplicationID, this. DriverID, this. LicenseClassID, this. IssueDate, this. ExpirationDate,
+            this. Notes, this. PaidFees, this. IsActive, (int)this. IssueReason, this. CreatedByUserID);
+
+        }
+
+        public bool Save()
+        {
+            bool IsSaved = false;
+
+            switch (_Mode)
+            {
+                case eMode.Add:
+                    {
+                        if (_AddNewLicense())
+                        {
+                            IsSaved = true;
+                            _Mode = eMode.Update;
+                        }
+                        break;
+                    }
+
+                case eMode.Update:
+                    {
+                        if (_UpdateLicense()) IsSaved = true;
+                        break;
+                    }
+            }
+
+            return IsSaved;
+        }
+
+        static public bool IsLicenseExistForPerson(int PersonID, int LicenseClassID)
+        {
+            return GetActiveLicenseForPerson(PersonID, LicenseClassID) != -1
+        }
+
+        static public int GetActiveLicenseForPerson(int PersonID, int LicenseClassID)
+        {
+            return clLicenseData.LoadActiveLicenseIDByPersonID(PersonID, LicenseClassID);
         }
     }
 }
