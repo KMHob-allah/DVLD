@@ -56,6 +56,7 @@
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblNotes
             // 
@@ -87,6 +88,7 @@
             this.btnIssue.Text = "Issue";
             this.btnIssue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIssue.UseVisualStyleBackColor = true;
+            this.btnIssue.Click += new System.EventHandler(this.btnIssue_Click);
             // 
             // frmIssueLocalDrivingLicense
             // 
@@ -103,6 +105,7 @@
             this.MinimizeBox = false;
             this.Name = "frmIssueLocalDrivingLicense";
             this.Text = "Issue Local Driving License";
+            this.Load += new System.EventHandler(this.frmIssueLocalDrivingLicense_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

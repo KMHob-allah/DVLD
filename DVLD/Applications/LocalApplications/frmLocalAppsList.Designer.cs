@@ -244,6 +244,7 @@
             this.opIssueDrivingLicenseFirstTime.Name = "opIssueDrivingLicenseFirstTime";
             this.opIssueDrivingLicenseFirstTime.Size = new System.Drawing.Size(316, 26);
             this.opIssueDrivingLicenseFirstTime.Text = "Issue Driving License (First Time)";
+            this.opIssueDrivingLicenseFirstTime.Click += new System.EventHandler(this.opIssueDrivingLicenseFirstTime_Click);
             // 
             // opShowLicense
             // 

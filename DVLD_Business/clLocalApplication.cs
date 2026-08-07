@@ -2,8 +2,10 @@
 using DVLD_DataAccess.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using static DVLD_Business.clTestType;
@@ -184,7 +186,7 @@ namespace DVLD_Business
             return GetActiveLicenseIDByPersonID() != -1;
         }
 
-        private int GetActiveLicenseIDByPersonID()
+        public int GetActiveLicenseIDByPersonID()
         {
             return clLicenseData.LoadActiveLicenseIDByPersonID(this.ApplicantPersonID, this.LicenseClassID);
         }
@@ -197,5 +199,51 @@ namespace DVLD_Business
         {
             return clTestData.PassedTestCount(this.LocalApplicationID);
         }
+        public int IssueLicenseForTheFirstTime(string Notes, int CreatedByUserID)
+        {
+            int DriverID = -1;
+
+            clDriver Driver = clDriver.FindByPersonID(this.ApplicantPersonID);
+
+            if (Driver == null)
+            {
+                Driver = new clDriver();
+
+                Driver.PersonID = this.ApplicantPersonID;
+                Driver.CreatedByUserID = CreatedByUserID;
+
+                if (Driver.Save()) DriverID = Driver.ID;
+
+                else return -1;
+            }
+            else DriverID = Driver.ID;
+
+            clLicense License = new clLicense();
+
+            License.ApplicationID = this.ApplicationID;
+            License.DriverID = Driver.ID;
+            License.LicenseClassID = this.LicenseClassID;
+            License.IssueDate = DateTime.Now;
+            License.ExpirationDate = DateTime.Now.AddYears(this.LicenseClassInfo.DefaultValidityLength);
+            License.Notes = Notes.Trim();
+            License.PaidFees = this.LicenseClassInfo.ClassFees;
+            License.IsActive = true;
+            License.IssueReason = clLicense.eIssueReason.FirstTime;
+            License.CreatedByUserID = CreatedByUserID;
+
+            if (License.Save())
+            {
+                this.SetComplete();
+                return License.LicenseID;
+            }
+
+            else return -1;
+        }
+
+        public bool PassedAllTests()
+        {
+            return PassedTestCount() == 3;
+        }
+
     }
 }

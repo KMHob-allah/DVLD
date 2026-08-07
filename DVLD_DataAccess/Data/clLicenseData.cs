@@ -205,7 +205,7 @@ namespace DVLD_DataAccess
 
             string Query = @"INSERT INTO 
                             Licenses 
-                           (ApplicationID, DriverID,LicenseClassID,IssueDate,ExpirationDate,Notes,PaidFees,IsActive,IssueReason,IssueReason,
+                           (ApplicationID, DriverID,LicenseClassID,IssueDate,ExpirationDate,Notes,PaidFees,IsActive, IssueReason,
                             CreatedByUserID)
                            VALUES 
                             (@ApplicationID,@DriverID,@LicenseClassID,@IssueDate,@ExpirationDate,@Notes,@PaidFees,@IsActive,@IssueReason,

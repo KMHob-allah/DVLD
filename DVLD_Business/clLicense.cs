@@ -145,12 +145,61 @@ namespace DVLD_Business
 
         static public bool IsLicenseExistForPerson(int PersonID, int LicenseClassID)
         {
-            return GetActiveLicenseForPerson(PersonID, LicenseClassID) != -1
+            return GetActiveLicenseForPerson(PersonID, LicenseClassID) != -1;
         }
-
         static public int GetActiveLicenseForPerson(int PersonID, int LicenseClassID)
         {
             return clLicenseData.LoadActiveLicenseIDByPersonID(PersonID, LicenseClassID);
+        }
+
+        public bool IsExpired()
+        {
+            return this.ExpirationDate < DateTime.Now;
+        }
+
+        public bool Deactivate()
+        {
+            return clLicenseData.DeactivateLicense(this.LicenseID);
+        }
+
+        static public string strIssueReason(eIssueReason IssueReason)
+        {
+            string strIssueReason = string.Empty;
+
+            switch(IssueReason)
+            {
+                case eIssueReason.FirstTime:
+                {
+                    strIssueReason= "First Time";
+                    break;
+                }
+
+                case eIssueReason.Renew:
+                { 
+                    strIssueReason= "Renew";
+                    break;
+                }
+
+                case eIssueReason.ReplacementForDamaged:
+                {
+                    strIssueReason= "ReplacementForDamaged";
+                    break;
+                }
+
+                case eIssueReason.ReplacementForLost:
+                {
+                    strIssueReason= "ReplacementForLost";
+                    break;
+                }
+
+                case eIssueReason.Unknown:
+                {
+                    strIssueReason = "Unknown";
+                    break;
+                }
+            }
+
+            return strIssueReason;
         }
     }
 }

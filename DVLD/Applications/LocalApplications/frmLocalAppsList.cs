@@ -1,4 +1,5 @@
-﻿using DVLD.People;
+﻿using DVLD.Licenses;
+using DVLD.People;
 using DVLD.Tests.TestAppointments;
 using DVLD_Business;
 using System;
@@ -143,7 +144,7 @@ namespace DVLD.Applications.LocalApplications
 
             opIssueDrivingLicenseFirstTime.Enabled = (Status == clApplication.eApplicationStatus.New && IsPassedStreetTest && !IsLicenseIssued);
 
-            opShowLicense.Enabled = (Status == clApplication.eApplicationStatus.New && IsLicenseIssued);            
+            opShowLicense.Enabled = (Status == clApplication.eApplicationStatus.Completed && IsLicenseIssued);            
         }
 
         private void btnNewLocalLicenseApplication_Click(object sender, EventArgs e)
@@ -312,5 +313,11 @@ namespace DVLD.Applications.LocalApplications
             frm.ShowDialog();
         }
 
+        private void opIssueDrivingLicenseFirstTime_Click(object sender, EventArgs e)
+        {
+            frmIssueLocalDrivingLicense frm = new frmIssueLocalDrivingLicense(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells[0].Value));
+            frm.LicenseIssued += WhenLocalAppInfoChanged;
+            frm.ShowDialog();
+        }
     }
 }

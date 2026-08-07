@@ -65,7 +65,7 @@ namespace DVLD_DataAccess.Data
         {
             bool IsFound = false;
 
-            string Query = @"SELECT * FROM Driver WHERE PersonID = @PersonID";
+            string Query = @"SELECT * FROM Drivers WHERE PersonID = @PersonID";
 
             using (SqlConnection connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
             {
@@ -96,7 +96,7 @@ namespace DVLD_DataAccess.Data
         {
             int DriverID = -1;
 
-            string Query = @"INSERT INTO Drivers (PersonID, CreatedByUserID,CreationDate) VALUES (@PersonID,@CreatedByUserID,@CreationDate);
+            string Query = @"INSERT INTO Drivers (PersonID, CreatedByUserID,CreatedDate) VALUES (@PersonID,@CreatedByUserID,@CreationDate);
                             SELECT SCOPE_IDENTITY()";
 
             using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
