@@ -46,6 +46,8 @@ namespace DVLD.Licenses.LocalLicenses.Controls
         {
             tbLicenseID.Text = LicenseID.ToString();
             ctrlLicenseCard1.LoadLicenseInfo(LicenseID);
+
+            if (ctrlLicenseCard1.License != null) WhenLicenseSelected(ctrlLicenseCard1.License.LicenseID);
         }
 
         protected virtual void WhenLicenseSelected(int LicenseID)
@@ -66,7 +68,7 @@ namespace DVLD.Licenses.LocalLicenses.Controls
 
             ctrlLicenseCard1.LoadLicenseInfo(LicenseID);
 
-
+            WhenLicenseSelected(LicenseID);
         }
     }
 }
