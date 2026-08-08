@@ -35,7 +35,7 @@ namespace DVLD_DataAccess.Data
          {          
             bool IsFound = false;
 
-            string Query = @"SELECT * FROM Driver WHERE DriverID = @DriverID";
+            string Query = @"SELECT * FROM Drivers WHERE DriverID = @DriverID";
 
             using (SqlConnection connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
             {

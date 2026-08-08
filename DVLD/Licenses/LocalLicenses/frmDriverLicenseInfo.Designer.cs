@@ -1,6 +1,6 @@
-﻿namespace DVLD.Licenses
+﻿namespace DVLD.Drivers
 {
-    partial class frmLicenseInfo
+    partial class frmDriverLicenseInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -30,67 +30,54 @@
         {
             this.btnClose = new System.Windows.Forms.Button();
             this.lblDriverLicenseInfo = new System.Windows.Forms.Label();
-            this.ctrlLicenseCard1 = new DVLD.Licenses.ctrlLicenseCard();
-            this.pbPeople = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPeople)).BeginInit();
+            this.ctrlDriverLicenseInfo1 = new DVLD.Drivers.ctrlDriverLicenseInfo();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Font = new System.Drawing.Font("Cooper Black", 12F);
+            this.btnClose.Font = new System.Drawing.Font("Bookman Old Style", 12F);
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(890, 657);
+            this.btnClose.Location = new System.Drawing.Point(1127, 579);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 45);
-            this.btnClose.TabIndex = 5;
+            this.btnClose.TabIndex = 14;
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblDriverLicenseInfo
             // 
             this.lblDriverLicenseInfo.AutoSize = true;
             this.lblDriverLicenseInfo.Font = new System.Drawing.Font("Cooper Black", 20F);
             this.lblDriverLicenseInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblDriverLicenseInfo.Location = new System.Drawing.Point(358, 133);
+            this.lblDriverLicenseInfo.Location = new System.Drawing.Point(491, 46);
             this.lblDriverLicenseInfo.Name = "lblDriverLicenseInfo";
             this.lblDriverLicenseInfo.Size = new System.Drawing.Size(347, 39);
-            this.lblDriverLicenseInfo.TabIndex = 4;
+            this.lblDriverLicenseInfo.TabIndex = 13;
             this.lblDriverLicenseInfo.Text = "Driver License Info";
             // 
-            // ctrlLicenseCard1
+            // ctrlDriverLicenseInfo1
             // 
-            this.ctrlLicenseCard1.Location = new System.Drawing.Point(36, 188);
-            this.ctrlLicenseCard1.Name = "ctrlLicenseCard1";
-            this.ctrlLicenseCard1.Size = new System.Drawing.Size(988, 454);
-            this.ctrlLicenseCard1.TabIndex = 6;
+            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(35, 138);
+            this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
+            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(1226, 413);
+            this.ctrlDriverLicenseInfo1.TabIndex = 15;
             // 
-            // pbPeople
-            // 
-            this.pbPeople.Image = global::DVLD.Properties.Resources.LicenseView_400;
-            this.pbPeople.Location = new System.Drawing.Point(432, 12);
-            this.pbPeople.Name = "pbPeople";
-            this.pbPeople.Size = new System.Drawing.Size(187, 108);
-            this.pbPeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPeople.TabIndex = 18;
-            this.pbPeople.TabStop = false;
-            // 
-            // frmLicenseInfo
+            // frmDriverLicenseInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1060, 720);
-            this.Controls.Add(this.pbPeople);
-            this.Controls.Add(this.ctrlLicenseCard1);
+            this.ClientSize = new System.Drawing.Size(1303, 637);
+            this.Controls.Add(this.ctrlDriverLicenseInfo1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblDriverLicenseInfo);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmLicenseInfo";
-            this.Text = "License Information";
-            ((System.ComponentModel.ISupportInitialize)(this.pbPeople)).EndInit();
+            this.Name = "frmDriverLicenseInfo";
+            this.Text = "Driver License Info";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,7 +87,6 @@
 
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblDriverLicenseInfo;
-        private ctrlLicenseCard ctrlLicenseCard1;
-        private System.Windows.Forms.PictureBox pbPeople;
+        private ctrlDriverLicenseInfo ctrlDriverLicenseInfo1;
     }
 }

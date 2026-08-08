@@ -252,6 +252,7 @@
             this.opShowLicense.Name = "opShowLicense";
             this.opShowLicense.Size = new System.Drawing.Size(316, 26);
             this.opShowLicense.Text = "Show License";
+            this.opShowLicense.Click += new System.EventHandler(this.opShowLicense_Click);
             // 
             // opShowPersonLicenseHistory
             // 

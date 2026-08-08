@@ -201,5 +201,50 @@ namespace DVLD_Business
 
             return strIssueReason;
         }
+
+        public string strIssueReason()
+        {
+            string strIssueReason = string.Empty;
+
+            switch (this.IssueReason)
+            {
+                case eIssueReason.FirstTime:
+                    {
+                        strIssueReason = "First Time";
+                        break;
+                    }
+
+                case eIssueReason.Renew:
+                    {
+                        strIssueReason = "Renew";
+                        break;
+                    }
+
+                case eIssueReason.ReplacementForDamaged:
+                    {
+                        strIssueReason = "ReplacementForDamaged";
+                        break;
+                    }
+
+                case eIssueReason.ReplacementForLost:
+                    {
+                        strIssueReason = "ReplacementForLost";
+                        break;
+                    }
+
+                case eIssueReason.Unknown:
+                    {
+                        strIssueReason = "Unknown";
+                        break;
+                    }
+            }
+
+            return strIssueReason;
+        }
+
+        public bool IsDetained()
+        {
+            return clDetainedLicenseData.IsDetained(this.LicenseID);
+        }
     }
 }

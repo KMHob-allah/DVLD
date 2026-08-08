@@ -1,4 +1,5 @@
-﻿using DVLD.Licenses;
+﻿using DVLD.Drivers;
+using DVLD.Licenses;
 using DVLD.People;
 using DVLD.Tests.TestAppointments;
 using DVLD_Business;
@@ -318,6 +319,22 @@ namespace DVLD.Applications.LocalApplications
             frmIssueLocalDrivingLicense frm = new frmIssueLocalDrivingLicense(Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells[0].Value));
             frm.LicenseIssued += WhenLocalAppInfoChanged;
             frm.ShowDialog();
+        }
+
+        private void opShowLicense_Click(object sender, EventArgs e)
+        {
+            int LocalAppID  = Convert.ToInt32(dgvLocalAppsList.CurrentRow.Cells[0].Value);
+            clLocalApplication LocalApp = clLocalApplication.FindByLocalAppID(LocalAppID);  
+
+            if(LocalApp == null)
+            {
+                MessageBox.Show($"Connot Find Local Driving License Application With ID : {LocalAppID}", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int LicenseID = clLicense.GetActiveLicenseForPerson(LocalApp.ApplicantPersonID, LocalApp.LicenseClassID);
+            frmDriverLicenseInfo frm = new frmDriverLicenseInfo(LicenseID);
+            frm.Show();
         }
     }
 }
