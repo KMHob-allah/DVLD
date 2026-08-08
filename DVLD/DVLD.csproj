@@ -88,18 +88,6 @@
     <Compile Include="Applications\LocalApplications\frmLocalAppsList.Designer.cs">
       <DependentUpon>frmLocalAppsList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Drivers\ctrlDriverLicenseInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Drivers\ctrlDriverLicenseInfo.Designer.cs">
-      <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Drivers\frmDriverLicenseInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Drivers\frmDriverLicenseInfo.Designer.cs">
-      <DependentUpon>frmDriverLicenseInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Drivers\frmDriversList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +106,12 @@
     </Compile>
     <Compile Include="Licenses\LocalLicenses\Controls\ctrlLicenseCard.Designer.cs">
       <DependentUpon>ctrlLicenseCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\LocalLicenses\Controls\ctrlLicenseCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Licenses\LocalLicenses\Controls\ctrlLicenseCardWithFilter.Designer.cs">
+      <DependentUpon>ctrlLicenseCardWithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="Licenses\LocalLicenses\frmIssueLocalDrivingLicense.cs">
       <SubType>Form</SubType>
@@ -265,12 +259,6 @@
     <EmbeddedResource Include="Applications\LocalApplications\frmLocalAppsList.resx">
       <DependentUpon>frmLocalAppsList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Drivers\ctrlDriverLicenseInfo.resx">
-      <DependentUpon>ctrlDriverLicenseInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Drivers\frmDriverLicenseInfo.resx">
-      <DependentUpon>frmDriverLicenseInfo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Drivers\frmDriversList.resx">
       <DependentUpon>frmDriversList.cs</DependentUpon>
     </EmbeddedResource>
@@ -279,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\LocalLicenses\Controls\ctrlLicenseCard.resx">
       <DependentUpon>ctrlLicenseCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\LocalLicenses\Controls\ctrlLicenseCardWithFilter.resx">
+      <DependentUpon>ctrlLicenseCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\LocalLicenses\frmIssueLocalDrivingLicense.resx">
       <DependentUpon>frmIssueLocalDrivingLicense.cs</DependentUpon>

@@ -1,6 +1,6 @@
-﻿namespace DVLD.People
+﻿namespace DVLD.Licenses.LocalLicenses
 {
-    partial class frmFindPerson
+    partial class frmLicenseInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,59 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblFindPerson = new System.Windows.Forms.Label();
-            this.ctrlPersonCardWithFilter1 = new DVLD.People.Controls.ctrlPersonCardWithFilter();
+            this.ctrlLicenseCard1 = new DVLD.Licenses.LocalLicenses.Controls.ctrlLicenseCard();
+            this.lblDriverLicenseInfo = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // lblFindPerson
+            // ctrlLicenseCard1
             // 
-            this.lblFindPerson.AutoSize = true;
-            this.lblFindPerson.Font = new System.Drawing.Font("Cooper Black", 20F);
-            this.lblFindPerson.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFindPerson.Location = new System.Drawing.Point(465, 29);
-            this.lblFindPerson.Name = "lblFindPerson";
-            this.lblFindPerson.Size = new System.Drawing.Size(223, 39);
-            this.lblFindPerson.TabIndex = 3;
-            this.lblFindPerson.Text = "Find Person";
+            this.ctrlLicenseCard1.Location = new System.Drawing.Point(51, 116);
+            this.ctrlLicenseCard1.Name = "ctrlLicenseCard1";
+            this.ctrlLicenseCard1.Size = new System.Drawing.Size(1228, 412);
+            this.ctrlLicenseCard1.TabIndex = 0;
             // 
-            // ctrlPersonCardWithFilter1
+            // lblDriverLicenseInfo
             // 
-            this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctrlPersonCardWithFilter1.FilterEnabled = true;
-            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(42, 85);
-            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            this.ctrlPersonCardWithFilter1.ShowAddPerson = true;
-            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(1045, 467);
-            this.ctrlPersonCardWithFilter1.TabIndex = 4;
+            this.lblDriverLicenseInfo.AutoSize = true;
+            this.lblDriverLicenseInfo.BackColor = System.Drawing.Color.White;
+            this.lblDriverLicenseInfo.Font = new System.Drawing.Font("Cooper Black", 20F);
+            this.lblDriverLicenseInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblDriverLicenseInfo.Location = new System.Drawing.Point(494, 41);
+            this.lblDriverLicenseInfo.Name = "lblDriverLicenseInfo";
+            this.lblDriverLicenseInfo.Size = new System.Drawing.Size(347, 39);
+            this.lblDriverLicenseInfo.TabIndex = 4;
+            this.lblDriverLicenseInfo.Text = "Driver License Info";
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Cooper Black", 10F);
             this.btnClose.Image = global::DVLD.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(954, 570);
+            this.btnClose.Location = new System.Drawing.Point(1146, 543);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(133, 46);
-            this.btnClose.TabIndex = 64;
+            this.btnClose.TabIndex = 65;
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // frmFindPerson
+            // frmLicenseInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1127, 628);
+            this.ClientSize = new System.Drawing.Size(1323, 601);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.ctrlPersonCardWithFilter1);
-            this.Controls.Add(this.lblFindPerson);
+            this.Controls.Add(this.lblDriverLicenseInfo);
+            this.Controls.Add(this.ctrlLicenseCard1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmFindPerson";
-            this.Text = "FindByUserName Person";
+            this.Name = "frmLicenseInfo";
+            this.Text = "Driver License Info";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,8 +86,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblFindPerson;
-        private Controls.ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
+        private Controls.ctrlLicenseCard ctrlLicenseCard1;
+        private System.Windows.Forms.Label lblDriverLicenseInfo;
         private System.Windows.Forms.Button btnClose;
     }
 }

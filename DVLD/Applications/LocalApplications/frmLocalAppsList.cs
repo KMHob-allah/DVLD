@@ -1,5 +1,6 @@
 ﻿using DVLD.Drivers;
 using DVLD.Licenses;
+using DVLD.Licenses.LocalLicenses;
 using DVLD.People;
 using DVLD.Tests.TestAppointments;
 using DVLD_Business;
@@ -333,7 +334,7 @@ namespace DVLD.Applications.LocalApplications
             }
 
             int LicenseID = clLicense.GetActiveLicenseForPerson(LocalApp.ApplicantPersonID, LocalApp.LicenseClassID);
-            frmDriverLicenseInfo frm = new frmDriverLicenseInfo(LicenseID);
+            frmLicenseInfo frm = new frmLicenseInfo(LicenseID);
             frm.Show();
         }
     }

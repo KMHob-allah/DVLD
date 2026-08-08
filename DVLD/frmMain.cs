@@ -1,6 +1,7 @@
 ﻿using DVLD.Applications.ApplicationTypes;
 using DVLD.Applications.LocalApplications;
 using DVLD.GlobalSettings;
+using DVLD.Licenses.LocalLicenses;
 using DVLD.People;
 using DVLD.Tests.TestTypes;
 using DVLD.Users;
@@ -81,6 +82,10 @@ namespace DVLD
         {
             frmLocalAppsList frm = new frmLocalAppsList();
             frm.ShowDialog();
+        }
+
+        private void opRenewDrivingLicense_Click(object sender, EventArgs e)
+        {          
         }
     }
 }

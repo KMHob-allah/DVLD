@@ -141,6 +141,7 @@
             this.opRenewDrivingLicense.Name = "opRenewDrivingLicense";
             this.opRenewDrivingLicense.Size = new System.Drawing.Size(459, 38);
             this.opRenewDrivingLicense.Text = "Renew Driving License";
+            this.opRenewDrivingLicense.Click += new System.EventHandler(this.opRenewDrivingLicense_Click);
             // 
             // opReplacement
             // 
