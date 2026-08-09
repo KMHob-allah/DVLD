@@ -268,6 +268,7 @@
             this.opDrivers.Name = "opDrivers";
             this.opDrivers.Size = new System.Drawing.Size(149, 68);
             this.opDrivers.Text = "Drivers";
+            this.opDrivers.Click += new System.EventHandler(this.opDrivers_Click);
             // 
             // opUsers
             // 

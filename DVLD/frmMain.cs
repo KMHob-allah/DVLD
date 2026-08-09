@@ -1,6 +1,7 @@
 ﻿using DVLD.Applications.ApplicationTypes;
 using DVLD.Applications.LocalApplications;
 using DVLD.Applications.LostOrDamagedLicenseApplications;
+using DVLD.Drivers;
 using DVLD.GlobalSettings;
 using DVLD.Licenses.LocalLicenses;
 using DVLD.Licenses.RenewLicenses;
@@ -95,6 +96,12 @@ namespace DVLD
         private void opReplacement_Click(object sender, EventArgs e)
         {
             frmLostOrDamagedLicenseApplications frm = new frmLostOrDamagedLicenseApplications();
+            frm.Show();
+        }
+
+        private void opDrivers_Click(object sender, EventArgs e)
+        {
+            frmDriversList frm = new frmDriversList();
             frm.Show();
         }
     }

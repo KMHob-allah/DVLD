@@ -630,5 +630,8 @@
   <ItemGroup>
     <None Include="Resources\Renew Driving License 321.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\International 321.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
