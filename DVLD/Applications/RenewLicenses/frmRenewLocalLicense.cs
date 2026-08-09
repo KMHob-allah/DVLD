@@ -129,7 +129,7 @@ namespace DVLD.Licenses.RenewLicenses
                 return;
             }
 
-            if (_OldLicense.IsActive)
+            if (!_OldLicense.IsActive)
             {
                 MessageBox.Show($"Could not Renew Deactivated License", "Failed",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -150,6 +150,7 @@
             this.opReplacement.Name = "opReplacement";
             this.opReplacement.Size = new System.Drawing.Size(459, 38);
             this.opReplacement.Text = "Replacement for Lost or Damaged License";
+            this.opReplacement.Click += new System.EventHandler(this.opReplacement_Click);
             // 
             // opReleaseDetainedLicense
             // 

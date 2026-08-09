@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DVLD_Business.clLicense;
 
 namespace DVLD_Business
 {
@@ -222,13 +223,13 @@ namespace DVLD_Business
 
                 case eIssueReason.ReplacementForDamaged:
                     {
-                        strIssueReason = "ReplacementForDamaged";
+                        strIssueReason = "Replacement For Damaged";
                         break;
                     }
 
                 case eIssueReason.ReplacementForLost:
                     {
-                        strIssueReason = "ReplacementForLost";
+                        strIssueReason = "Replacement For Lost";
                         break;
                     }
 
@@ -283,6 +284,46 @@ namespace DVLD_Business
             this.Deactivate();
 
             return NewLicense;                                                              
+        }
+        public clLicense Replace(eIssueReason IssueReason, int CreatedByUserID)
+        {
+            if (this.IsExpired() || this.IsDetained() || !this.IsActive) return null;
+
+            clApplication RenewApp = new clApplication();
+
+            RenewApp.ApplicantPersonID = this.ApplicationInfo.ApplicantPersonID;
+            RenewApp.ApplicationDate = DateTime.Now;
+
+            RenewApp.ApplicationType = (IssueReason == eIssueReason.ReplacementForDamaged) ?
+                clApplicationType.eApplicationType .ReplacementforDamagedDrivingLicense :
+                clApplicationType.eApplicationType.ReplacementforLostDrivingLicense;
+
+            RenewApp.ApplicationStatus = clApplication.eApplicationStatus.New;
+            RenewApp.LastStatusDate = DateTime.Now;
+            RenewApp.PaidFees = this.ApplicationInfo.ApplicationTypeInfo.Fees;
+            RenewApp.CreatedByUserID = CreatedByUserID;
+
+
+            if (!RenewApp.Save()) return null;
+
+            clLicense NewLicense = new clLicense();
+
+            NewLicense.ApplicationID = RenewApp.ApplicationID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.LicenseClassID = this.LicenseClassID;
+            NewLicense.IssueDate = DateTime.Now;
+            NewLicense.ExpirationDate = this.ExpirationDate;
+            NewLicense.Notes = this.Notes;
+            NewLicense.PaidFees = 0;
+            NewLicense.IsActive = true;
+            NewLicense.IssueReason = IssueReason;
+            NewLicense.CreatedByUserID = CreatedByUserID;
+
+            if (!NewLicense.Save()) return null;
+
+            this.Deactivate();
+
+            return NewLicense;
         }
     }
 }
