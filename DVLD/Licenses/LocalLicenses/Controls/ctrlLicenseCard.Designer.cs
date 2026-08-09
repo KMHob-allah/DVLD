@@ -64,7 +64,7 @@
             // 
             this.lblIsDetainedValue.AutoSize = true;
             this.lblIsDetainedValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblIsDetainedValue.Location = new System.Drawing.Point(628, 303);
+            this.lblIsDetainedValue.Location = new System.Drawing.Point(662, 252);
             this.lblIsDetainedValue.Name = "lblIsDetainedValue";
             this.lblIsDetainedValue.Size = new System.Drawing.Size(37, 21);
             this.lblIsDetainedValue.TabIndex = 36;
@@ -74,7 +74,7 @@
             // 
             this.lblIsDetained.AutoSize = true;
             this.lblIsDetained.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblIsDetained.Location = new System.Drawing.Point(467, 303);
+            this.lblIsDetained.Location = new System.Drawing.Point(497, 252);
             this.lblIsDetained.Name = "lblIsDetained";
             this.lblIsDetained.Size = new System.Drawing.Size(110, 20);
             this.lblIsDetained.TabIndex = 35;
@@ -84,7 +84,7 @@
             // 
             this.lblExpirationDateValue.AutoSize = true;
             this.lblExpirationDateValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblExpirationDateValue.Location = new System.Drawing.Point(628, 261);
+            this.lblExpirationDateValue.Location = new System.Drawing.Point(662, 216);
             this.lblExpirationDateValue.Name = "lblExpirationDateValue";
             this.lblExpirationDateValue.Size = new System.Drawing.Size(37, 21);
             this.lblExpirationDateValue.TabIndex = 34;
@@ -94,7 +94,7 @@
             // 
             this.lblExpirationDate.AutoSize = true;
             this.lblExpirationDate.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblExpirationDate.Location = new System.Drawing.Point(467, 261);
+            this.lblExpirationDate.Location = new System.Drawing.Point(497, 217);
             this.lblExpirationDate.Name = "lblExpirationDate";
             this.lblExpirationDate.Size = new System.Drawing.Size(148, 20);
             this.lblExpirationDate.TabIndex = 33;
@@ -104,7 +104,7 @@
             // 
             this.lblIsActiveValue.AutoSize = true;
             this.lblIsActiveValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblIsActiveValue.Location = new System.Drawing.Point(628, 136);
+            this.lblIsActiveValue.Location = new System.Drawing.Point(662, 112);
             this.lblIsActiveValue.Name = "lblIsActiveValue";
             this.lblIsActiveValue.Size = new System.Drawing.Size(37, 21);
             this.lblIsActiveValue.TabIndex = 32;
@@ -114,7 +114,7 @@
             // 
             this.lblIsActive.AutoSize = true;
             this.lblIsActive.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblIsActive.Location = new System.Drawing.Point(467, 136);
+            this.lblIsActive.Location = new System.Drawing.Point(497, 112);
             this.lblIsActive.Name = "lblIsActive";
             this.lblIsActive.Size = new System.Drawing.Size(87, 20);
             this.lblIsActive.TabIndex = 31;
@@ -124,7 +124,7 @@
             // 
             this.lblNotesValue.AutoSize = true;
             this.lblNotesValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblNotesValue.Location = new System.Drawing.Point(205, 345);
+            this.lblNotesValue.Location = new System.Drawing.Point(205, 286);
             this.lblNotesValue.Name = "lblNotesValue";
             this.lblNotesValue.Size = new System.Drawing.Size(37, 21);
             this.lblNotesValue.TabIndex = 30;
@@ -134,7 +134,7 @@
             // 
             this.lblNotes.AutoSize = true;
             this.lblNotes.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblNotes.Location = new System.Drawing.Point(28, 345);
+            this.lblNotes.Location = new System.Drawing.Point(28, 287);
             this.lblNotes.Name = "lblNotes";
             this.lblNotes.Size = new System.Drawing.Size(59, 20);
             this.lblNotes.TabIndex = 29;
@@ -144,7 +144,7 @@
             // 
             this.lblIssueReasonValue.AutoSize = true;
             this.lblIssueReasonValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblIssueReasonValue.Location = new System.Drawing.Point(205, 303);
+            this.lblIssueReasonValue.Location = new System.Drawing.Point(205, 251);
             this.lblIssueReasonValue.Name = "lblIssueReasonValue";
             this.lblIssueReasonValue.Size = new System.Drawing.Size(37, 21);
             this.lblIssueReasonValue.TabIndex = 28;
@@ -154,7 +154,7 @@
             // 
             this.lblIssueReason.AutoSize = true;
             this.lblIssueReason.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblIssueReason.Location = new System.Drawing.Point(28, 303);
+            this.lblIssueReason.Location = new System.Drawing.Point(28, 252);
             this.lblIssueReason.Name = "lblIssueReason";
             this.lblIssueReason.Size = new System.Drawing.Size(124, 20);
             this.lblIssueReason.TabIndex = 27;
@@ -164,7 +164,7 @@
             // 
             this.lblIssueDateValue.AutoSize = true;
             this.lblIssueDateValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblIssueDateValue.Location = new System.Drawing.Point(205, 261);
+            this.lblIssueDateValue.Location = new System.Drawing.Point(205, 216);
             this.lblIssueDateValue.Name = "lblIssueDateValue";
             this.lblIssueDateValue.Size = new System.Drawing.Size(37, 21);
             this.lblIssueDateValue.TabIndex = 26;
@@ -174,7 +174,7 @@
             // 
             this.lblIssueDate.AutoSize = true;
             this.lblIssueDate.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblIssueDate.Location = new System.Drawing.Point(28, 261);
+            this.lblIssueDate.Location = new System.Drawing.Point(28, 217);
             this.lblIssueDate.Name = "lblIssueDate";
             this.lblIssueDate.Size = new System.Drawing.Size(102, 20);
             this.lblIssueDate.TabIndex = 25;
@@ -184,7 +184,7 @@
             // 
             this.lblLicenseIDValue.AutoSize = true;
             this.lblLicenseIDValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblLicenseIDValue.Location = new System.Drawing.Point(205, 135);
+            this.lblLicenseIDValue.Location = new System.Drawing.Point(205, 111);
             this.lblLicenseIDValue.Name = "lblLicenseIDValue";
             this.lblLicenseIDValue.Size = new System.Drawing.Size(37, 21);
             this.lblLicenseIDValue.TabIndex = 24;
@@ -194,7 +194,7 @@
             // 
             this.lblLicenseID.AutoSize = true;
             this.lblLicenseID.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblLicenseID.Location = new System.Drawing.Point(32, 135);
+            this.lblLicenseID.Location = new System.Drawing.Point(32, 112);
             this.lblLicenseID.Name = "lblLicenseID";
             this.lblLicenseID.Size = new System.Drawing.Size(102, 20);
             this.lblLicenseID.TabIndex = 23;
@@ -203,7 +203,7 @@
             // pbPersonImage
             // 
             this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbPersonImage.Location = new System.Drawing.Point(945, 93);
+            this.pbPersonImage.Location = new System.Drawing.Point(934, 35);
             this.pbPersonImage.Name = "pbPersonImage";
             this.pbPersonImage.Size = new System.Drawing.Size(238, 237);
             this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -214,7 +214,7 @@
             // 
             this.lblBirthDateValue.AutoSize = true;
             this.lblBirthDateValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblBirthDateValue.Location = new System.Drawing.Point(628, 178);
+            this.lblBirthDateValue.Location = new System.Drawing.Point(662, 146);
             this.lblBirthDateValue.Name = "lblBirthDateValue";
             this.lblBirthDateValue.Size = new System.Drawing.Size(37, 21);
             this.lblBirthDateValue.TabIndex = 21;
@@ -224,7 +224,7 @@
             // 
             this.lblDriverIDValue.AutoSize = true;
             this.lblDriverIDValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblDriverIDValue.Location = new System.Drawing.Point(625, 219);
+            this.lblDriverIDValue.Location = new System.Drawing.Point(662, 182);
             this.lblDriverIDValue.Name = "lblDriverIDValue";
             this.lblDriverIDValue.Size = new System.Drawing.Size(37, 21);
             this.lblDriverIDValue.TabIndex = 20;
@@ -234,7 +234,7 @@
             // 
             this.lblBirthDate.AutoSize = true;
             this.lblBirthDate.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblBirthDate.Location = new System.Drawing.Point(467, 178);
+            this.lblBirthDate.Location = new System.Drawing.Point(497, 147);
             this.lblBirthDate.Name = "lblBirthDate";
             this.lblBirthDate.Size = new System.Drawing.Size(102, 20);
             this.lblBirthDate.TabIndex = 18;
@@ -244,7 +244,7 @@
             // 
             this.lblDriverID.AutoSize = true;
             this.lblDriverID.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblDriverID.Location = new System.Drawing.Point(464, 219);
+            this.lblDriverID.Location = new System.Drawing.Point(497, 182);
             this.lblDriverID.Name = "lblDriverID";
             this.lblDriverID.Size = new System.Drawing.Size(90, 20);
             this.lblDriverID.TabIndex = 17;
@@ -255,7 +255,7 @@
             this.lblFullNameValue.AutoSize = true;
             this.lblFullNameValue.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
             this.lblFullNameValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFullNameValue.Location = new System.Drawing.Point(205, 93);
+            this.lblFullNameValue.Location = new System.Drawing.Point(205, 77);
             this.lblFullNameValue.Name = "lblFullNameValue";
             this.lblFullNameValue.Size = new System.Drawing.Size(42, 20);
             this.lblFullNameValue.TabIndex = 15;
@@ -265,7 +265,7 @@
             // 
             this.lblNationalNumberValue.AutoSize = true;
             this.lblNationalNumberValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblNationalNumberValue.Location = new System.Drawing.Point(205, 177);
+            this.lblNationalNumberValue.Location = new System.Drawing.Point(205, 147);
             this.lblNationalNumberValue.Name = "lblNationalNumberValue";
             this.lblNationalNumberValue.Size = new System.Drawing.Size(37, 21);
             this.lblNationalNumberValue.TabIndex = 14;
@@ -275,7 +275,7 @@
             // 
             this.lblGenderValue.AutoSize = true;
             this.lblGenderValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblGenderValue.Location = new System.Drawing.Point(205, 219);
+            this.lblGenderValue.Location = new System.Drawing.Point(205, 182);
             this.lblGenderValue.Name = "lblGenderValue";
             this.lblGenderValue.Size = new System.Drawing.Size(37, 21);
             this.lblGenderValue.TabIndex = 13;
@@ -285,7 +285,7 @@
             // 
             this.lblClassNameValue.AutoSize = true;
             this.lblClassNameValue.Font = new System.Drawing.Font("Bookman Old Style", 10F);
-            this.lblClassNameValue.Location = new System.Drawing.Point(205, 51);
+            this.lblClassNameValue.Location = new System.Drawing.Point(205, 42);
             this.lblClassNameValue.Name = "lblClassNameValue";
             this.lblClassNameValue.Size = new System.Drawing.Size(37, 21);
             this.lblClassNameValue.TabIndex = 9;
@@ -295,7 +295,7 @@
             // 
             this.lblFullName.AutoSize = true;
             this.lblFullName.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblFullName.Location = new System.Drawing.Point(32, 93);
+            this.lblFullName.Location = new System.Drawing.Point(32, 77);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(100, 20);
             this.lblFullName.TabIndex = 8;
@@ -305,7 +305,7 @@
             // 
             this.lblNationalNumber.AutoSize = true;
             this.lblNationalNumber.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblNationalNumber.Location = new System.Drawing.Point(32, 177);
+            this.lblNationalNumber.Location = new System.Drawing.Point(32, 147);
             this.lblNationalNumber.Name = "lblNationalNumber";
             this.lblNationalNumber.Size = new System.Drawing.Size(158, 20);
             this.lblNationalNumber.TabIndex = 7;
@@ -315,7 +315,7 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblGender.Location = new System.Drawing.Point(32, 219);
+            this.lblGender.Location = new System.Drawing.Point(32, 182);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(72, 20);
             this.lblGender.TabIndex = 6;
@@ -325,7 +325,7 @@
             // 
             this.lblClassName.AutoSize = true;
             this.lblClassName.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.lblClassName.Location = new System.Drawing.Point(32, 51);
+            this.lblClassName.Location = new System.Drawing.Point(32, 42);
             this.lblClassName.Name = "lblClassName";
             this.lblClassName.Size = new System.Drawing.Size(56, 20);
             this.lblClassName.TabIndex = 0;
@@ -364,7 +364,7 @@
             this.gbLicenseInfo.Font = new System.Drawing.Font("Bookman Old Style", 10F);
             this.gbLicenseInfo.Location = new System.Drawing.Point(3, 3);
             this.gbLicenseInfo.Name = "gbLicenseInfo";
-            this.gbLicenseInfo.Size = new System.Drawing.Size(1220, 407);
+            this.gbLicenseInfo.Size = new System.Drawing.Size(1220, 325);
             this.gbLicenseInfo.TabIndex = 3;
             this.gbLicenseInfo.TabStop = false;
             this.gbLicenseInfo.Text = "Driver License Info";
@@ -375,7 +375,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gbLicenseInfo);
             this.Name = "ctrlLicenseCard";
-            this.Size = new System.Drawing.Size(1228, 412);
+            this.Size = new System.Drawing.Size(1228, 331);
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.gbLicenseInfo.ResumeLayout(false);
             this.gbLicenseInfo.PerformLayout();

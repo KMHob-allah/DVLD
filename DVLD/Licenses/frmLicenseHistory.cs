@@ -12,8 +12,10 @@ namespace DVLD.Licenses
 {
     public partial class frmLicenseHistory : Form
     {
-        public frmLicenseHistory()
+        int PersonID;
+        public frmLicenseHistory(int PersonID)
         {
+            this.PersonID = PersonID;
             InitializeComponent();
         }
     }

@@ -246,5 +246,43 @@ namespace DVLD_Business
         {
             return clDetainedLicenseData.IsDetained(this.LicenseID);
         }
+
+
+        public clLicense Renew(string Notes, int CreatedByUserID)
+        {         
+            if (!this.IsExpired() || this.IsDetained() || !this.IsActive) return null;
+
+            clApplication RenewApp = new clApplication();
+
+            RenewApp.ApplicantPersonID = this.ApplicationInfo.ApplicantPersonID;
+            RenewApp.ApplicationDate = DateTime.Now;
+            RenewApp.ApplicationType = clApplicationType.eApplicationType.RenewDrivingLicenseService;
+            RenewApp.ApplicationStatus = clApplication.eApplicationStatus.New;
+            RenewApp.LastStatusDate = DateTime.Now;
+            RenewApp.PaidFees = this.ApplicationInfo.ApplicationTypeInfo.Fees;
+            RenewApp.CreatedByUserID = CreatedByUserID;
+
+
+            if (!RenewApp.Save()) return null;
+    
+            clLicense NewLicense = new clLicense();
+
+            NewLicense.ApplicationID = RenewApp.ApplicationID;
+            NewLicense.DriverID = this.DriverID;
+            NewLicense.LicenseClassID = this.LicenseClassID;
+            NewLicense.IssueDate = DateTime.Now;
+            NewLicense.ExpirationDate = DateTime.Now.AddYears(this.LicenseClassInfo.DefaultValidityLength);
+            NewLicense.Notes = Notes;
+            NewLicense.PaidFees = this.LicenseClassInfo.ClassFees;
+            NewLicense.IsActive = true;
+            NewLicense.IssueReason = eIssueReason.Renew;
+            NewLicense.CreatedByUserID = CreatedByUserID;
+
+            if (!NewLicense.Save()) return null;
+            
+            this.Deactivate();
+
+            return NewLicense;                                                              
+        }
     }
 }

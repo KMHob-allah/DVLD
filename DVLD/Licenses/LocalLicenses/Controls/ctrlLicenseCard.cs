@@ -85,8 +85,9 @@ namespace DVLD.Licenses.LocalLicenses.Controls
 
             if (License == null)
             {
-                _SetDefaultValues();
                 MessageBox.Show($"Connot Find License With ID = {LicenseID}", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _SetDefaultValues();
+                WhenLicenseSelected(-1);
                 return;
             }
 

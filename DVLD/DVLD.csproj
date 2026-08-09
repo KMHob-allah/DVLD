@@ -131,16 +131,10 @@
     <Compile Include="Licenses\LocalLicenses\frmLicenseInfo.Designer.cs">
       <DependentUpon>frmLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\RenewLocalLicenses\ctrlRenewLocalLicenseCard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Licenses\RenewLocalLicenses\ctrlRenewLocalLicenseCard.Designer.cs">
-      <DependentUpon>ctrlRenewLocalLicenseCard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Licenses\RenewLocalLicenses\frmRenewLocalLicense.cs">
+    <Compile Include="Applications\RenewLicenseApplications\frmRenewLocalLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Licenses\RenewLocalLicenses\frmRenewLocalLicense.Designer.cs">
+    <Compile Include="Applications\RenewLicenseApplications\frmRenewLocalLicense.Designer.cs">
       <DependentUpon>frmRenewLocalLicense.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\frmLoginScreen.cs">
@@ -292,10 +286,7 @@
     <EmbeddedResource Include="Licenses\LocalLicenses\frmLicenseInfo.resx">
       <DependentUpon>frmLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\RenewLocalLicenses\ctrlRenewLocalLicenseCard.resx">
-      <DependentUpon>ctrlRenewLocalLicenseCard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\RenewLocalLicenses\frmRenewLocalLicense.resx">
+    <EmbeddedResource Include="Applications\RenewLicenseApplications\frmRenewLocalLicense.resx">
       <DependentUpon>frmRenewLocalLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\frmLoginScreen.resx">
@@ -626,6 +617,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Driver Main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Renew Driving License 321.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

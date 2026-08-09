@@ -48,6 +48,7 @@ namespace DVLD.Licenses.LocalLicenses.Controls
             ctrlLicenseCard1.LoadLicenseInfo(LicenseID);
 
             if (ctrlLicenseCard1.License != null) WhenLicenseSelected(ctrlLicenseCard1.License.LicenseID);
+            else WhenLicenseSelected(-1);
         }
 
         protected virtual void WhenLicenseSelected(int LicenseID)
@@ -68,7 +69,9 @@ namespace DVLD.Licenses.LocalLicenses.Controls
 
             ctrlLicenseCard1.LoadLicenseInfo(LicenseID);
 
-            WhenLicenseSelected(LicenseID);
+            if (ctrlLicenseCard1.License == null) WhenLicenseSelected(-1);            
+
+            else WhenLicenseSelected(LicenseID);
         }
     }
 }
