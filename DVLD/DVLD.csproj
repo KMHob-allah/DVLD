@@ -64,28 +64,28 @@
     <Compile Include="Applications\Controls\ctrlApplicationCard.Designer.cs">
       <DependentUpon>ctrlApplicationCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\LocalLicenses\ctrlLocalAppCard.cs">
+    <Compile Include="Applications\Local Applications\ctrlLocalAppCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Applications\LocalLicenses\ctrlLocalAppCard.Designer.cs">
+    <Compile Include="Applications\Local Applications\ctrlLocalAppCard.Designer.cs">
       <DependentUpon>ctrlLocalAppCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\LocalLicenses\frmAddUpdateLocalApp.cs">
+    <Compile Include="Applications\Local Applications\frmAddUpdateLocalApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\LocalLicenses\frmAddUpdateLocalApp.Designer.cs">
+    <Compile Include="Applications\Local Applications\frmAddUpdateLocalApp.Designer.cs">
       <DependentUpon>frmAddUpdateLocalApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\LocalLicenses\frmLocalAppInfo.cs">
+    <Compile Include="Applications\Local Applications\frmLocalAppInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\LocalLicenses\frmLocalAppInfo.Designer.cs">
+    <Compile Include="Applications\Local Applications\frmLocalAppInfo.Designer.cs">
       <DependentUpon>frmLocalAppInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\LocalLicenses\frmLocalAppsList.cs">
+    <Compile Include="Applications\Local Applications\frmLocalAppsList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\LocalLicenses\frmLocalAppsList.Designer.cs">
+    <Compile Include="Applications\Local Applications\frmLocalAppsList.Designer.cs">
       <DependentUpon>frmLocalAppsList.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\LostOrDamagedLicenses\frmLostOrDamagedLicenseApplications.cs">
@@ -107,6 +107,12 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Global\clGlobalSettings.cs" />
+    <Compile Include="Licenses\Controls\ctrlLicenseHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Licenses\Controls\ctrlLicenseHistory.Designer.cs">
+      <DependentUpon>ctrlLicenseHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\LocalLicenses\Controls\ctrlLicenseCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -259,16 +265,16 @@
     <EmbeddedResource Include="Applications\Controls\ctrlApplicationCard.resx">
       <DependentUpon>ctrlApplicationCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\LocalLicenses\ctrlLocalAppCard.resx">
+    <EmbeddedResource Include="Applications\Local Applications\ctrlLocalAppCard.resx">
       <DependentUpon>ctrlLocalAppCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\LocalLicenses\frmAddUpdateLocalApp.resx">
+    <EmbeddedResource Include="Applications\Local Applications\frmAddUpdateLocalApp.resx">
       <DependentUpon>frmAddUpdateLocalApp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\LocalLicenses\frmLocalAppInfo.resx">
+    <EmbeddedResource Include="Applications\Local Applications\frmLocalAppInfo.resx">
       <DependentUpon>frmLocalAppInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Applications\LocalLicenses\frmLocalAppsList.resx">
+    <EmbeddedResource Include="Applications\Local Applications\frmLocalAppsList.resx">
       <DependentUpon>frmLocalAppsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\LostOrDamagedLicenses\frmLostOrDamagedLicenseApplications.resx">
@@ -279,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\Controls\ctrlLicenseHistory.resx">
+      <DependentUpon>ctrlLicenseHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\LocalLicenses\Controls\ctrlLicenseCard.resx">
       <DependentUpon>ctrlLicenseCard.cs</DependentUpon>

@@ -18,5 +18,18 @@ namespace DVLD.Licenses
             this.PersonID = PersonID;
             InitializeComponent();
         }
+
+        private void frmLicenseHistory_Load(object sender, EventArgs e)
+        {
+            ctrlPersonCardWithFilter1.LoadPersonInfo(PersonID);
+            ctrlPersonCardWithFilter1.FilterEnabled = false;
+
+            ctrlLicenseHistory1.LoadLicensesHistory(PersonID);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DVLD.Drivers;
 using DVLD.Licenses;
 using DVLD.Licenses.LocalLicenses;
+using DVLD.Licenses.LocalLicenses.Controls;
 using DVLD.People;
 using DVLD.Tests.TestAppointments;
 using DVLD_Business;
@@ -335,6 +336,20 @@ namespace DVLD.Applications.LocalApplications
 
             int LicenseID = clLicense.GetActiveLicenseForPerson(LocalApp.ApplicantPersonID, LocalApp.LicenseClassID);
             frmLicenseInfo frm = new frmLicenseInfo(LicenseID);
+            frm.Show();
+        }
+
+        private void opShowPersonLicenseHistory_Click(object sender, EventArgs e)
+        {
+            clPerson Person = clPerson.Find(dgvLocalAppsList.CurrentRow.Cells["NationalNumber"].Value.ToString());
+
+            if(Person == null)
+            { 
+                MessageBox.Show("Could not find this person", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                return;
+            }
+
+            frmLicenseHistory frm = new frmLicenseHistory(Person.PersonID);
             frm.Show();
         }
     }

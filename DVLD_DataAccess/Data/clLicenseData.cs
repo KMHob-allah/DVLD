@@ -72,11 +72,14 @@ namespace DVLD_DataAccess
             return IsFound;
         }
 
-        static public DataTable LoadDriverLicenses(int DriverID)
+        static public DataTable LoadDriverLocalLicenses(int DriverID)
         {
             DataTable dtDriverLicensesList = new DataTable();
 
-            string Query = @"SELECT * FROM Licenses WHERE DriverID = @DriverID";
+            string Query = @"SELECT L.LicenseID, L.ApplicationID, LC.ClassName, L.IssueDate, L.ExpirationDate, L.IsActive  
+                             FROM Licenses L
+	                     	 INNER JOIN LicenseClasses LC ON LC.LicenseClassID = L.LicenseClassID
+                             WHERE L.DriverID = @DriverID";
 
             using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
             {

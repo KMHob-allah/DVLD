@@ -260,6 +260,7 @@
             this.opShowPersonLicenseHistory.Name = "opShowPersonLicenseHistory";
             this.opShowPersonLicenseHistory.Size = new System.Drawing.Size(316, 26);
             this.opShowPersonLicenseHistory.Text = "Show Person License History";
+            this.opShowPersonLicenseHistory.Click += new System.EventHandler(this.opShowPersonLicenseHistory_Click);
             // 
             // dgvLocalAppsList
             // 

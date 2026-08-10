@@ -53,9 +53,9 @@ namespace DVLD_Business
             return clDriverData.LoadDriversList();
         }
 
-        static public DataTable GetLicenses(int DriverID)
+        static public DataTable GetLocalLicenses(int DriverID)
         {
-            return clLicenseData.LoadDriverLicenses(DriverID);
+            return clLicenseData.LoadDriverLocalLicenses(DriverID);
         }
         static public DataTable GetInternationalLicenses(int DriverID)
         {
