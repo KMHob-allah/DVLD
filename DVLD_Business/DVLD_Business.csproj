@@ -45,6 +45,7 @@
     <Compile Include="clApplicationType.cs" />
     <Compile Include="clCountry.cs" />
     <Compile Include="clDateHelper.cs" />
+    <Compile Include="clDetainLicense.cs" />
     <Compile Include="clDriver.cs" />
     <Compile Include="clLicense.cs" />
     <Compile Include="clLicenseClass.cs" />

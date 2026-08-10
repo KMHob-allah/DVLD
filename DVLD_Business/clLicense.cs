@@ -325,5 +325,14 @@ namespace DVLD_Business
 
             return NewLicense;
         }
+
+        public bool Release(int ReleasedByUserID, ref int ApplicationID)
+        {
+            return true;
+            // working here
+        }
+
+
     }
+
 }
