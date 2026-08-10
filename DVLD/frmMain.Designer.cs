@@ -223,6 +223,7 @@
             this.opDetainLicense.Name = "opDetainLicense";
             this.opDetainLicense.Size = new System.Drawing.Size(333, 38);
             this.opDetainLicense.Text = "Detain License";
+            this.opDetainLicense.Click += new System.EventHandler(this.opDetainLicense_Click);
             // 
             // opReleaseDetainedLicenses
             // 

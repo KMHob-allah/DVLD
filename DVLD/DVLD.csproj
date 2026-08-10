@@ -113,6 +113,12 @@
     <Compile Include="Licenses\Controls\ctrlLicenseHistory.Designer.cs">
       <DependentUpon>ctrlLicenseHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Licenses\DetainLicenses\frmDetainLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\DetainLicenses\frmDetainLicense.Designer.cs">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\LocalLicenses\Controls\ctrlLicenseCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -288,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Controls\ctrlLicenseHistory.resx">
       <DependentUpon>ctrlLicenseHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\DetainLicenses\frmDetainLicense.resx">
+      <DependentUpon>frmDetainLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\LocalLicenses\Controls\ctrlLicenseCard.resx">
       <DependentUpon>ctrlLicenseCard.cs</DependentUpon>

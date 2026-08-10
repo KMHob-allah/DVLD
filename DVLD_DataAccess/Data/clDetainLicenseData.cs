@@ -43,7 +43,7 @@ namespace DVLD_DataAccess
             {
                 using (SqlCommand Command = new SqlCommand(Query, Connection))
                 {
-                    Command.Parameters.AddWithValue("@DetainID", ID);
+                    Command.Parameters.AddWithValue("@ID", ID);
 
                     Connection.Open();
 

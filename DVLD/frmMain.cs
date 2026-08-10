@@ -3,6 +3,7 @@ using DVLD.Applications.LocalApplications;
 using DVLD.Applications.LostOrDamagedLicenseApplications;
 using DVLD.Drivers;
 using DVLD.GlobalSettings;
+using DVLD.Licenses.DetainLicenses;
 using DVLD.Licenses.LocalLicenses;
 using DVLD.Licenses.RenewLicenses;
 using DVLD.People;
@@ -102,6 +103,12 @@ namespace DVLD
         private void opDrivers_Click(object sender, EventArgs e)
         {
             frmDriversList frm = new frmDriversList();
+            frm.Show();
+        }
+
+        private void opDetainLicense_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense frm = new frmDetainLicense();
             frm.Show();
         }
     }

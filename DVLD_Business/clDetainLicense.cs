@@ -104,7 +104,7 @@ namespace DVLD_Business
             return IsSaved;            
         }
 
-        static public clLicense Find(int DetainID)
+        static public clDetainLicense Find(int DetainID)
         {
             int LicenseID = -1;
             DateTime DetainDate = DateTime.MinValue;

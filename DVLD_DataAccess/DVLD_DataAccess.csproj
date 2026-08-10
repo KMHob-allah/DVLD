@@ -41,11 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clDetainLicenseData.cs" />
+    <Compile Include="Data\clDetainLicenseData.cs" />
     <Compile Include="Data\clApplicationData.cs" />
     <Compile Include="Data\clApplicationTypeData.cs" />
     <Compile Include="Data\clCountryData.cs" />
-    <Compile Include="Data\clDetainedLicenseData.cs" />
     <Compile Include="Data\clDriverData.cs" />
     <Compile Include="Data\clLicenseClassData.cs" />
     <Compile Include="Data\clLicenseData.cs" />

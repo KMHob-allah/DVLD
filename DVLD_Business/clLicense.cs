@@ -245,7 +245,7 @@ namespace DVLD_Business
 
         public bool IsDetained()
         {
-            return clDetainedLicenseData.IsDetained(this.LicenseID);
+            return clDetainLicenseData.IsLicenseDetained(this.LicenseID);
         }
 
 
@@ -331,7 +331,39 @@ namespace DVLD_Business
             return true;
             // working here
         }
+        public int Detain(float FineFees, int CreatedByUserID)
+        {
+            if(this.IsDetained()) return clDetainLicense.FindByLicenseID(this.LicenseID).ID;            
 
+            if (!this.IsActive || this.IsExpired()) return -1;
+
+            clApplication App = new clApplication();
+
+
+            App.ApplicantPersonID = this.ApplicationInfo.ApplicantPersonID;
+            App.ApplicationDate = DateTime.Now;
+            App.ApplicationType = clApplicationType.eApplicationType.ReleaseDetainedDrivingLicsense;
+            App.ApplicationStatus = clApplication.eApplicationStatus.New;
+            App.LastStatusDate = DateTime.Now;
+            App.PaidFees = 0f;
+            App.CreatedByUserID = CreatedByUserID;
+
+
+            if (!App.Save()) return -1;
+
+            clDetainLicense DetainedLicense = new clDetainLicense();
+
+            DetainedLicense.LicenseID = this.LicenseID;
+            DetainedLicense.DetainDate = DateTime.Now;
+            DetainedLicense.FineFees = FineFees;
+            DetainedLicense.CreatedByUserID = CreatedByUserID;
+            DetainedLicense.IsReleased = false;
+            DetainedLicense.ReleaseApplicationID = App.ApplicationID;
+
+            if (!DetainedLicense.Save()) return -1;       
+
+            return DetainedLicense.ID;
+        }
 
     }
 
