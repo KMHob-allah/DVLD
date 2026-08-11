@@ -94,6 +94,12 @@
     <Compile Include="Applications\LostOrDamagedLicenses\frmLostOrDamagedLicenseApplications.Designer.cs">
       <DependentUpon>frmLostOrDamagedLicenseApplications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\ReleaseLicenses\frmReleaseLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\ReleaseLicenses\frmReleaseLicense.Designer.cs">
+      <DependentUpon>frmReleaseLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drivers\frmDriversList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\LostOrDamagedLicenses\frmLostOrDamagedLicenseApplications.resx">
       <DependentUpon>frmLostOrDamagedLicenseApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\ReleaseLicenses\frmReleaseLicense.resx">
+      <DependentUpon>frmReleaseLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Drivers\frmDriversList.resx">
       <DependentUpon>frmDriversList.cs</DependentUpon>
@@ -650,6 +659,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\International 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Release Detained License 64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

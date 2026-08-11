@@ -328,8 +328,26 @@ namespace DVLD_Business
 
         public bool Release(int ReleasedByUserID, ref int ApplicationID)
         {
-            return true;
-            // working here
+            if (!this.IsDetained() || this.IsExpired() || !this.IsActive) return false;
+
+            clApplication ReleaseApp = new clApplication();
+
+            ReleaseApp.ApplicantPersonID = this.ApplicationInfo.ApplicantPersonID;
+            ReleaseApp.ApplicationDate = DateTime.Now;
+            ReleaseApp.ApplicationType = clApplicationType.eApplicationType.ReleaseDetainedDrivingLicsense;
+            ReleaseApp.ApplicationStatus = clApplication.eApplicationStatus.New;
+            ReleaseApp.LastStatusDate = DateTime.Now;
+            ReleaseApp.PaidFees = clApplicationType.Find(clApplicationType.eApplicationType.ReleaseDetainedDrivingLicsense).Fees;
+            ReleaseApp.CreatedByUserID = CreatedByUserID;
+
+            if (!ReleaseApp.Save()) return false;
+
+            clDetainLicense DetainLicense = clDetainLicense.FindByLicenseID(this.LicenseID);
+
+            if (!DetainLicense.Release(ReleasedByUserID, ReleaseApp.ApplicationID)) return false;
+
+            ApplicationID = ReleaseApp.ApplicationID;
+            return true;                      
         }
         public int Detain(float FineFees, int CreatedByUserID)
         {
@@ -337,19 +355,6 @@ namespace DVLD_Business
 
             if (!this.IsActive || this.IsExpired()) return -1;
 
-            clApplication App = new clApplication();
-
-
-            App.ApplicantPersonID = this.ApplicationInfo.ApplicantPersonID;
-            App.ApplicationDate = DateTime.Now;
-            App.ApplicationType = clApplicationType.eApplicationType.ReleaseDetainedDrivingLicsense;
-            App.ApplicationStatus = clApplication.eApplicationStatus.New;
-            App.LastStatusDate = DateTime.Now;
-            App.PaidFees = 0f;
-            App.CreatedByUserID = CreatedByUserID;
-
-
-            if (!App.Save()) return -1;
 
             clDetainLicense DetainedLicense = new clDetainLicense();
 
@@ -357,8 +362,6 @@ namespace DVLD_Business
             DetainedLicense.DetainDate = DateTime.Now;
             DetainedLicense.FineFees = FineFees;
             DetainedLicense.CreatedByUserID = CreatedByUserID;
-            DetainedLicense.IsReleased = false;
-            DetainedLicense.ReleaseApplicationID = App.ApplicationID;
 
             if (!DetainedLicense.Save()) return -1;       
 

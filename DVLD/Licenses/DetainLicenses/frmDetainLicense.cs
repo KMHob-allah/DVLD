@@ -20,8 +20,13 @@ namespace DVLD.Licenses.DetainLicenses
         public frmDetainLicense()
         {
             InitializeComponent();
-        }      
-
+        }
+        public frmDetainLicense(int LicenseID)
+        {
+            InitializeComponent();
+            ctrlLicenseCardWithFilter1.LoadLicenseInfo(LicenseID);
+            ctrlLicenseCardWithFilter1.FilterEnabled = false;
+        }
         private void _SetDetainLicenseDefaultValues()
         {
 

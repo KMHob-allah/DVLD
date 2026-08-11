@@ -187,7 +187,7 @@ namespace DVLD_DataAccess
         {
             int RowsAffected = 0;
 
-            string Query = @"Update DatainedLicenses 
+            string Query = @"Update DetainedLicenses 
                             Set
                             IsReleased = 1, ReleaseDate = @ReleaseDate, ReleasedByUserID = @ReleasedByUserID, ReleaseApplicationID = @ReleaseApplicationID                  
                             WHERE DetainID = @DetainID;";

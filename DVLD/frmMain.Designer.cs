@@ -232,6 +232,7 @@
             this.opReleaseDetainedLicenses.Name = "opReleaseDetainedLicenses";
             this.opReleaseDetainedLicenses.Size = new System.Drawing.Size(333, 38);
             this.opReleaseDetainedLicenses.Text = "Release Detained License";
+            this.opReleaseDetainedLicenses.Click += new System.EventHandler(this.opReleaseDetainedLicenses_Click);
             // 
             // opManageAppTypes
             // 
