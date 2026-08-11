@@ -32,7 +32,7 @@ namespace DVLD_DataAccess.Data
 
             return dtLicensesList;
         }
-        static public DataTable LoadDriverLocalLicenses(int DriverID)
+        static public DataTable LoadAllDriverInternationalLicenses(int DriverID)
         {
             DataTable dtDriverLicensesList = new DataTable();
 
@@ -54,7 +54,7 @@ namespace DVLD_DataAccess.Data
             return dtDriverLicensesList;
         }
 
-        static public bool LoadInternationalLicense(int InternationalLicenseID, ref int ApplicationID, ref int DriverID, ref int IssueUsingLocalLicenseID,
+        static public bool LoadInternationalLicense(int InternationalLicenseID, ref int ApplicationID, ref int DriverID, ref int IssuedUsingLocalLicenseID,
             ref DateTime IssueDate, ref DateTime ExpirationDate, ref bool IsActive, ref int CreatedByUserID)
         {
             bool IsFound = false;
@@ -75,7 +75,7 @@ namespace DVLD_DataAccess.Data
                         {
                             ApplicationID = Convert.ToInt32(Reader["ApplicationID"]);
                             DriverID = Convert.ToInt32(Reader["DriverID"]);
-                            IssueUsingLocalLicenseID = Convert.ToInt32(Reader["IssueUsingLocalLicenseID"]);
+                            IssuedUsingLocalLicenseID = Convert.ToInt32(Reader["IssuedUsingLocalLicenseID"]);
                             IssueDate = (DateTime)Reader["IssueDate"];
                             ExpirationDate = (DateTime)Reader["ExpirationDate"]; ;
                             IsActive = Convert.ToBoolean(Reader["IsActive"]);
@@ -92,7 +92,7 @@ namespace DVLD_DataAccess.Data
 
 
 
-        static public int AddNewInternationalLicense( int ApplicationID,  int DriverID,  int IssueUsingLocalLicenseID,
+        static public int AddNewInternationalLicense( int ApplicationID,  int DriverID,  int IssuedUsingLocalLicenseID,
              DateTime IssueDate,  DateTime ExpirationDate,  bool IsActive,  int CreatedByUserID)
         {
             int InternationalLicenseID = -1;
@@ -101,9 +101,9 @@ namespace DVLD_DataAccess.Data
                             Update InternationalLicenses Set IsActive = 0 WHERE DriverID = @DriverID;
                             INSERT INTO 
                             InternationalLicenses 
-                            (ApplicationID, DriverID,IssueUsingLocalLicenseID,IssueDate,ExpirationDate,IsActive, CreatedByUserID)
+                            (ApplicationID, DriverID,IssuedUsingLocalLicenseID,IssueDate,ExpirationDate,IsActive, CreatedByUserID)
                             VALUES 
-                            (@ApplicationID,@DriverID,@IssueUsingLocalLicenseID,@IssueDate,@ExpirationDate,@IsActive,@CreatedByUserID);
+                            (@ApplicationID,@DriverID,@IssuedUsingLocalLicenseID,@IssueDate,@ExpirationDate,@IsActive,@CreatedByUserID);
                             SELECT SCOPE_IDENTITY()";
 
             using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
@@ -111,7 +111,7 @@ namespace DVLD_DataAccess.Data
             {
                 Command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
                 Command.Parameters.AddWithValue("@DriverID", DriverID);
-                Command.Parameters.AddWithValue("@IssueUsingLocalLicenseID", IssueUsingLocalLicenseID);
+                Command.Parameters.AddWithValue("@IssuedUsingLocalLicenseID", IssuedUsingLocalLicenseID);
                 Command.Parameters.AddWithValue("@IssueDate", IssueDate);
                 Command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
                 Command.Parameters.AddWithValue("@IsActive", IsActive);
@@ -127,14 +127,14 @@ namespace DVLD_DataAccess.Data
 
             return InternationalLicenseID;
         }
-        static public bool UpdateInternationalLicenseInfo(int InternationalLicenseID, int ApplicationID, int DriverID, int IssueUsingLocalLicenseID,
+        static public bool UpdateInternationalLicenseInfo(int InternationalLicenseID, int ApplicationID, int DriverID, int IssuedUsingLocalLicenseID,
              DateTime IssueDate, DateTime ExpirationDate, bool IsActive, int CreatedByUserID)
         {
             int RowsAffected = 0;
 
             string Query = @"Update InternationalLicenses 
                             Set
-                            ApplicationID = @ApplicationID, DriverID = @DriverID, IssueUsingLocalLicenseID = @IssueUsingLocalLicenseID
+                            ApplicationID = @ApplicationID, DriverID = @DriverID, IssuedUsingLocalLicenseID = @IssuedUsingLocalLicenseID
                             IssueDate = @IssueDate, ExpirationDate = @ExpirationDate,IsActive = @IsActive, CreatedByUserID = @CreatedByUserID
                             WHERE InternationalLicenseID = @InternationalLicenseID;";
 
@@ -145,7 +145,7 @@ namespace DVLD_DataAccess.Data
                 Command.Parameters.AddWithValue("@InternationalLicenseID", InternationalLicenseID);
                 Command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
                 Command.Parameters.AddWithValue("@DriverID", DriverID);
-                Command.Parameters.AddWithValue("@IssueUsingLocalLicenseID", IssueUsingLocalLicenseID);
+                Command.Parameters.AddWithValue("@IssuedUsingLocalLicenseID", IssuedUsingLocalLicenseID);
                 Command.Parameters.AddWithValue("@IssueDate", IssueDate);
                 Command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
                 Command.Parameters.AddWithValue("@IsActive", IsActive);

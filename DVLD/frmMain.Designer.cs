@@ -104,6 +104,7 @@
             this.opDrivingLicensesApps.Name = "opDrivingLicensesApps";
             this.opDrivingLicensesApps.Size = new System.Drawing.Size(360, 70);
             this.opDrivingLicensesApps.Text = "Driving Licenses Services";
+            this.opDrivingLicensesApps.Click += new System.EventHandler(this.opDrivingLicensesApps_Click);
             // 
             // opNewDrivingLicense
             // 
@@ -133,6 +134,7 @@
             this.opInternationalLicense.Name = "opInternationalLicense";
             this.opInternationalLicense.Size = new System.Drawing.Size(283, 38);
             this.opInternationalLicense.Text = "International License";
+            this.opInternationalLicense.Click += new System.EventHandler(this.opInternationalLicense_Click);
             // 
             // opRenewDrivingLicense
             // 
@@ -159,6 +161,7 @@
             this.opReleaseDetainedLicense.Name = "opReleaseDetainedLicense";
             this.opReleaseDetainedLicense.Size = new System.Drawing.Size(459, 38);
             this.opReleaseDetainedLicense.Text = "Release Detained Driving License";
+            this.opReleaseDetainedLicense.Click += new System.EventHandler(this.opReleaseDetainedLicense_Click);
             // 
             // opRetakeTest
             // 

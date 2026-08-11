@@ -1,4 +1,5 @@
 ﻿using DVLD.Applications.ApplicationTypes;
+using DVLD.Applications.InternationalLicenses;
 using DVLD.Applications.LocalApplications;
 using DVLD.Applications.LostOrDamagedLicenseApplications;
 using DVLD.Applications.ReleaseLicenses;
@@ -116,6 +117,23 @@ namespace DVLD
         private void opManageDetainedLicenses_Click(object sender, EventArgs e)
         {
             frmDetainedLicensesList frm = new frmDetainedLicensesList();
+            frm.Show();
+        }
+
+        private void opDrivingLicensesApps_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void opReleaseDetainedLicense_Click(object sender, EventArgs e)
+        {
+            frmReleaseLicense frm = new frmReleaseLicense();
+            frm.Show();
+        }
+
+        private void opInternationalLicense_Click(object sender, EventArgs e)
+        {
+            frmAddInternationalLicense frm = new frmAddInternationalLicense();
             frm.Show();
         }
     }

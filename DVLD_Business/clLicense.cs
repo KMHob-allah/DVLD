@@ -368,6 +368,11 @@ namespace DVLD_Business
             return DetainedLicense.ID;
         }
 
+        public int GetActiveInternationalLicenseID()
+        {
+            return clInternationalLicenseData.LoadActiveInternationalLicenseIDByDriverID(this.DriverID);
+        }
+
     }
 
 }

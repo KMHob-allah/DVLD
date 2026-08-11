@@ -59,8 +59,8 @@ namespace DVLD_Business
         }
         static public DataTable GetInternationalLicenses(int DriverID)
         {
-            return null;
-            //return clInternationalLicenseData.LoadInternationalDriverLicenses(DriverID);
+            
+            return clInternationalLicenseData.LoadAllDriverInternationalLicenses(DriverID);
         }
 
         static public clDriver FindByDriverID(int DriverID)
