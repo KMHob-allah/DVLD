@@ -119,6 +119,12 @@
     <Compile Include="Licenses\Controls\ctrlLicenseHistory.Designer.cs">
       <DependentUpon>ctrlLicenseHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Licenses\DetainLicenses\DetainedLicensesList\frmDetainedLicensesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\DetainLicenses\DetainedLicensesList\frmDetainedLicensesList.Designer.cs">
+      <DependentUpon>frmDetainedLicensesList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Licenses\DetainLicenses\frmDetainLicense.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Controls\ctrlLicenseHistory.resx">
       <DependentUpon>ctrlLicenseHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\DetainLicenses\DetainedLicensesList\frmDetainedLicensesList.resx">
+      <DependentUpon>frmDetainedLicensesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\DetainLicenses\frmDetainLicense.resx">
       <DependentUpon>frmDetainLicense.cs</DependentUpon>
@@ -662,6 +671,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Release Detained License 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detain 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detain 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detain 641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Release Detained License 641.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

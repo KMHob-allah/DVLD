@@ -17,6 +17,7 @@ namespace DVLD.Applications.ReleaseLicenses
 {
     public partial class frmReleaseLicense : Form
     {
+        public event EventHandler LicenseReleased;
         clDetainLicense DetainedLicense;
 
         public frmReleaseLicense()
@@ -87,7 +88,7 @@ namespace DVLD.Applications.ReleaseLicenses
             MessageBox.Show($"License Released Successfully",
             "License Released", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //ctrlLicenseCardWithFilter1.LoadLicenseInfo(ctrlLicenseCardWithFilter1.Licenseinfo.LicenseID);
+            LicenseReleased?.Invoke(null, null);
 
             lblAppIDValue.Text = ApplicationID.ToString();
 

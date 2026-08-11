@@ -16,6 +16,8 @@ namespace DVLD.Licenses.DetainLicenses
 {
     public partial class frmDetainLicense : Form
     {
+        public event EventHandler LicenseDetained;
+
         clLicense License;
         public frmDetainLicense()
         {
@@ -73,6 +75,8 @@ namespace DVLD.Licenses.DetainLicenses
 
             MessageBox.Show($"License Detained Successfully With ID : {DetainedLicense.ID}",
             "License Detained", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            LicenseDetained?.Invoke(null, null);
 
             lblDetainIDValue.Text = DetainedLicense.ID.ToString();
 

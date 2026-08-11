@@ -215,6 +215,7 @@
             this.opManageDetainedLicenses.Name = "opManageDetainedLicenses";
             this.opManageDetainedLicenses.Size = new System.Drawing.Size(333, 38);
             this.opManageDetainedLicenses.Text = "Manage Detained Licenses";
+            this.opManageDetainedLicenses.Click += new System.EventHandler(this.opManageDetainedLicenses_Click);
             // 
             // opDetainLicense
             // 

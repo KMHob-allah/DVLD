@@ -5,6 +5,7 @@ using DVLD.Applications.ReleaseLicenses;
 using DVLD.Drivers;
 using DVLD.GlobalSettings;
 using DVLD.Licenses.DetainLicenses;
+using DVLD.Licenses.DetainLicenses.DetainedLicensesList;
 using DVLD.Licenses.LocalLicenses;
 using DVLD.Licenses.RenewLicenses;
 using DVLD.People;
@@ -82,40 +83,39 @@ namespace DVLD
             frmLocalAppsList frm = new frmLocalAppsList();
             frm.ShowDialog();
         }
-
         private void opRetakeTest_Click(object sender, EventArgs e)
         {
             frmLocalAppsList frm = new frmLocalAppsList();
             frm.ShowDialog();
         }
-
         private void opRenewDrivingLicense_Click(object sender, EventArgs e)
         {
             frmRenewLocalLicense frm = new frmRenewLocalLicense();
             frm.Show();
         }
-
         private void opReplacement_Click(object sender, EventArgs e)
         {
             frmLostOrDamagedLicenseApplications frm = new frmLostOrDamagedLicenseApplications();
             frm.Show();
         }
-
         private void opDrivers_Click(object sender, EventArgs e)
         {
             frmDriversList frm = new frmDriversList();
             frm.Show();
         }
-
         private void opDetainLicense_Click(object sender, EventArgs e)
         {
             frmDetainLicense frm = new frmDetainLicense();
             frm.Show();
         }
-
         private void opReleaseDetainedLicenses_Click(object sender, EventArgs e)
         {
             frmReleaseLicense frm = new frmReleaseLicense();
+            frm.Show();
+        }
+        private void opManageDetainedLicenses_Click(object sender, EventArgs e)
+        {
+            frmDetainedLicensesList frm = new frmDetainedLicensesList();
             frm.Show();
         }
     }
