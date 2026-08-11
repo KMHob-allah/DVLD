@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DVLD.Licenses.InternationalLicenses
 {
-    public partial class frmInternationalLicenseCard : Form
+    public partial class frmInternationalLicenseInfo : Form
     {
-        public frmInternationalLicenseCard(int InternationalLicenseID)
+        public frmInternationalLicenseInfo(int InternationalLicenseID)
         {
             InitializeComponent();
             ctrlInternationalLicenseCard1.LoadInternationalLicenseInfo(InternationalLicenseID);

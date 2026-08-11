@@ -16,7 +16,12 @@ namespace DVLD_DataAccess.Data
         {
             DataTable dtLicensesList = new DataTable();
 
-            string Query = @"SELECT * FROM InternationalLicenses";
+            string Query = @"SELECT InternationalLicenseID,
+                                    ApplicationID,DriverID,
+                                    LocalLicenseID = IssuedUsingLocalLicenseID, 
+                                    IssueDate,
+                                    ExpirationDate, 
+                                    IsActive FROM InternationalLicenses";
 
             using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
             {
@@ -59,7 +64,8 @@ namespace DVLD_DataAccess.Data
         {
             bool IsFound = false;
 
-            string Query = @"SELECT * FROM InternationalLicenses WHERE InternationalLicenseID = @InternationalLicenseID";
+            string Query = @"SELECT *
+                                    FROM InternationalLicenses WHERE InternationalLicenseID = @InternationalLicenseID";
 
             using (SqlConnection Connection = new SqlConnection(DVLD_DataAccess.clSettings.ConnectionString))
             {

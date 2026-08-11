@@ -143,11 +143,17 @@
     <Compile Include="Licenses\DetainLicenses\frmDetainLicense.Designer.cs">
       <DependentUpon>frmDetainLicense.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenses\InternationalLicenses\frmInternationalLicenseCard.cs">
+    <Compile Include="Licenses\InternationalLicenses\frmInternationalLicenseInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Licenses\InternationalLicenses\frmInternationalLicenseCard.Designer.cs">
-      <DependentUpon>frmInternationalLicenseCard.cs</DependentUpon>
+    <Compile Include="Licenses\InternationalLicenses\frmInternationalLicenseInfo.Designer.cs">
+      <DependentUpon>frmInternationalLicenseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\InternationalLicenses\frmInternationalLicensesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\InternationalLicenses\frmInternationalLicensesList.Designer.cs">
+      <DependentUpon>frmInternationalLicensesList.cs</DependentUpon>
     </Compile>
     <Compile Include="Licenses\LocalLicenses\Controls\ctrlLicenseCard.cs">
       <SubType>UserControl</SubType>
@@ -340,8 +346,11 @@
     <EmbeddedResource Include="Licenses\DetainLicenses\frmDetainLicense.resx">
       <DependentUpon>frmDetainLicense.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Licenses\InternationalLicenses\frmInternationalLicenseCard.resx">
-      <DependentUpon>frmInternationalLicenseCard.cs</DependentUpon>
+    <EmbeddedResource Include="Licenses\InternationalLicenses\frmInternationalLicenseInfo.resx">
+      <DependentUpon>frmInternationalLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\InternationalLicenses\frmInternationalLicensesList.resx">
+      <DependentUpon>frmInternationalLicensesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\LocalLicenses\Controls\ctrlLicenseCard.resx">
       <DependentUpon>ctrlLicenseCard.cs</DependentUpon>
@@ -710,6 +719,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Release Detained License 641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Applications2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

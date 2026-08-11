@@ -198,6 +198,7 @@
             this.opInternationalApps.Name = "opInternationalApps";
             this.opInternationalApps.Size = new System.Drawing.Size(393, 38);
             this.opInternationalApps.Text = "International License Applications";
+            this.opInternationalApps.Click += new System.EventHandler(this.opInternationalApps_Click);
             // 
             // opDetainLicenses
             // 

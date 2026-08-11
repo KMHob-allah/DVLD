@@ -7,6 +7,7 @@ using DVLD.Drivers;
 using DVLD.GlobalSettings;
 using DVLD.Licenses.DetainLicenses;
 using DVLD.Licenses.DetainLicenses.DetainedLicensesList;
+using DVLD.Licenses.InternationalLicenses;
 using DVLD.Licenses.LocalLicenses;
 using DVLD.Licenses.RenewLicenses;
 using DVLD.People;
@@ -119,21 +120,23 @@ namespace DVLD
             frmDetainedLicensesList frm = new frmDetainedLicensesList();
             frm.Show();
         }
-
         private void opDrivingLicensesApps_Click(object sender, EventArgs e)
         {
 
         }
-
         private void opReleaseDetainedLicense_Click(object sender, EventArgs e)
         {
             frmReleaseLicense frm = new frmReleaseLicense();
             frm.Show();
         }
-
         private void opInternationalLicense_Click(object sender, EventArgs e)
         {
             frmAddInternationalLicense frm = new frmAddInternationalLicense();
+            frm.Show();
+        }
+        private void opInternationalApps_Click(object sender, EventArgs e)
+        {
+            frmInternationalLicensesList frm = new frmInternationalLicensesList();
             frm.Show();
         }
     }

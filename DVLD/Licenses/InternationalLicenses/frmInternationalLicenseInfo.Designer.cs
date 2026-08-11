@@ -1,6 +1,6 @@
 ﻿namespace DVLD.Licenses.InternationalLicenses
 {
-    partial class frmInternationalLicenseCard
+    partial class frmInternationalLicenseInfo
     {
         /// <summary>
         /// Required designer variable.

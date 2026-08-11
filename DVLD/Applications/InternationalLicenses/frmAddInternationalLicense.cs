@@ -18,6 +18,8 @@ namespace DVLD.Applications.InternationalLicenses
 {
     public partial class frmAddInternationalLicense : Form
     {
+        public event EventHandler InternationalLicenseAdded;
+
         clInternationalLicense InternationalLicense;
         int InternationalLicenseID = -1;
 
@@ -52,7 +54,7 @@ namespace DVLD.Applications.InternationalLicenses
         }
         private void lnklblShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmInternationalLicenseCard frm = new frmInternationalLicenseCard(InternationalLicenseID);
+            frmInternationalLicenseInfo frm = new frmInternationalLicenseInfo(InternationalLicenseID);
             frm.Show();
         }
 
@@ -118,10 +120,13 @@ namespace DVLD.Applications.InternationalLicenses
             MessageBox.Show($"International License Issued Successfully",
             "License Released", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
             InternationalLicenseID = InternationalLicense.InternationalLicenseID;
 
             lblInternationalAppIDValue.Text = App.ApplicationID.ToString();
             lblInternationalLicenseIDValue.Text = InternationalLicense.InternationalLicenseID.ToString();
+
+            InternationalLicenseAdded?.Invoke(null, null);
 
             btnIssue.Enabled = false;
             lnklblShowLicensesHistory.Enabled = true;
